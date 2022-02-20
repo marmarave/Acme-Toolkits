@@ -1,4 +1,4 @@
-# NOTICE.txt
+# CONTRIBUTORS.txt
 #
 # Copyright (C) 2012-2022 Rafael Corchuelo.
 #
@@ -12,3 +12,6 @@ This project was contributed by the following people:
 
 - Rafael Corchuelo (corchu@us.es)
 - Miguel Ángel Gómez Gómez (miggomgom1@alum.us.es)	
+- Miguel Ángel Rivas Rosado (migrivros@alum.us.es)
+- Iván Moreno Granado (ivamorgra@alum.us.es)
+- Rafael Sanabria Espárrago (rafasana9@gmail.com)
