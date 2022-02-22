@@ -14,6 +14,6 @@ This project was contributed by the following people:
 - Miguel Ángel Rivas Rosado (migrivros@alum.us.es)
 - Dámaris Gómez Serrano (damgomser@alum.us.es)
 - Mariano Martín Avecilla (marmarave@alum.us.es)
-- Miguel Ángel Gómez Gómez (miggomgom1@alum.us.es)	
+- Miguel Ángel Gómez Gómez (miggomgom1@alum.us.es)
 - Iván Moreno Granado (ivamorgra@alum.us.es)
 - Rafael Sanabria Espárrago (rafasana9@gmail.com)
