@@ -24,6 +24,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.rafsanesp" action="https://github.com/Rafasana14"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.migrivros" action="https://github.com/migrivros"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.marmarave" action="https://github.com/marmarave"/>
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link.damgomser" action="https://github.com/Damaris1008"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
