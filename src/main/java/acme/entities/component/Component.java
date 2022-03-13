@@ -38,7 +38,7 @@ public class Component extends AbstractEntity{
 	protected String description;
 	
 	@Positive
-	protected String retailPrice;
+	protected Integer retailPrice;
 	
 	private String optionalLink;
 	
