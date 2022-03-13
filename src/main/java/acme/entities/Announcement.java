@@ -3,9 +3,7 @@ package acme.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -21,11 +19,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Announcement extends AbstractEntity{
-	
 	protected static final long    serialVersionUID    = 1L;
-	
-
+			
 	@Past
+	@NotNull
 	protected Date creationMoment;
 	
 	@NotBlank
@@ -36,8 +33,11 @@ public class Announcement extends AbstractEntity{
 	@Max(256)
 	protected String body;
 	
+	@Email
+	protected String email;
+	
 	@NotNull
-	protected boolean flag;
+	protected boolean critical;
 	
 	@URL
 	protected String moreInfo;
