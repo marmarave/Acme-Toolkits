@@ -232,27 +232,6 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>306</x>
-      <y>438</y>
-      <w>234</w>
-      <h>96</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Tool
---
-+ name: String {NotBlank, Max(101)}
-+ code: String {Pattern(“^[A-Z]{3}-[0-9]{3}(-[A-Z])?$”), Unique}
-+ technology: String {NotBlank, Max(101)}
-+ description: String {NotBlank, Max(256)}
-+ retailPrice: double {ZeroOrPositive}
-+ moreInfo: String {URL}
-+ / spam: boolean
-bg=green</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
       <x>636</x>
       <y>510</y>
       <w>234</w>
@@ -455,5 +434,26 @@ m1=1
 m2=*
 contains  &gt;</panel_attributes>
     <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>318</x>
+      <y>450</y>
+      <w>276</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Tool
+--
++ name: String {NotBlank, Max(101)}
++ code: String {NotBlank, Pattern(“^[A-Z]{3}-[0-9]{3}(-[A-Z])?$”), Unique}
++ technology: String {NotBlank, Max(101)}
++ description: String {NotBlank, Max(256)}
++ retailPrice: double {NotNull, ZeroOrPositive}
++ moreInfo: String {URL}
++ / spam: boolean
+bg=green</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
