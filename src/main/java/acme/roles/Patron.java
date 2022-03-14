@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.URL;
+
 import acme.framework.roles.UserRole;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,26 +15,26 @@ import lombok.Setter;
 @Setter
 public class Patron extends UserRole{
 	
-		// Serialisation identifier -----------------------------------------------
+	// Serialisation identifier -----------------------------------------------
 
-		protected static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
-		// Attributes -------------------------------------------------------------
+	// Attributes -------------------------------------------------------------
 
-		@NotBlank
-		@Column(length=101)
-		protected String			company;
+	@NotBlank
+	@Column(length=101)
+	protected String			company;
 
-		@NotBlank
-		//@Column(length=256)
-		protected String			statement;
+	@NotBlank
+	//@Column(length=256)
+	protected String			statement;
 		
-		@NotBlank
-		protected String			moreInfo;
+	@URL
+	protected String			moreInfo;
 
-		// Derived attributes -----------------------------------------------------
+	// Derived attributes -----------------------------------------------------
 		
-		protected boolean			spam;
+	protected boolean			spam;
 		
-		// Relationships ----------------------------------------------------------
+	// Relationships ----------------------------------------------------------
 }
