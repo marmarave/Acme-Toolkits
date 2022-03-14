@@ -2,11 +2,10 @@ package acme.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.URL;
 
@@ -27,7 +26,7 @@ public class Tool extends AbstractEntity{
 	// Attributes -------------------------------------------------------------
 	
 	@NotBlank
-	@Max(101)
+	@Column(length=101)
 	private String name;
 	
 	@NotBlank
@@ -36,15 +35,15 @@ public class Tool extends AbstractEntity{
 	private String code;
 	
 	@NotBlank
-	@Max(101)
+	@Column(length=101)
 	private String technology;
 	
 	@NotBlank
-	@Max(256)
+	//@Column(length=256)
 	private String description;
 	
 	@NotNull
-	@Min(value = 0, message = "Need zero or positive number")
+	@PositiveOrZero
 	private double retailPrice;
 	
 	@URL

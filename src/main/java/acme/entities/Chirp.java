@@ -2,9 +2,9 @@ package acme.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -25,15 +25,15 @@ public class Chirp extends AbstractEntity {
 	protected Date creationMoment;
 	
 	@NotBlank
-	@Max(101)
+	@Column(length=101)
 	protected String title;
 	
 	@NotBlank
-	@Max(101)
+	@Column(length=101)
 	protected String author;
 	
 	@NotBlank
-	@Max(256)
+	//@Column(length=256)
 	protected String body;
 	
 	@Email

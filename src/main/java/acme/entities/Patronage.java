@@ -26,14 +26,6 @@ import lombok.Setter;
 @Setter
 public class Patronage extends AbstractEntity{
 	
-//	status: PatronageStatus
-//	+ code: String {Pattern(“^[A-Z]{3}-[0-9]{3}(-[A-Z])?$”), Unique}
-//	+ legalStuff: String {NotBlank, Max(256)}
-//	+ budget: double {Positive}
-//	+ period: Date {Temporal(DATE), Min(1)}
-//	+ moreInfo: String {URL}
-//	+ / spam: boolean
-	
 	// Serialisation identifier -----------------------------------------------
 
 	protected static final long	serialVersionUID	= 1L;

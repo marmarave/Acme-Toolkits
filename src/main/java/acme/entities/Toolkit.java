@@ -1,11 +1,12 @@
-package acme.datatypes;
+package acme.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.URL;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,18 +24,19 @@ public class Toolkit {
 	private String code;
 	
 	@NotBlank
-	@Size(max = 100)
+	@Column(length=101)
 	private String title;
 	
 	@NotBlank
-	@Size(max = 255)
+	@Column(length=256)
 	private String description;
 	
 	@NotBlank
-	@Size(max = 255)
+	@Column(length=256)
 	private String assemblyNotes;
 	
-	private String optionalLink;
+	@URL
+	private String moreInfo;
 	
 //	@ManyToMany
 //	private Tool tool;
