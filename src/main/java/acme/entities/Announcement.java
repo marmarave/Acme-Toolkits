@@ -1,6 +1,7 @@
 package acme.entities;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.framework.entities.AbstractEntity;
@@ -23,14 +25,14 @@ public class Announcement extends AbstractEntity{
 			
 	@Past
 	@NotNull
-	protected Date creationMoment;
+	protected LocalDateTime creationMoment;
 	
 	@NotBlank
-	@Column(length=101)
+	@Length(min=1,max = 100)
 	protected String title;
 	
 	@NotBlank
-	@Column(length=256)
+	@Length(min=1,max=255)
 	protected String body;
 	
 	@Email
