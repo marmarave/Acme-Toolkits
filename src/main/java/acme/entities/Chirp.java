@@ -1,6 +1,6 @@
 package acme.entities;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
@@ -30,7 +30,7 @@ public class Chirp extends AbstractEntity {
 	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	protected LocalDateTime creationMoment;
+	protected Date creationMoment;
 	
 	@NotBlank
 	@Length(min = 1, max = 100)
