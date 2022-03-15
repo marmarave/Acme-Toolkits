@@ -48,7 +48,7 @@ public class Item extends AbstractEntity{
 	
 	@NotNull
 	@Min(0)
-	protected Integer retailPrice;
+	protected Double retailPrice;
 	
 	@URL
 	private String moreInfo;
