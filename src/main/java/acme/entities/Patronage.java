@@ -1,17 +1,19 @@
 package acme.entities;
 
 
+import java.time.LocalDate;
 import java.time.Period;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
 
 import org.hibernate.validator.constraints.URL;
 
@@ -44,23 +46,26 @@ public class Patronage extends AbstractEntity{
 	protected String 			legalStuff;
 	
 	@NotNull
-	@Positive
+	@Min(1)
 	protected double 			budget;
 	
 	@NotNull
-	protected Period 			period;
+	@Temporal(TemporalType.DATE)
+	protected LocalDate 		startDate;
+	
+	@NotNull
+	@Temporal(TemporalType.DATE)
+	protected LocalDate 		endDate;
 	
 	@URL
 	protected String 			moreInfo;
 
 	// Derived attributes -----------------------------------------------------
 
-
-	@Transient
-	public boolean spam ;
-		
+	protected Integer getPeriod() {
+		return Period.between(this.startDate, this.endDate).getDays();
+	}
 	
-
 	// Relationships ----------------------------------------------------------
 	
 	@NotNull
