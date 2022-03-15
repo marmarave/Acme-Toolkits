@@ -14,11 +14,11 @@ import lombok.Setter;
 @Setter
 public class Inventor extends UserRole{
 	
-		// Serialisation identifier -----------------------------------------------
+	// Serialisation identifier -----------------------------------------------
 
-		protected static final long	serialVersionUID	= 1L;
+	protected static final long	serialVersionUID	= 1L;
 
-		// Attributes -------------------------------------------------------------
+	// Attributes -------------------------------------------------------------
 
 		@NotBlank
 		@Length(min=1,max=100)
@@ -31,7 +31,8 @@ public class Inventor extends UserRole{
 		@NotBlank
 		protected String			moreInfo;
 
-		// Derived attributes -----------------------------------------------------
+
+	// Derived attributes -----------------------------------------------------
 		
 		// Relationships ----------------------------------------------------------
 }
