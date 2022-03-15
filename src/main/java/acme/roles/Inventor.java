@@ -1,8 +1,9 @@
 package acme.roles;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.Length;
 
 import acme.framework.roles.UserRole;
 import lombok.Getter;
@@ -19,19 +20,19 @@ public class Inventor extends UserRole{
 
 	// Attributes -------------------------------------------------------------
 
-	@NotBlank
-	@Column(length=101)
-	protected String			company;
+		@NotBlank
+		@Length(min=1,max=100)
+		protected String			company;
 
-	@NotBlank
-	//@Column(length=256)
-	protected String			statement;
-	
-	protected String			moreInfo;
+		@NotBlank
+		@Length(min=1,max=255)
+		protected String			statement;
+		
+		@NotBlank
+		protected String			moreInfo;
+
 
 	// Derived attributes -----------------------------------------------------
 		
-	protected boolean			spam;
-		
-	// Relationships ----------------------------------------------------------
+		// Relationships ----------------------------------------------------------
 }
