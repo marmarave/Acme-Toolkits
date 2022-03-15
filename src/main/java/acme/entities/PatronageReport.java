@@ -1,7 +1,8 @@
 package acme.entities;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,7 +16,12 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.framework.entities.AbstractEntity;
+import lombok.Getter;
+import lombok.Setter;
 
+@Entity
+@Getter
+@Setter
 public class PatronageReport extends AbstractEntity {
 	
 	// Serialisation identifier -----------------------------------------------
@@ -25,13 +31,13 @@ public class PatronageReport extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 	
 	@NotBlank
-	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$:[0-9]{4}")
+	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?:[0-9]{4}$")
 	protected String sequenceNumber;
 	
 	@NotNull
 	@Past
 	@Temporal(TemporalType.TIMESTAMP)
-	protected LocalDateTime creationMoment;
+	protected Date creationMoment;
 	
 	@NotBlank
 	@Length(min = 1, max = 255)
