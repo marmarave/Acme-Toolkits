@@ -202,7 +202,7 @@ Announcement
 + title: String {NotBlank, Length(101)}
 + body: String {NotBlank, Length(256)}
 + email: String {Email}
-+ critical: boolean {NotNull}
++ critical: Boolean {NotNull}
 + moreInfo: String {URL}
 + / spam: boolean
 bg=green</panel_attributes>
