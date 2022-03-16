@@ -1,8 +1,11 @@
 package acme.entities;
 
-import java.time.LocalDateTime;
+
+import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -23,7 +26,8 @@ public class Announcement extends AbstractEntity{
 			
 	@Past
 	@NotNull
-	protected LocalDateTime creationMoment;
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date creationMoment;
 	
 	@NotBlank
 	@Length(min=1,max = 100)
