@@ -1,9 +1,9 @@
 package acme.roles;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.framework.roles.UserRole;
@@ -22,11 +22,11 @@ public class Patron extends UserRole{
 	// Attributes -------------------------------------------------------------
 
 	@NotBlank
-	@Column(length=101)
+	@Length(min=1,max=100)
 	protected String			company;
 
 	@NotBlank
-	//@Column(length=256)
+	@Length(min=1,max=255)
 	protected String			statement;
 		
 	@URL
@@ -34,7 +34,5 @@ public class Patron extends UserRole{
 
 	// Derived attributes -----------------------------------------------------
 		
-	protected boolean			spam;
-		
-	// Relationships ----------------------------------------------------------
+		// Relationships ----------------------------------------------------------
 }
