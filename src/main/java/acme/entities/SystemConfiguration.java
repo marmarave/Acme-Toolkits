@@ -39,7 +39,7 @@ public class SystemConfiguration extends AbstractEntity{
 	
 	@Min(0)
 	@Max(1)
-	private double weakThereshold;
+	private double weakThreshold;
 		
 	// Relationships ----------------------------------------------------------
 		
