@@ -220,7 +220,7 @@ Toolkit
 + description: String {NotBlank, Length(1,255)}
 + assemblyNotes: String {NotBlank, Length(1,255)}
 + moreInfo: String {URL}
-+ / totalPrice: double
++ / totalPrice: Money
 + / draftMode: boolean
 bg=green</panel_attributes>
     <additional_attributes/>
@@ -257,7 +257,7 @@ Patronage
 + status: PatronageStatus {NotNull}
 + code: String {Pattern(“^[A-Z]{3}-[0-9]{3}(-[A-Z])?$”), Unique}
 + legalStuff: String {NotBlank, Length(256)}
-+ budget: double {NotNull, Positive}
++ budget: Money {NotNull, Positive}
 + startDate: Date {NotNull, Temporal(TIMESTAMP)}
 + endDate: Date {NotNull, Temporal(TIMESTAMP)}
 + moreInfo: String {URL}
@@ -406,7 +406,7 @@ Item
 + code: String {Pattern(“^[A-Z]{3}-[0-9]{3}(-[A-Z])?$”), Unique}
 + technology: String {NotBlank, Length(1,100)}
 + description: String {NotBlank, Length(1,255)}
-+ retailPrice: double {NotNull, Min(1)}
++ retailPrice: Money {NotNull, Min(1)}
 + moreInfo: String {URL}
 
 bg=green</panel_attributes>
