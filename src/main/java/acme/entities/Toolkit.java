@@ -25,28 +25,26 @@ public class Toolkit extends AbstractEntity{
 
 	@Column(unique = true)
 	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
-	private String code;
+	protected String code;
 	
 	@NotBlank
 	@Column(length=101)
-	private String title;
+	protected String title;
 	
 	@NotBlank
 	@Column(length=256)
-	private String description;
+	protected String description;
 	
 	@NotBlank
 	@Column(length=256)
-	private String assemblyNotes;
+	protected String assemblyNotes;
 	
 	@URL
-	private String moreInfo;
+	protected String moreInfo;
 	
-//	@ManyToMany
-//	private Tool tool;
 	
-//	@ManyToMany
-//	private Component component;
-
+	protected double totalPrice;
+	
+	protected boolean draftMode;
    
 }
