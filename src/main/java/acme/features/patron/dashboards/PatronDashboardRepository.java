@@ -1,6 +1,5 @@
 package acme.features.patron.dashboards;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.framework.repositories.AbstractRepository;
