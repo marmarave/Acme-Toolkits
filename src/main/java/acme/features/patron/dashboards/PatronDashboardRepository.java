@@ -8,7 +8,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface PatronDashboardRepository extends AbstractRepository{
 	
-	
+	/*
 	
 	@Query("select count(p) from Patronage p where acme.entities.patronagestatus.PROPOSED ")
 	Double  numberOfProposedPatronages();
@@ -66,5 +66,5 @@ public interface PatronDashboardRepository extends AbstractRepository{
 	
 	@Query("select max(p.budget) from Patronage p group by acme.entities.patronagestatus.DENIED ")
 	Double maxBudgetDeniedPatronages();
-
+*/
 }
