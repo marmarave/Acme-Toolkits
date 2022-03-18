@@ -40,7 +40,7 @@ public class Announcement extends AbstractEntity{
 	@Email
 	protected String email;
 	
-	@NotNull
+	
 	protected Boolean critical;
 	
 	@URL
