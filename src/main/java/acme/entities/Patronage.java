@@ -8,14 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
 import acme.roles.Inventor;
 import acme.roles.Patron;
@@ -42,11 +44,18 @@ public class Patronage extends AbstractEntity{
 	protected String			code;
 	
 	@NotBlank
+	@Length(min=1,max=255)
 	protected String 			legalStuff;
 	
 	@NotNull
-	@Min(1)
-	protected double 			budget;
+	@Valid
+	//@Min(value = 1) Habrá que hacer custom constraint para ponerle un mínimo a la cantidad
+	protected Money 			budget;
+	
+	//La validación de las fechas se hará más adelante, cuando se vean en clase las custom constraints
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date 				creationMoment;
 	
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
@@ -56,13 +65,16 @@ public class Patronage extends AbstractEntity{
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date 				endDate;
 	
+	protected long 				period;
+	
 	@URL
 	protected String 			moreInfo;
 
 	// Derived attributes -----------------------------------------------------
-
-	protected Long getPeriod() {
-		return this.endDate.getTime()-this.startDate.getTime();
+	
+	@Transient
+	protected void getPeriod() {
+		this.period = this.endDate.getTime()-this.startDate.getTime();
 	}
 	
 	// Relationships ----------------------------------------------------------

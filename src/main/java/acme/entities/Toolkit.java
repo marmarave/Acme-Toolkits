@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,22 +30,22 @@ public class Toolkit extends AbstractEntity{
 	protected String code;
 	
 	@NotBlank
-	@Column(length=101)
+	@Length(min = 1, max = 255)
 	protected String title;
 	
 	@NotBlank
-	@Column(length=256)
+	@Length(min = 1, max = 255)
 	protected String description;
 	
 	@NotBlank
-	@Column(length=256)
+	@Length(min = 1, max = 255)
 	protected String assemblyNotes;
 	
 	@URL
 	protected String moreInfo;
 	
 	
-	protected double totalPrice;
+	protected Money totalPrice;
 	
 	protected boolean draftMode;
    
