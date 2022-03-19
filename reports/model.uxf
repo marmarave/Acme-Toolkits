@@ -229,7 +229,7 @@ bg=green</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>440</x>
-      <y>300</y>
+      <y>305</y>
       <w>60</w>
       <h>55</h>
     </coordinates>
@@ -249,15 +249,16 @@ bg=green
       <x>405</x>
       <y>190</y>
       <w>195</w>
-      <h>90</h>
+      <h>95</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Patronage
 --
 + status: PatronageStatus {NotNull}
 + code: String {Pattern(“^[A-Z]{3}-[0-9]{3}(-[A-Z])?$”), Unique}
-+ legalStuff: String {NotBlank, Length(256)}
-+ budget: Money {NotNull, Positive}
++ legalStuff: String {NotBlank, Length(1,255)}
++ budget: Money {NotNull}
++ creationMoment: Date {NotNull, Temporal(TIMESTAMP)}
 + startDate: Date {NotNull, Temporal(TIMESTAMP)}
 + endDate: Date {NotNull, Temporal(TIMESTAMP)}
 + moreInfo: String {URL}
