@@ -1,4 +1,4 @@
-key,key:user-account,company,statement,moreInfo
+key,key:user-account,company,statement,more-info
 inventor-01,user-account-inventor-01,Acme-Toolkits,I am the patron number 1,http://example.com/
 inventor-02,user-account-inventor-02,Acme-Toolkits,I am the patron number 2,http://example.com/
 inventor-03,user-account-inventor-03,!@#~€¬¿?%&/()=,I am the patron number 3,http://example.com/
