@@ -48,5 +48,6 @@ public class Toolkit extends AbstractEntity{
 	protected Money totalPrice;
 	
 	protected boolean draftMode;
+	
    
 }
