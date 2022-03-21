@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.framework.datatypes.Money;
 import acme.framework.entities.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,28 +27,27 @@ public class Toolkit extends AbstractEntity{
 
 	@Column(unique = true)
 	@Pattern(regexp = "^[A-Z]{3}-[0-9]{3}(-[A-Z])?$")
-	private String code;
+	protected String code;
 	
 	@NotBlank
-	@Column(length=101)
-	private String title;
+	@Length(min = 1, max = 255)
+	protected String title;
 	
 	@NotBlank
-	@Column(length=256)
-	private String description;
+	@Length(min = 1, max = 255)
+	protected String description;
 	
 	@NotBlank
-	@Column(length=256)
-	private String assemblyNotes;
+	@Length(min = 1, max = 255)
+	protected String assemblyNotes;
 	
 	@URL
-	private String moreInfo;
+	protected String moreInfo;
 	
-//	@ManyToMany
-//	private Tool tool;
 	
-//	@ManyToMany
-//	private Component component;
-
+	protected Money totalPrice;
+	
+	protected boolean draftMode;
+	
    
 }
