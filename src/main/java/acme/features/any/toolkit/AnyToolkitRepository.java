@@ -28,5 +28,8 @@ public interface AnyToolkitRepository extends AbstractRepository {
 
 	@Query("select t from Toolkit t where t.draftMode = false")
 	Collection<Toolkit> findManyToolkitsByAvailability();
+	
+//	@Query("select t from Toolkit t where t.draftMode = false")
+//	Collection<Toolkit> findManyToolkitsByItem();
 
 }

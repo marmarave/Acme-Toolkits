@@ -27,7 +27,7 @@ public class AnyToolkitController extends AbstractController<Any, Toolkit> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected AnyToolkitListService	listService;
+	protected AnyToolkitListAllService	listService;
 
 	@Autowired
 	protected AnyToolkitShowService	showService;
