@@ -3,13 +3,12 @@ package acme.features.inventor.component;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 
 import acme.entities.Item;
 import acme.framework.controllers.AbstractController;
 import acme.roles.Inventor;
 
-@Controller
+//@Controller
 public class InventorComponentController extends AbstractController<Inventor, Item> {
 	
 	// Internal state ---------------------------------------------------------
@@ -26,6 +25,6 @@ public class InventorComponentController extends AbstractController<Inventor, It
 	@PostConstruct
 	protected void initialise() {
 		super.addCommand("list-components", "list", this.listAllService);
-		super.addCommand("show", this.showService);
+		super.addCommand("show-component", this.showService);
 	}
 }

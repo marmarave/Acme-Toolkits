@@ -4,13 +4,13 @@ package acme.features.inventor.tool;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 
 import acme.entities.Item;
 import acme.framework.controllers.AbstractController;
 import acme.roles.Inventor;
 
-@Controller
+//@Controller
+//@RequestMapping("/inventor/tool")
 public class InventorToolController extends AbstractController<Inventor, Item> {
 
 	// Internal state ---------------------------------------------------------
@@ -26,8 +26,8 @@ public class InventorToolController extends AbstractController<Inventor, Item> {
 
 	@PostConstruct
 	protected void initialise() {
-		super.addCommand("list-tool","list", this.listMineService);
-		super.addCommand("show","show", this.showMineService);
+		super.addCommand("list-tools","list", this.listMineService);
+		super.addCommand("show-tool","show", this.showMineService);
 	}
 
 }

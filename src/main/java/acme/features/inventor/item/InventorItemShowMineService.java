@@ -1,7 +1,5 @@
 
-package acme.features.inventor.tool;
-
-import java.util.Collection;
+package acme.features.inventor.item;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,19 +7,18 @@ import org.springframework.stereotype.Service;
 import acme.entities.Item;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
-import acme.framework.entities.Principal;
-import acme.framework.services.AbstractListService;
+import acme.framework.services.AbstractShowService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorToolListMineService implements AbstractListService<Inventor, Item> {
+public class InventorItemShowMineService implements AbstractShowService<Inventor, Item> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected InventorToolRepository repository;
+	protected InventorItemRepository repository;
 
-	// AbstractListService<Inventor, Item> interface ---------------------------
+	// AbstractShowService<Inventor, Item> interface ---------------------------
 
 	@Override
 	public boolean authorise(final Request<Item> request) {
@@ -31,25 +28,27 @@ public class InventorToolListMineService implements AbstractListService<Inventor
 	}
 
 	@Override
-	public Collection<Item> findMany(final Request<Item> request) {
+	public Item findOne(final Request<Item> request) {
 		assert request != null;
-
-		Collection<Item> result;
-		Principal principal;
-
-		principal = request.getPrincipal(); 
-		result = this.repository.findManyToolsByInventorId(principal.getActiveRoleId());
-
+		
+		Item result;
+		int id;
+		
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOneItemById(id);
+		
 		return result;
 	}
-
+	
 	@Override
 	public void unbind(final Request<Item> request, final Item entity, final Model model) {
 		assert request != null;
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "name", "code", "technology", "description");
+		request.unbind(entity, model, "name", "code", "technology", "description", "retailPrice", "moreInfo");
+
 	}
+
 
 }

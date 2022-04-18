@@ -1,5 +1,5 @@
 
-package acme.features.inventor.tool;
+package acme.features.inventor.item;
 
 import java.util.Collection;
 
@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Item;
+import acme.entities.ItemType;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.entities.Principal;
@@ -14,12 +15,12 @@ import acme.framework.services.AbstractListService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorToolListMineService implements AbstractListService<Inventor, Item> {
+public class InventorItemListMineService implements AbstractListService<Inventor, Item> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected InventorToolRepository repository;
+	protected InventorItemRepository repository;
 
 	// AbstractListService<Inventor, Item> interface ---------------------------
 
@@ -36,9 +37,11 @@ public class InventorToolListMineService implements AbstractListService<Inventor
 
 		Collection<Item> result;
 		Principal principal;
+		ItemType type;
 
-		principal = request.getPrincipal(); 
-		result = this.repository.findManyToolsByInventorId(principal.getActiveRoleId());
+		principal = request.getPrincipal();
+		type =ItemType.valueOf((String)request.getModel().getAttribute("type")); 
+		result = this.repository.findManyItemsByTypeAndInventorId(type, principal.getActiveRoleId());
 
 		return result;
 	}

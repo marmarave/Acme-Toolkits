@@ -11,6 +11,6 @@
 	<acme:input-money code="any.toolkit.form.label.total-price" path="totalPrice"/>
 	<acme:input-url code="any.toolkit.form.label.more-info" path="moreInfo"/>
 	
-	<acme:button code="any.toolkit.form.button.components" action="/any/item/list-component?masterId=${id}"/>
-	<acme:button code="any.toolkit.form.button.tools" action="/any/item/list-tool?masterId=${id}"/>
+	<acme:button code="any.toolkit.form.button.components" action="/any/item/list-master?type=TOOL&masterId=${id}"/>
+	<acme:button code="any.toolkit.form.button.tools" action="/any/item/list-master?type=COMPONENT&masterId=${id}"/>
 </acme:form>

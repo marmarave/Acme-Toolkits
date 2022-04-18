@@ -1,4 +1,4 @@
-package acme.features.any.component;
+package acme.features.any.item;
 
 
 import javax.annotation.PostConstruct;
@@ -12,16 +12,19 @@ import acme.framework.roles.Any;
 
 
 @Controller
-public class AnyComponentController extends AbstractController<Any, Item> {
+public class AnyItemController extends AbstractController<Any, Item> {
 	
 	
 	// Internal state ---------------------------------------------------------
 
 		@Autowired
-		protected AnyComponentListService	listService;
+		protected AnyItemListService	listService;
+		
+		@Autowired
+		protected AnyItemListMasterService	listMasterService;
 
 		@Autowired
-		protected AnyComponentShowService	showService;
+		protected AnyItemShowService	showService;
 
 		// Constructors -----------------------------------------------------------
 
@@ -29,6 +32,7 @@ public class AnyComponentController extends AbstractController<Any, Item> {
 		@PostConstruct
 		protected void initialise() {
 			super.addCommand("list", this.listService);
+			super.addCommand("list-master","list", this.listMasterService);
 			super.addCommand("show", this.showService);
 		}
 
