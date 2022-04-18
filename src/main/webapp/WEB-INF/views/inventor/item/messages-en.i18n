@@ -1,0 +1,14 @@
+inventor.tool.list.label.name = Name:
+inventor.tool.list.label.code = Code:
+inventor.tool.list.label.technology = Technology:
+inventor.tool.list.label.description = Description:
+
+inventor.tool.list.title = My tools
+
+
+inventor.tool.form.label.name = Name:
+inventor.tool.form.label.code = Code:
+inventor.tool.form.label.technology = Technology:
+inventor.tool.form.label.description = Description:
+inventor.tool.form.label.retail-price = Retail price:
+inventor.tool.form.label.more-info = More information: (Optional)
