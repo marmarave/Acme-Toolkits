@@ -1,14 +1,21 @@
-inventor.tool.list.label.name = Nombre:
-inventor.tool.list.label.code = Código:
-inventor.tool.list.label.technology = Tecnología:
-inventor.tool.list.label.description = Descripción:
+# i18n-es.i18n
+#
+# Copyright (C) 2012-2022 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
 
-inventor.tool.list.title = Mis herramientas
+inventor.component.list.label.name = Nombre
+inventor.component.list.label.code = Código
+inventor.component.list.label.technology = Tecnología
+inventor.component.list.label.description = Descripción
 
-
-inventor.tool.form.label.name = Nombre:
-inventor.tool.form.label.code = Código:
-inventor.tool.form.label.technology = Tecnología:
-inventor.tool.form.label.description = Descripción:
-inventor.tool.form.label.retail-price = PVP:
-inventor.tool.form.label.more-info = Más información: (Opcional)
+inventor.item.form.label.name = Nombre
+inventor.item.form.label.code = Código
+inventor.item.form.label.technology = Tecnología
+inventor.item.form.label.description = Descripción
+inventor.item.form.label.retailPrice = Precio Unitario
+inventor.item.form.label.more-info = Más info
