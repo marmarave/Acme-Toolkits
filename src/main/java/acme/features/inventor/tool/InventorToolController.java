@@ -11,7 +11,6 @@ import acme.framework.controllers.AbstractController;
 import acme.roles.Inventor;
 
 @Controller
-//@RequestMapping("/inventor/tool/")
 public class InventorToolController extends AbstractController<Inventor, Item> {
 
 	// Internal state ---------------------------------------------------------
@@ -27,8 +26,8 @@ public class InventorToolController extends AbstractController<Inventor, Item> {
 
 	@PostConstruct
 	protected void initialise() {
-		super.addCommand("list-tool", this.listMineService);
-		super.addCommand("show-tool", this.showMineService);
+		super.addCommand("list-tool","list", this.listMineService);
+		super.addCommand("show","show", this.showMineService);
 	}
 
 }
