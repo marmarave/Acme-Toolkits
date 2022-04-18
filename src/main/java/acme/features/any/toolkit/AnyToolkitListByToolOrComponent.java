@@ -6,7 +6,6 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.Item;
 import acme.entities.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
@@ -42,9 +41,9 @@ public class AnyToolkitListByToolOrComponent implements AbstractListService<Any,
 	@Override
 	public Collection<Toolkit> findMany(final Request<Toolkit> request) {
 		final Collection<Toolkit> result = null;
-		Item item;
-
-		item = (Item) request.getModel().getAttribute("item");
+//		Item item;
+//
+//		item = (Item) request.getModel().getAttribute("item");
 //		result = this.repository.findManyToolkitsByItem()
 
 		return result;
