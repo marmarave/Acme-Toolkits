@@ -18,6 +18,11 @@
 
 <acme:menu-bar code="master.menu.home">
 	<acme:menu-left>
+	
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated">
+			<acme:menu-suboption code="master.menu.authenticated.announcement.list" action="/authenticated/announcement/list"/>
+		</acme:menu-option>
+		
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.net/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.ivamorgra" action="https://www.worldpadeltour.com"/>
@@ -26,6 +31,15 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.marmarave" action="https://github.com/marmarave"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.damgomser" action="https://github.com/Damaris1008"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link.miggomgom1" action="https://lichess.org"/>
+			<acme:menu-suboption code="master.menu.anonymous.toolkit.list" action="/any/toolkit/list"/>
+			<acme:menu-suboption code="master.menu.anonymous.component.list" action="/any/item/list?type=COMPONENT"/>
+			<acme:menu-suboption code="master.menu.anonymous.tool.list" action="/any/item/list?type=TOOL"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.toolkit.list" action="/any/toolkit/list"/>
+			<acme:menu-suboption code="master.menu.authenticated.component.list" action="/any/item/list?type=COMPONENT"/>
+			<acme:menu-suboption code="master.menu.authenticated.tool.list" action="/any/item/list?type=TOOL"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -43,6 +57,8 @@
 
 		<acme:menu-option code="master.menu.inventor" access="hasRole('Inventor')">
 			<acme:menu-suboption code="master.menu.inventor.favourite-link" action="http://www.example.com/"/>
+			<acme:menu-suboption code="master.menu.inventor.component.list-mine" action="/inventor/item/list?type=COMPONENT"/>
+			<acme:menu-suboption code="master.menu.inventor.tool.list-mine" action="/inventor/item/list?type=TOOL"/>
 		</acme:menu-option>
 	</acme:menu-left>
 
