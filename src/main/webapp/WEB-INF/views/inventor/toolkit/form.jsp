@@ -24,5 +24,7 @@
 	<acme:input-textbox code="inventor.toolkit.form.label.assemblyNotes" path="assemblyNotes"/>
 	<acme:input-money code="inventor.toolkit.form.label.totalPrice" path="totalPrice"/>
 	<acme:input-url code="inventor.toolkit.form.label.more-info" path="moreInfo"/>
-
+	
+	<acme:button code="any.toolkit.form.button.components" action="/any/item/list-master?type=TOOL&masterId=${id}"/>
+	<acme:button code="any.toolkit.form.button.tools" action="/any/item/list-master?type=COMPONENT&masterId=${id}"/>
 </acme:form> 
