@@ -17,7 +17,6 @@
  inventor.patronage.list.label.endDate = End Date
  inventor.patronage.list.label.period = Period
  inventor.patronage.list.label.moreInfo = More Info
- inventor.patronage.list.label.patron = Patron
  
  inventor.patronage.form.label.status = Status
  inventor.patronage.form.label.code = Code
@@ -28,4 +27,12 @@
  inventor.patronage.form.label.endDate = End Date
  inventor.patronage.form.label.period = Period
  inventor.patronage.form.label.moreInfo = More Info 
- inventor.patronage.form.label.patron = Patron
+ inventor.patronage.form.label.patron.moreInfo = More Info of Patron
+ inventor.patronage.form.label.patron.company = Patron Company
+ inventor.patronage.form.label.patron.statement = Patron Statement
+ inventor.patronage.form.label.patron.userAccount.username = Patron UserName
+ inventor.patronage.form.label.patron.userAccount.identity.name = Patron Name
+ inventor.patronage.form.label.patron.userAccount.identity.surname = Patron Surname
+ inventor.patronage.form.label.patron.userAccount.identity.email = Patron Email
+ 
+ 

@@ -37,7 +37,6 @@ public class InventorPatronageShowService implements AbstractShowService<Invento
 
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOnePatronageById(id);
-
 		return result;
 	}
 
@@ -47,7 +46,10 @@ public class InventorPatronageShowService implements AbstractShowService<Invento
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model,"status","code", "legalStuff", "budget", "creationMoment", "startDate", "endDate", "period", "moreInfo", "patron");
+		request.unbind(entity, model,"status","code", "legalStuff", "budget", "creationMoment", 
+			"startDate", "endDate", "period", "moreInfo", "patron.company", "patron.statement",
+			"patron.moreInfo", "patron.userAccount.username", "patron.userAccount.identity.name",
+			"patron.userAccount.identity.surname", "patron.userAccount.identity.email");
 	}
 
 
