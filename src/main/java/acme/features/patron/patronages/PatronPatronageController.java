@@ -1,26 +1,33 @@
-
-package acme.features.patron.dashboards;
+package acme.features.patron.patronages;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import acme.forms.PatronDashboard;
+import acme.entities.Patronage;
 import acme.framework.controllers.AbstractController;
 import acme.roles.Patron;
 
 @Controller
-public class PatronDashboardController extends AbstractController<Patron, PatronDashboard> {
+public class PatronPatronageController extends AbstractController<Patron, Patronage> {
+	
+
+	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected PatronDashboardShowService showService;
+	protected PatronPatronageShowService		showService;
+
+	@Autowired
+	protected PatronPatronageListAllService 		listAllService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
+		super.addCommand("list", this.listAllService);
 		super.addCommand("show", this.showService);
 	}
+	
 }

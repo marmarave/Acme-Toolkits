@@ -34,7 +34,7 @@ public class AnyItemListService implements AbstractListService<Any, Item> {
 
 		type =ItemType.valueOf((String)request.getModel().getAttribute("type"));
 
-		result = this.repository.findManyItems(type);
+		result = this.repository.findManyItemsByAvailability(type);
 
 		return result;
 	}
