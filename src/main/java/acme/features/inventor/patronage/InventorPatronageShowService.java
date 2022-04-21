@@ -1,5 +1,5 @@
-package acme.features.inventor.patronage;
 
+package acme.features.inventor.patronage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import acme.entities.Patronage;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 import acme.roles.Inventor;
 
@@ -25,7 +26,19 @@ public class InventorPatronageShowService implements AbstractShowService<Invento
 	public boolean authorise(final Request<Patronage> request) {
 		assert request != null;
 
-		return true;
+		boolean result;
+		int id;
+		Patronage patronage;
+		Inventor inventor;
+		Principal principal;
+
+		id = request.getModel().getInteger("id");
+		patronage = this.repository.findOnePatronageById(id);
+		inventor = patronage.getInventor();
+		principal = request.getPrincipal();
+		result = inventor.getUserAccount().getId() == principal.getAccountId();
+
+		return result;
 	}
 
 	@Override
@@ -46,12 +59,8 @@ public class InventorPatronageShowService implements AbstractShowService<Invento
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model,"status","code", "legalStuff", "budget", "creationMoment", 
-			"startDate", "endDate", "period", "moreInfo", "patron.company", "patron.statement",
-			"patron.moreInfo", "patron.userAccount.username", "patron.userAccount.identity.name",
-			"patron.userAccount.identity.surname", "patron.userAccount.identity.email");
+		request.unbind(entity, model, "status", "code", "legalStuff", "budget", "creationMoment", "startDate", "endDate", "period", "moreInfo", "patron.company", "patron.statement", "patron.moreInfo", "patron.userAccount.username",
+			"patron.userAccount.identity.name", "patron.userAccount.identity.surname", "patron.userAccount.identity.email");
 	}
-
-
 
 }
