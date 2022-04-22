@@ -14,7 +14,7 @@
   administrator.administratordashboard.form.label.averagePriceOfComponents = Media del Precio de Componentes
   administrator.administratordashboard.form.label.deviationPriceOfComponents = Desviación del Precio de Componentes
   administrator.administratordashboard.form.label.totalNumTools = Número Total de Herramientas
-  administrator.administratordashboard.form.label.mixPriceOfTools = Precio Mínimo de Herramientas
+  administrator.administratordashboard.form.label.minPriceOfTools = Precio Mínimo de Herramientas
   administrator.administratordashboard.form.label.maxPriceOfTools = Precio Máximo de Herramientas
   administrator.administratordashboard.form.label.averagePriceOfTools = Media del Precio de Herramientas
   administrator.administratordashboard.form.label.deviationPriceOfTools = Desviación del Precio de Herramientas
