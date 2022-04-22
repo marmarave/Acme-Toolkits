@@ -14,13 +14,30 @@
 
  <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
  <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
+ <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
  <acme:form>
  	<acme:input-textbox code="administrator.administratordashboard.form.label.totalNumComponents" path="totalNumComponents"/>
- 	<acme:input-textbox code="administrator.administratordashboard.form.label.maxPriceOfComponents" path="maxPriceOfComponents"/>
- 	<acme:input-textbox code="administrator.administratordashboard.form.label.minPriceOfComponents" path="minPriceOfComponents"/>
+ 	<%-- <acme:input-textbox code="administrator.administratordashboard.form.label.maxPriceOfComponents" path="maxPriceOfComponents"/>--%>
+ 	<acme:message code="administrator.administratordashboard.form.label.maxPriceOfComponents"/>
+	<table>	
+ 		<jstl:forEach items="${maxPriceOfComponents}" var="i">
+ 		<jstl:set var = "split" value = "${fn:split(i,'->')}"/>
+		<jstl:set var = "value" value = "${split[0]}" />
+		<jstl:set var = "string" value = "${split[1]}" />   
+ 			<tr>	
+				<th>	
+					<acme:print value="${string}"/>
+				</th>
+				<td>				
+					<acme:print value="${value}"/>				
+				</td>		
+			</tr>
+ 		</jstl:forEach>
+ 	</table>
+ 	<%-- <acme:input-textbox code="administrator.administratordashboard.form.label.minPriceOfComponents" path="minPriceOfComponents"/>
  	<acme:input-textbox code="administrator.administratordashboard.form.label.averagePriceOfComponents" path="averagePriceOfComponents"/>
- 	<acme:input-textbox code="administrator.administratordashboard.form.label.deviationPriceOfComponents" path="deviationPriceOfComponents"/>
+ 	<acme:input-textbox code="administrator.administratordashboard.form.label.deviationPriceOfComponents" path="deviationPriceOfComponents"/>--%>
  	<acme:message code="administrator.administratordashboard.form.label.maxPriceOfTools"/>
 	<table>	
  		<jstl:forEach items="${maxPriceOfTools}" var="i"> 
