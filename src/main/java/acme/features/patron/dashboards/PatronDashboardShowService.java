@@ -46,7 +46,7 @@ public class PatronDashboardShowService implements AbstractShowService<Patron, P
 //		ratioOfPendingApplications = this.repository.ratioOfPendingApplications();
 //		ratioOfAcceptedApplications = this.repository.ratioOfAcceptedApplications();
 //		ratioOfRejectedApplications = this.repository.ratioOfRejectedApplications();
-//
+
 		result = new PatronDashboard();
 //		result.setAvegageNumberOfApplicationsPerEmployer(averageNumberOfApplicationsPerEmployer);
 //		result.setAverageNumberOfApplicationsPerWorker(averageNumberOfApplicationsPerWorker);

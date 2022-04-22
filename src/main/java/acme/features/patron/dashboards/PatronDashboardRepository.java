@@ -1,6 +1,5 @@
 package acme.features.patron.dashboards;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.framework.repositories.AbstractRepository;
@@ -8,7 +7,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface PatronDashboardRepository extends AbstractRepository{
 	
-	@Query("select count(p) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED ")
+	/*@Query("select count(p) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED ")
 	Double  numberOfProposedPatronages();
 	
 	@Query("select count(p) from Patronage p where p.status = acme.entities.PatronageStatus.ACCEPTED ")
@@ -64,5 +63,5 @@ public interface PatronDashboardRepository extends AbstractRepository{
 	
 	@Query("select max(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.DENIED ")
 	Double maxBudgetDeniedPatronages();
-
+*/
 }
