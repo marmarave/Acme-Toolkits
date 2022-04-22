@@ -16,17 +16,17 @@ public interface AdministratorDashboardRepository extends AbstractRepository{
 	@Query("select count(i) from Item i where i.type = 'COMPONENT'")
 	Integer totalNumOfComponents();
 	
-	@Query("select avg(i.retailPrice.amount) from Item i where i.type = 'COMPONENT' GROUP BY i.type")
-	Double averagePriceOfComponents();
+	@Query("select avg(i.retailPrice.amount),technology,i.retailPrice.currency  from Item i where i.type = 'COMPONENT' GROUP BY i.retailPrice.currency, technology")
+	List<Object[]> averagePriceOfComponents();
 	
-	@Query("select max(i.retailPrice.amount) from Item i where i.type = 'COMPONENT'")
-	Double maxPriceOfComponents();
+	@Query("select max(i.retailPrice.amount),technology,i.retailPrice.currency from Item i where i.type = 'COMPONENT' GROUP BY i.retailPrice.currency, technology")
+	List<Object[]> maxPriceOfComponents();
 	
-	@Query("select min(i.retailPrice.amount) from Item i where i.type = 'COMPONENT'")
-	Double minPriceOfComponents();
+	@Query("select min(i.retailPrice.amount),technology,i.retailPrice.currency from Item i where i.type = 'COMPONENT' GROUP BY i.retailPrice.currency, technology")
+	List<Object[]> minPriceOfComponents();
 	
-	@Query("select stddev(i.retailPrice.amount) from Item i where i.type = 'COMPONENT' GROUP BY i.type")
-	Double deviationPriceOfComponents();
+	@Query("select stddev(i.retailPrice.amount),technology,i.retailPrice.currency from Item i where i.type = 'COMPONENT' GROUP BY i.retailPrice.currency, technology")
+	List<Object[]> deviationPriceOfComponents();
 	
 	
 	//Tools

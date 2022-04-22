@@ -2,6 +2,8 @@ package acme.forms;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.util.Pair;
+
 import acme.framework.datatypes.Money;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +23,7 @@ public class AdministratorDashboard {
 		Integer								totalNumTools;
 		Map<String,Integer>					numberOfPatronages;
 		
-		Map<String,Double>			priceOfComponentsStats;
+		Map<String,List<Pair<Double,String>>>			priceOfComponentsStats;
 		Map<String,List<Money>>			priceOfToolsStats;
 		Map<String,Double>			patronagesStats;
 		

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 
 import acme.forms.AdministratorDashboard;
@@ -43,10 +44,10 @@ public class AdministratorDashBoardShowService implements AbstractShowService<Ad
 		final int numberOfAcceptedPatronages = this.repository.numberOfAcceptedPatronages();
 		final int numberOfDeniedPatronages = this.repository.numberOfDeniedPatronages();
 		final int numberOfProposedPatronages = this.repository.numberOfProposedPatronages();
-		final Double minPriceOfComponents = this.repository.minPriceOfComponents();
-		final Double maxPriceOfComponents = this.repository.maxPriceOfComponents();
-		final Double averagePriceOfComponents = this.repository.averagePriceOfComponents();
-		final Double deviationPriceOfComponents = this.repository.deviationPriceOfComponents();
+		final List<Object[]> minPriceOfComponents = this.repository.minPriceOfComponents();
+		final List<Object[]> maxPriceOfComponents = this.repository.maxPriceOfComponents();
+		final List<Object[]> averagePriceOfComponents = this.repository.averagePriceOfComponents();
+		final List<Object[]> deviationPriceOfComponents = this.repository.deviationPriceOfComponents();
 		final List<Object[]> minPriceOfTools = this.repository.minPriceOfTools();
 		final List<Object[]> maxPriceOfTools = this.repository.maxPriceOfTools();
 		final List<Object[]> averagePriceOfTools = this.repository.averagePriceOfTools();
@@ -64,58 +65,20 @@ public class AdministratorDashBoardShowService implements AbstractShowService<Ad
 		final Double averagePriceOfProposedPatronages = this.repository.averageBudgetProposedPatronages();
 		final Double deviationPriceOfProposedPatronages = this.repository.deviationBudgetProposedPatronages();
 
-		final Map<String, Double> priceOfComponentsStats = new HashMap<>();
-		priceOfComponentsStats.put("max", maxPriceOfComponents);
-		priceOfComponentsStats.put("min", minPriceOfComponents);
-		priceOfComponentsStats.put("average", averagePriceOfComponents);
-		priceOfComponentsStats.put("deviation", deviationPriceOfComponents);
+
+		final Map<String, List<Pair<Double,String>>> priceOfComponentsStats = new HashMap<>();
+		
+		priceOfComponentsStats.put("max", this.objectListToPairList(maxPriceOfComponents));
+		priceOfComponentsStats.put("min", this.objectListToPairList(minPriceOfComponents));
+		priceOfComponentsStats.put("average", this.objectListToPairList(averagePriceOfComponents));
+		priceOfComponentsStats.put("deviation", this.objectListToPairList(deviationPriceOfComponents));
 
 		final Map<String, List<Money>> priceOfToolsStats = new HashMap<>();
-		final List<Money> min = new ArrayList<Money>();
-		final List<Money> max = new ArrayList<Money>();
-		final List<Money> avg = new ArrayList<Money>();
-		final List<Money> dev = new ArrayList<Money>();
 
-		for (final Object[] object : minPriceOfTools) {
-//			final Pair<Double, String> pairMin = Pair.of((Double) object[0], (String) object[1]);
-//			min.add(pairMin);
-			final Money min2 = new Money();
-			min2.setAmount((Double) object[0]);
-			min2.setCurrency((String) object[1]);
-			min.add(min2);
-		}
-
-		for (final Object[] object : maxPriceOfTools) {
-//			final Pair<Double, String> pairMax = Pair.of((Double) object[0], (String) object[1]);
-//			max.add(pairMax);
-			final Money max2 = new Money();
-			max2.setAmount((Double) object[0]);
-			max2.setCurrency((String) object[1]);
-			max.add(max2);
-		}
-
-		for (final Object[] object : averagePriceOfTools) {
-//			final Pair<Double, String> pairAvg = Pair.of((Double) object[0], (String) object[1]);
-//			avg.add(pairAvg);
-			final Money avg2 = new Money();
-			avg2.setAmount((Double) object[0]);
-			avg2.setCurrency((String) object[1]);
-			avg.add(avg2);
-		}
-
-		for (final Object[] object : deviationPriceOfTools) {
-//			final Pair<Double, String> pairDev = Pair.of((Double) object[0], (String) object[1]);
-//			dev.add(pairDev);
-			final Money dev2 = new Money();
-			dev2.setAmount((Double) object[0]);
-			dev2.setCurrency((String) object[1]);
-			dev.add(dev2);
-		}
-
-		priceOfToolsStats.put("max", max);
-		priceOfToolsStats.put("min", min);
-		priceOfToolsStats.put("average", avg);
-		priceOfToolsStats.put("deviation", dev);
+		priceOfToolsStats.put("max", this.objectListToMoneyList(maxPriceOfTools));
+		priceOfToolsStats.put("min", this.objectListToMoneyList(minPriceOfTools));
+		priceOfToolsStats.put("average", this.objectListToMoneyList(averagePriceOfTools));
+		priceOfToolsStats.put("deviation", this.objectListToMoneyList(deviationPriceOfTools));
 
 		final Map<String, Integer> numberOfPatronages = new HashMap<>();
 		numberOfPatronages.put("accepted", numberOfAcceptedPatronages);
@@ -178,6 +141,30 @@ public class AdministratorDashBoardShowService implements AbstractShowService<Ad
 		model.setAttribute("minProposedPatronages", entity.getPatronagesStats().get("minProposed"));
 		model.setAttribute("averageProposedPatronages", entity.getPatronagesStats().get("averageProposed"));
 		model.setAttribute("deviationProposedPatronages", entity.getPatronagesStats().get("deviationProposed"));
+	}
+
+	private List<Money> objectListToMoneyList(final List<Object[]> list) {
+		final List<Money> res = new ArrayList<Money>();
+		for (final Object[] object : list) {
+			final Money money = new Money();
+			money.setAmount((Double) object[0]);
+			money.setCurrency((String) object[1]);
+			res.add(money);
+		}
+		return res;
+	}
+	
+	private List<Pair<Double,String>> objectListToPairList(final List<Object[]> list) {
+		final List<Pair<Double,String>> res = new ArrayList<Pair<Double,String>>();
+		for (final Object[] object : list) {
+			String string;
+			final Double value = (Double) object[0];
+			string = ((String) object[1]);
+			string += ", " + ((String) object[2]);
+			
+			res.add(Pair.of(value, string));
+		}
+		return res;
 	}
 
 }
