@@ -10,4 +10,29 @@
 
  
  administrator.administratordashboard.form.label.totalNumComponents = Total Number of Components
+ administrator.administratordashboard.form.label.minPriceOfComponents = Minimum Price of Components
+ administrator.administratordashboard.form.label.maxPriceOfComponents = Maximum Price of Components
+ administrator.administratordashboard.form.label.averagePriceOfComponents = Average Price of Components
+ administrator.administratordashboard.form.label.deviationPriceOfComponents = Deviation Price of Components
+ administrator.administratordashboard.form.label.totalNumTools = Total Number of Tools
+ administrator.administratordashboard.form.label.minPriceOfTools = Minimum Price of Tools
+ administrator.administratordashboard.form.label.maxPriceOfTools = Maximum Price of Tools
+ administrator.administratordashboard.form.label.averagePriceOfTools = Average Price of Tools
+ administrator.administratordashboard.form.label.deviationPriceOfTools = Deviation Price of Tools
+ administrator.administratordashboard.form.label.numberOfAcceptedPatronages = Number of Accepted Patronages
+ administrator.administratordashboard.form.label.numberOfDeniedPatronages = Number of Denied Patronages
+ administrator.administratordashboard.form.label.numberOfProposedPatronages = Number of Proposed Patronages
+ administrator.administratordashboard.form.label.maxAcceptedPatronages =  Maximum Budget of Accepted Patronages
+ administrator.administratordashboard.form.label.minAcceptedPatronages = Minimum Budget of Accepted Patronages
+ administrator.administratordashboard.form.label.averageAcceptedPatronages = Average Budget of Accepted Patronages
+ administrator.administratordashboard.form.label.deviationAcceptedPatronages = Deviation Budged of Accepted Patronages
+ administrator.administratordashboard.form.label.maxDeniedPatronages =  Maximum Budget of Denied Patronages
+ administrator.administratordashboard.form.label.minDeniedPatronages = Minimum Budget of Denied Patronages
+ administrator.administratordashboard.form.label.averageDeniedPatronages = Average Budget of Denied Patronages
+ administrator.administratordashboard.form.label.deviationDeniedPatronages = Deviation Budged of Denied Patronages
+ administrator.administratordashboard.form.label.maxProposedPatronages =  Maximum Budget of Proposed Patronages
+ administrator.administratordashboard.form.label.minProposedPatronages = Minimum Budget of Proposed Patronages
+ administrator.administratordashboard.form.label.averageProposedPatronages = Average Budget of Proposed Patronages
+ administrator.administratordashboard.form.label.deviationProposedPatronages = Deviation Budged of Proposed Patronages
+ 
  

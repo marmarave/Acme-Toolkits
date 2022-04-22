@@ -1,5 +1,4 @@
 package acme.forms;
-import java.util.List;
 import java.util.Map;
 
 import lombok.Getter;
@@ -17,10 +16,12 @@ public class AdministratorDashboard {
 		// Attributes -------------------------------------------------------------
 
 		Integer								totalNumComponents;
-		Map<String,List<Double>>			priceOfComponentsStats;
-		Map<String,List<Double>>			priceOfToolsStats;
+		Integer								totalNumTools;
 		Map<String,Integer>					numberOfPatronages;
-		Map<String,List<Double>>			patronagesStats;
+		
+		Map<String,Double>			priceOfComponentsStats;
+		Map<String,Double>			priceOfToolsStats;
+		Map<String,Double>			patronagesStats;
 		
 
 
