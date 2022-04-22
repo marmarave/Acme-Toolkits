@@ -53,6 +53,8 @@ public class Item extends AbstractEntity{
 	@URL
 	private String moreInfo;
 	
+	private boolean published;
+	
 	// Relationships ----------------------------------------------------------
 	
 	@NotNull
