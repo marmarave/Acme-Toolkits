@@ -21,11 +21,24 @@
  	<acme:input-textbox code="administrator.administratordashboard.form.label.minPriceOfComponents" path="minPriceOfComponents"/>
  	<acme:input-textbox code="administrator.administratordashboard.form.label.averagePriceOfComponents" path="averagePriceOfComponents"/>
  	<acme:input-textbox code="administrator.administratordashboard.form.label.deviationPriceOfComponents" path="deviationPriceOfComponents"/>
+ 	<acme:message code="administrator.administratordashboard.form.label.maxPriceOfTools"/>
+	<table>	
+ 		<jstl:forEach items="${maxPriceOfTools}" var="i"> 
+ 			<tr>	
+				<th>	
+					<acme:print value="${i.currency}"/>
+				</th>
+				<td>				
+					<acme:print value="${i.amount}"/>				
+				</td>		
+			</tr>
+ 		</jstl:forEach>
+ 	</table>
  	<acme:input-textbox code="administrator.administratordashboard.form.label.totalNumTools" path="totalNumTools"/>
- 	<acme:input-textbox code="administrator.administratordashboard.form.label.maxPriceOfTools" path="maxPriceOfTools"/>
- 	<acme:input-textbox code="administrator.administratordashboard.form.label.minPriceOfTools" path="minPriceOfTools"/>
- 	<acme:input-textbox code="administrator.administratordashboard.form.label.averagePriceOfTools" path="averagePriceOfTools"/>
- 	<acme:input-textbox code="administrator.administratordashboard.form.label.deviationPriceOfTools" path="deviationPriceOfTools"/>
+ 	<%-- <acme:input-money code="administrator.administratordashboard.form.label.maxPriceOfTools" path="maxPriceOfTools"/>--%>
+ 	<acme:input-money code="administrator.administratordashboard.form.label.minPriceOfTools" path="minPriceOfTools"/>
+ 	<acme:input-money code="administrator.administratordashboard.form.label.averagePriceOfTools" path="averagePriceOfTools"/>
+ 	<acme:input-money code="administrator.administratordashboard.form.label.deviationPriceOfTools" path="deviationPriceOfTools"/>
  	<acme:input-textbox code="administrator.administratordashboard.form.label.numberOfAcceptedPatronages" path="numberOfAcceptedPatronages"/>
  	<acme:input-textbox code="administrator.administratordashboard.form.label.maxAcceptedPatronages" path="maxAcceptedPatronages"/>
  	<acme:input-textbox code="administrator.administratordashboard.form.label.minAcceptedPatronages" path="minAcceptedPatronages"/>

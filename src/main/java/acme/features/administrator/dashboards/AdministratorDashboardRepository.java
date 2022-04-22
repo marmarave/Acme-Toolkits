@@ -1,5 +1,7 @@
 package acme.features.administrator.dashboards;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -32,17 +34,17 @@ public interface AdministratorDashboardRepository extends AbstractRepository{
 	@Query("select count(i) from Item i where i.type = 'TOOL'")
 	Integer totalNumOfTools();
 	
-	@Query("select avg(i.retailPrice.amount) from Item i where i.type = 'TOOL' GROUP BY i.type")
-	Double averagePriceOfTools();
+	@Query("select avg(i.retailPrice.amount),i.retailPrice.currency from Item i where i.type = 'TOOL' GROUP BY i.retailPrice.currency")
+	List<Object[]> averagePriceOfTools();
 	
-	@Query("select max(i.retailPrice.amount) from Item i where i.type = 'TOOL'")
-	Double maxPriceOfTools();
+	@Query("select max(i.retailPrice.amount),i.retailPrice.currency from Item i where i.type = 'TOOL' GROUP BY i.retailPrice.currency")
+	List<Object[]> maxPriceOfTools();
 	
-	@Query("select min(i.retailPrice.amount) from Item i where i.type = 'TOOL'")
-	Double minPriceOfTools();
+	@Query("select min(i.retailPrice.amount),i.retailPrice.currency from Item i where i.type = 'TOOL' GROUP BY i.retailPrice.currency")
+	List<Object[]> minPriceOfTools();
 	
-	@Query("select stddev(i.retailPrice.amount) from Item i where i.type = 'TOOL'")
-	Double deviationPriceOfTools();
+	@Query("select stddev(i.retailPrice.amount),i.retailPrice.currency from Item i where i.type = 'TOOL' GROUP BY i.retailPrice.currency")
+	List<Object[]> deviationPriceOfTools();
 	
 	
 	//Patronages
