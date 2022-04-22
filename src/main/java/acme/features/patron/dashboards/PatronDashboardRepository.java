@@ -19,15 +19,15 @@ public interface PatronDashboardRepository extends AbstractRepository{
 	
 	// AVERAGE
 	
-	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED ")
-	Double averageBudgetProposedPatronages();
+//	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED")
+//	Double averageBudgetProposedPatronages();
+//	
+//	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.ACCEPTED")
+//	Double averageBudgetAcceptedPatronages();
+//	
+//	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.DENIED")
+//	Double averageBudgetDeniedPatronages();
 	
-	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.ACCEPTED ")
-	Double averageBudgetAcceptedPatronages();
-	
-	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.DENIED ")
-	Double averageBudgetDeniedPatronages();
-	*/
 	
 	// DEVIATION
 	
@@ -43,7 +43,7 @@ public interface PatronDashboardRepository extends AbstractRepository{
 	
 	
 	//MINIMUN
-	/*
+	
 	@Query("select min(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED ")
 	Double minBudgetProposedPatronages();
 	
