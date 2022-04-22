@@ -432,18 +432,19 @@ bg=green</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>575</x>
-      <y>450</y>
+      <y>445</y>
       <w>170</w>
-      <h>65</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 AdministratorDashboard
 --
 + totalNumComponents: Integer
-+ priceOfComponentsStats: Map&lt;String,List&lt;Double&gt;&gt;
-+ priceOfToolsStats: Map&lt;String,List&lt;Double&gt;&gt;
++ totalNumTools: Integer
 + numberOfPatronages: Map&lt;String,Integer&gt;
-+ patronagesStats: Map&lt;String,List&lt;Double&gt;&gt;
++ priceOfComponentsStats: Map&lt;String,Double&gt;
++ priceOfToolsStats: Map&lt;String,Double&gt;
++ patronagesStats: Map&lt;String,Double&gt;
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
@@ -491,7 +492,7 @@ bg=green</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>780</x>
-      <y>450</y>
+      <y>445</y>
       <w>130</w>
       <h>75</h>
     </coordinates>
