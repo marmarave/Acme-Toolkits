@@ -31,27 +31,27 @@ public class PatronDashboardShowService implements AbstractShowService<Patron, P
 		assert request != null;
 
 		final PatronDashboard result;
-		final Double averageNumberOfApplicationsPerEmployer;
-		final Double averageNumberOfApplicationsPerWorker;
-		final Double averageNumberOfJobsPerEmployer;
-		final Double ratioOfPendingApplications;
-		final Double ratioOfAcceptedApplications;
-		final Double ratioOfRejectedApplications;
-
-		averageNumberOfApplicationsPerEmployer = this.repository.averageNumberOfApplicationsPerEmployer();
-		averageNumberOfApplicationsPerWorker = this.repository.averageNumberOfApplicationsPerWorker();
-		averageNumberOfJobsPerEmployer = this.repository.averageNumberOfJobsPerEmployer();
-		ratioOfPendingApplications = this.repository.ratioOfPendingApplications();
-		ratioOfAcceptedApplications = this.repository.ratioOfAcceptedApplications();
-		ratioOfRejectedApplications = this.repository.ratioOfRejectedApplications();
+//		final Double averageNumberOfApplicationsPerEmployer;
+//		final Double averageNumberOfApplicationsPerWorker;
+//		final Double averageNumberOfJobsPerEmployer;
+//		final Double ratioOfPendingApplications;
+//		final Double ratioOfAcceptedApplications;
+//		final Double ratioOfRejectedApplications;
+//
+//		averageNumberOfApplicationsPerEmployer = this.repository.averageNumberOfApplicationsPerEmployer();
+//		averageNumberOfApplicationsPerWorker = this.repository.averageNumberOfApplicationsPerWorker();
+//		averageNumberOfJobsPerEmployer = this.repository.averageNumberOfJobsPerEmployer();
+//		ratioOfPendingApplications = this.repository.ratioOfPendingApplications();
+//		ratioOfAcceptedApplications = this.repository.ratioOfAcceptedApplications();
+//		ratioOfRejectedApplications = this.repository.ratioOfRejectedApplications();
 
 		result = new PatronDashboard();
-		result.setAvegageNumberOfApplicationsPerEmployer(averageNumberOfApplicationsPerEmployer);
-		result.setAverageNumberOfApplicationsPerWorker(averageNumberOfApplicationsPerWorker);
-		result.setAverageNumberOfJobsPerEmployer(averageNumberOfJobsPerEmployer);
-		result.setRatioOfPendingApplications(ratioOfPendingApplications);
-		result.setRatioOfAcceptedApplications(ratioOfAcceptedApplications);
-		result.setRatioOfRejectedApplications(ratioOfRejectedApplications);
+//		result.setAvegageNumberOfApplicationsPerEmployer(averageNumberOfApplicationsPerEmployer);
+//		result.setAverageNumberOfApplicationsPerWorker(averageNumberOfApplicationsPerWorker);
+//		result.setAverageNumberOfJobsPerEmployer(averageNumberOfJobsPerEmployer);
+//		result.setRatioOfPendingApplications(ratioOfPendingApplications);
+//		result.setRatioOfAcceptedApplications(ratioOfAcceptedApplications);
+//		result.setRatioOfRejectedApplications(ratioOfRejectedApplications);
 
 		return result;
 	}
