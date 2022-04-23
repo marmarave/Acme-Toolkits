@@ -54,6 +54,7 @@ master.menu.patron.patronage.list = Ver mis patrocinios
 master.menu.inventor = Inventor
 master.menu.inventor.component.list-mine = Ver mis componentes
 master.menu.inventor.tool.list-mine = Ver mis herramientas
+master.menu.inventor.my-patronage-reports = Ver mis reportes de patrocinio
 master.menu.inventor.patronage.list = Ver mis patrocinios
 
 # master.menu.user-account ####################################################
