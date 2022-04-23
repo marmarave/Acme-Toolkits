@@ -60,11 +60,6 @@ public class Item extends AbstractEntity{
 	@NotNull
 	@Valid
 	@ManyToOne(optional=false)
-	protected ItemQuantity itemQuantity;
-	
-	@NotNull
-	@Valid
-	@ManyToOne(optional=false)
 	protected Inventor inventor;
 	
 	

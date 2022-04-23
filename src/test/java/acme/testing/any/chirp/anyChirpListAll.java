@@ -14,7 +14,7 @@ public class anyChirpListAll extends TestHarness{
 	@CsvFileSource(resources = "/any/chirp/chirp.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(10)
 	public void positive(final int recordIndex, final String title, final String author, final String creationMoment, final String body, final String email) {
-		super.clickOnMenu("Anonymous", "List Chirps");
+		super.clickOnMenu("Anonymous", "List chirps");
 
 		super.checkListingExists();
 		super.sortListing(0, "asc");

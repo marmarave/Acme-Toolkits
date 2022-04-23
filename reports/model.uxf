@@ -383,7 +383,7 @@ m2=1..*
       <w>190</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-x
+    <panel_attributes>lt=x-&gt;
 m1=1
 m2=1..*
 &lt; Has
