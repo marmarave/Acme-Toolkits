@@ -34,6 +34,7 @@ master.menu.authenticated.toolkit.list = Ver cajas de herramientas
 master.menu.authenticated.component.list = Ver componentes
 master.menu.authenticated.tool.list = Ver herramientas
 master.menu.authenticated.system-configuration.show = Mostrar la configuración del sistema
+master.menu.authenticated.user-account.list = Ver cuentas de usuario
 
 # master.menu.administrator ###################################################
 

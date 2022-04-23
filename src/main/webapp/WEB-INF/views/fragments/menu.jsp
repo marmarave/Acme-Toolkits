@@ -39,6 +39,7 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.authenticated.toolkit.list" action="/any/toolkit/list"/>
 			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.user-account.list" action="/any/user-account/list"/>
 			<acme:menu-suboption code="master.menu.authenticated.system-configuration.show" action="/authenticated/system-configuration/show?id=129"/>		
 		</acme:menu-option>
 
