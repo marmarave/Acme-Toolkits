@@ -8,9 +8,10 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-authenticated.systemConfiguration.form.label.systemCurrency = Sistema Monetario
-authenticated.systemConfiguration.list.label.systemCurrency = Sistema Monetario
 
-authenticated.systemConfiguration.list.label.acceptedCurrencies = Monedas aceptadas
-authenticated.systemConfiguration.form.label.acceptedCurrencies = Monedas aceptadas
+authenticated.system-configuration.list.label.systemCurrency = Sistema Monetario
+authenticated.system-configuration.list.label.acceptedCurrencies = Monedas aceptadas
+
+authenticated.system-configuration.form.label.systemCurrency = Sistema Monetario
+authenticated.system-configuration.form.label.acceptedCurrencies = Monedas aceptadas
 

@@ -11,9 +11,9 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface AuthenticatedSystemConfigurationRepository extends AbstractRepository{
 
-	@Query("select sc.systemCurrency,sc.acceptedCurrencies from SystemConfiguration sc where sc.id = :id")
+	@Query("select sc from SystemConfiguration sc where sc.id = :id")
 	SystemConfiguration findOneSystemConfigurationCurrencyInfoById(int id);
 	
-	@Query("select sc.systemCurrency,sc.acceptedCurrencies from SystemConfiguration sc")
-	Collection<SystemConfiguration> findManySystemConfigurationByAvailability();
+	@Query("select sc from SystemConfiguration sc")
+	Collection<SystemConfiguration> findManySystemConfiguration();
 }

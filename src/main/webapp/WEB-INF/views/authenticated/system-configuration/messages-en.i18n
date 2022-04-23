@@ -8,9 +8,10 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-authenticated.systemConfiguration.form.label.systemCurrency = System Currency
-authenticated.systemConfiguration.list.label.systemCurrency = System Currency
 
-authenticated.systemConfiguration.list.label.acceptedCurrencies = Accepted Currencies
-authenticated.systemConfiguration.form.label.acceptedCurrencies = Accepted Currencies
+authenticated.system-configuration.list.label.acceptedCurrencies = Accepted Currencies
+authenticated.system-configuration.list.label.systemCurrency = System Currency
+
+authenticated.system-configuration.form.label.systemCurrency = System Currency
+authenticated.system-configuration.form.label.acceptedCurrencies = Accepted Currencies
 

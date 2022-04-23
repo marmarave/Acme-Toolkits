@@ -16,6 +16,6 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:list>
-	<acme:list-column code="authenticated.systemConfiguration.list.label.systemCurrency" path="systemCurrency" width="10%"/>
-	<acme:list-column code="authenticated.systemConfiguration.list.label.acceptedCurrencies" path="acceptedCurrencies" width="10%"/>
+	<acme:list-column code="authenticated.system-configuration.list.label.systemCurrency" path="systemCurrency" width="10%"/>
+	<acme:list-column code="authenticated.system-configuration.list.label.acceptedCurrencies" path="acceptedCurrencies" width="10%"/>
 </acme:list>
