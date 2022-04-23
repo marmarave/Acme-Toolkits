@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.ItemQuantity;
 import acme.entities.Toolkit;
 import acme.framework.repositories.AbstractRepository;
 
@@ -28,6 +29,9 @@ public interface AnyToolkitRepository extends AbstractRepository {
 
 	@Query("select t from Toolkit t where t.draftMode = false")
 	Collection<Toolkit> findManyToolkitsByAvailability();
+	
+	@Query("select iq from ItemQuantity iq where iq.toolkit.id = :masterId")
+    Collection<ItemQuantity> findItemQuantitiesOfToolkit(int masterId);
 	
 //	@Query("select t from Toolkit t where t.draftMode = false")
 //	Collection<Toolkit> findManyToolkitsByItem();

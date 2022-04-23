@@ -53,12 +53,9 @@ public class Item extends AbstractEntity{
 	@URL
 	private String moreInfo;
 	
-	// Relationships ----------------------------------------------------------
+	private boolean published;
 	
-	@NotNull
-	@Valid
-	@ManyToOne(optional=false)
-	protected ItemQuantity itemQuantity;
+	// Relationships ----------------------------------------------------------
 	
 	@NotNull
 	@Valid

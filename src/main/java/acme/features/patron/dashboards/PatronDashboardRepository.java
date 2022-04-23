@@ -7,9 +7,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface PatronDashboardRepository extends AbstractRepository{
 	
-	/*
-	
-	@Query("select count(p) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED ")
+	/*@Query("select count(p) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED ")
 	Double  numberOfProposedPatronages();
 	
 	@Query("select count(p) from Patronage p where p.status = acme.entities.PatronageStatus.ACCEPTED ")
@@ -21,14 +19,14 @@ public interface PatronDashboardRepository extends AbstractRepository{
 	
 	// AVERAGE
 	
-	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED ")
-	Double averageBudgetProposedPatronages();
-	
-	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.ACCEPTED ")
-	Double averageBudgetAcceptedPatronages();
-	
-	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.DENIED ")
-	Double averageBudgetDeniedPatronages();
+//	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED")
+//	Double averageBudgetProposedPatronages();
+//	
+//	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.ACCEPTED")
+//	Double averageBudgetAcceptedPatronages();
+//	
+//	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.DENIED")
+//	Double averageBudgetDeniedPatronages();
 	
 	
 	// DEVIATION
