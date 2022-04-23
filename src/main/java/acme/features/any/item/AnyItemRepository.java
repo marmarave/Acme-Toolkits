@@ -15,7 +15,7 @@ public interface AnyItemRepository extends AbstractRepository {
 	@Query("select i from Item i where i.id = :id")
 	Item findOneItemById(int id);
 	
-	@Query("select i from Item i where i.type=:type AND i.itemQuantity.toolkit.id = :masterId")
+	@Query("select i from Item i, ItemQuantity iq where i.type=:type AND iq.toolkit.id = :masterId AND i.id=iq.item.id")
     Collection<Item> findManyItemsByMasterId(ItemType type, int masterId);
 	
 	@Query("select i from Item i where i.type = :type and published=true")

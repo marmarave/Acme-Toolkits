@@ -12,12 +12,16 @@
 
 package acme.features.any.toolkit;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.ItemQuantity;
 import acme.entities.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.roles.Any;
 import acme.framework.services.AbstractShowService;
 
@@ -64,8 +68,23 @@ public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> 
 
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOneToolkitById(id);
+		final Money totalPrice = this.calculateTotalPrice(result);
+		result.setTotalPrice(totalPrice);
+		this.repository.save(result);
 
 		return result;
+	}
+	
+	private Money calculateTotalPrice(final Toolkit t) {
+		final Money money = new Money();
+		money.setCurrency("EUR"); //Default Currency
+		Double sum=0.;
+		final Collection<ItemQuantity> quantities = this.repository.findItemQuantitiesOfToolkit(t.getId());
+		for(final ItemQuantity quantity: quantities) {
+			sum+=quantity.getItem().getRetailPrice().getAmount()*quantity.getQuantity();
+		}
+		money.setAmount(sum);
+		return money;
 	}
 
 }
