@@ -1,4 +1,4 @@
-package acme.features.patron.patronages;
+package acme.features.patron.patronage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import acme.entities.Patronage;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
 import acme.roles.Patron;
 
@@ -23,7 +24,19 @@ public class PatronPatronageShowService implements AbstractShowService<Patron, P
 	public boolean authorise(final Request<Patronage> request) {
 		assert request != null;
 
-		return true;
+		boolean result;
+		int id;
+		Patronage patronage;
+		Patron patron;
+		Principal principal;
+
+		id = request.getModel().getInteger("id");
+		patronage = this.repository.findOnePatronageById(id);
+		patron = patronage.getPatron();
+		principal = request.getPrincipal();
+		result = patron.getUserAccount().getId() == principal.getAccountId();
+
+		return result;
 	}
 
 	@Override

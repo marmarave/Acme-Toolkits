@@ -10,7 +10,7 @@
  * they accept any liabilities with respect to them.
  */
 
-package acme.features.patron.patronages;
+package acme.features.patron.patronage;
 
 import java.util.Collection;
 
