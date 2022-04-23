@@ -35,6 +35,7 @@ master.menu.authenticated = Authenticated
 master.menu.authenticated.toolkit.list = List toolkits
 master.menu.authenticated.component.list = List components
 master.menu.authenticated.tool.list = List tools
+master.menu.authenticated.system-configuration.list = System Configuration
 
 # master.menu.administrator ###################################################
 
