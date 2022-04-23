@@ -1,4 +1,4 @@
-package acme.features.patron.patronage;
+package acme.features.patron.patronageReport;
 
 import javax.annotation.PostConstruct;
 

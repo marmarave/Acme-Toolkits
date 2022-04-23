@@ -1,10 +1,9 @@
-package acme.features.inventor.patronage;
+package acme.features.inventor.patronageReport;
 
 import java.util.Collection;
 
 import org.springframework.data.jpa.repository.Query;
 
-import acme.entities.Patronage;
 import acme.entities.PatronageReport;
 import acme.framework.repositories.AbstractRepository;
 

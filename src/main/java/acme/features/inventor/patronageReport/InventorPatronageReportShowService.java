@@ -1,4 +1,5 @@
-package acme.features.patron.patronage;
+
+package acme.features.inventor.patronageReport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,16 +7,17 @@ import org.springframework.stereotype.Service;
 import acme.entities.PatronageReport;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
+import acme.framework.entities.Principal;
 import acme.framework.services.AbstractShowService;
-import acme.roles.Patron;
+import acme.roles.Inventor;
 
 @Service
-public class PatronPatronageReportShowService implements AbstractShowService<Patron, PatronageReport> {
+public class InventorPatronageReportShowService implements AbstractShowService<Inventor, PatronageReport> {
 	
 	// Internal state ---------------------------------------------------------
 	
 	@Autowired	
-	protected PatronPatronageReportRepository repository;
+	protected InventorPatronageReportRepository repository;
 
 	// AbstractListService<Inventor, PatronageReport> interface ---------------------------
 	
@@ -23,7 +25,19 @@ public class PatronPatronageReportShowService implements AbstractShowService<Pat
 	public boolean authorise(final Request<PatronageReport> request) {
 		assert request != null;
 
-		return true;
+		boolean result;
+		int id;
+		PatronageReport report;
+		final Inventor inventor;
+		Principal principal;
+
+		id = request.getModel().getInteger("id");
+		report = this.repository.findOneById(id);
+		inventor = report.getPatronage().getInventor();
+		principal = request.getPrincipal();
+		result = inventor.getUserAccount().getId() == principal.getAccountId();
+
+		return result;
 	}
 
 	@Override
@@ -49,5 +63,10 @@ public class PatronPatronageReportShowService implements AbstractShowService<Pat
 
 
 
+	
+
+
+
 }
 
+	

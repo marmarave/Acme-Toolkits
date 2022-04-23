@@ -1,29 +1,22 @@
-
-package acme.features.inventor.patronage;
-
-import java.util.Collection;
+package acme.features.patron.patronageReport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.Item;
-import acme.entities.ItemType;
-import acme.entities.Patronage;
 import acme.entities.PatronageReport;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.entities.Principal;
-import acme.framework.services.AbstractListService;
 import acme.framework.services.AbstractShowService;
-import acme.roles.Inventor;
+import acme.roles.Patron;
 
 @Service
-public class InventorPatronageReportShowService implements AbstractShowService<Inventor, PatronageReport> {
+public class PatronPatronageReportShowService implements AbstractShowService<Patron, PatronageReport> {
 	
 	// Internal state ---------------------------------------------------------
 	
 	@Autowired	
-	protected InventorPatronageReportRepository repository;
+	protected PatronPatronageReportRepository repository;
 
 	// AbstractListService<Inventor, PatronageReport> interface ---------------------------
 	
@@ -31,7 +24,19 @@ public class InventorPatronageReportShowService implements AbstractShowService<I
 	public boolean authorise(final Request<PatronageReport> request) {
 		assert request != null;
 
-		return true;
+		boolean result;
+		int id;
+		PatronageReport report;
+		final Patron patron;
+		Principal principal;
+
+		id = request.getModel().getInteger("id");
+		report = this.repository.findOneById(id);
+		patron = report.getPatronage().getPatron();
+		principal = request.getPrincipal();
+		result = patron.getUserAccount().getId() == principal.getAccountId();
+
+		return result;
 	}
 
 	@Override
@@ -57,10 +62,5 @@ public class InventorPatronageReportShowService implements AbstractShowService<I
 
 
 
-	
-
-
-
 }
 
-	

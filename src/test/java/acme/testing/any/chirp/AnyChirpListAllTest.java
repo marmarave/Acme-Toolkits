@@ -6,7 +6,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 import acme.testing.TestHarness;
 
-public class anyChirpListAll extends TestHarness{
+public class AnyChirpListAllTest extends TestHarness{
 	
 	
 	

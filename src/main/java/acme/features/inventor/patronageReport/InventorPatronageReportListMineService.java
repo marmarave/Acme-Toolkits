@@ -1,5 +1,5 @@
 
-package acme.features.inventor.patronage;
+package acme.features.inventor.patronageReport;
 
 import java.util.Collection;
 
