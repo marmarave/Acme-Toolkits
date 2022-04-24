@@ -58,6 +58,7 @@ master.menu.inventor.component.list-mine = List my components
 master.menu.inventor.tool.list-mine = List my tools
 master.menu.inventor.my-patronage-reports = List my patronage reports
 master.menu.inventor.patronage.list = List my patronages 
+master.menu.patron.dashboard = Dashboard
 
 # master.menu.user-account ####################################################
 
