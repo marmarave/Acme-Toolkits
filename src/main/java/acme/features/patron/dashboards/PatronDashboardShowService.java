@@ -1,6 +1,9 @@
 
 package acme.features.patron.dashboards;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +21,6 @@ public class PatronDashboardShowService implements AbstractShowService<Patron, P
 	@Autowired
 	protected PatronDashboardRepository repository;
 
-	// AbstractShowService<Administrator, Dashboard> interface ----------------
-
 
 	@Override
 	public boolean authorise(final Request<PatronDashboard> request) {
@@ -33,27 +34,45 @@ public class PatronDashboardShowService implements AbstractShowService<Patron, P
 		assert request != null;
 
 		final PatronDashboard result;
-//		final Double averageNumberOfApplicationsPerEmployer;
-//		final Double averageNumberOfApplicationsPerWorker;
-//		final Double averageNumberOfJobsPerEmployer;
-//		final Double ratioOfPendingApplications;
-//		final Double ratioOfAcceptedApplications;
-//		final Double ratioOfRejectedApplications;
 
-//		averageNumberOfApplicationsPerEmployer = this.repository.averageNumberOfApplicationsPerEmployer();
-//		averageNumberOfApplicationsPerWorker = this.repository.averageNumberOfApplicationsPerWorker();
-//		averageNumberOfJobsPerEmployer = this.repository.averageNumberOfJobsPerEmployer();
-//		ratioOfPendingApplications = this.repository.ratioOfPendingApplications();
-//		ratioOfAcceptedApplications = this.repository.ratioOfAcceptedApplications();
-//		ratioOfRejectedApplications = this.repository.ratioOfRejectedApplications();
+		final int numberOfAcceptedPatronages = this.repository.numberOfAcceptedPatronages().intValue();
+		final int numberOfDeniedPatronages = this.repository.numberOfDeniedPatronages().intValue();
+		final int numberOfProposedPatronages = this.repository.numberOfProposedPatronages().intValue();
+		final Double minPriceOfAcceptedPatronages = this.repository.minBudgetAcceptedPatronages();
+		final Double maxPriceOfAcceptedPatronages = this.repository.maxBudgetAcceptedPatronages();
+		final Double averagePriceOfAcceptedPatronages = this.repository.averageBudgetAcceptedPatronages();
+		final Double deviationPriceOfAcceptedPatronages = this.repository.deviationBudgetAcceptedPatronages();
+		final Double minPriceOfDeniedPatronages = this.repository.minBudgetDeniedPatronages();
+		final Double maxPriceOfDeniedPatronages = this.repository.maxBudgetDeniedPatronages();
+		final Double averagePriceOfDeniedPatronages = this.repository.averageBudgetDeniedPatronages();
+		final Double deviationPriceOfDeniedPatronages = this.repository.deviationBudgetDeniedPatronages();
+		final Double minPriceOfProposedPatronages = this.repository.minBudgetProposedPatronages();
+		final Double maxPriceOfProposedPatronages = this.repository.maxBudgetProposedPatronages();
+		final Double averagePriceOfProposedPatronages = this.repository.averageBudgetProposedPatronages();
+		final Double deviationPriceOfProposedPatronages = this.repository.deviationBudgetProposedPatronages();
+		
+		final Map<String, Integer> numberOfPatronages = new HashMap<>();
+		numberOfPatronages.put("accepted", numberOfAcceptedPatronages);
+		numberOfPatronages.put("denied", numberOfDeniedPatronages);
+		numberOfPatronages.put("proposed", numberOfProposedPatronages);
+		
+		final Map<String, Double> patronageStats = new HashMap<>();
+		patronageStats.put("maxAccepted", maxPriceOfAcceptedPatronages);
+		patronageStats.put("minAccepted", minPriceOfAcceptedPatronages);
+		patronageStats.put("averageAccepted", averagePriceOfAcceptedPatronages);
+		patronageStats.put("deviationAccepted", deviationPriceOfAcceptedPatronages);
+		patronageStats.put("maxDenied", maxPriceOfDeniedPatronages);
+		patronageStats.put("minDenied", minPriceOfDeniedPatronages);
+		patronageStats.put("averageDenied", averagePriceOfDeniedPatronages);
+		patronageStats.put("deviationDenied", deviationPriceOfDeniedPatronages);
+		patronageStats.put("maxProposed", maxPriceOfProposedPatronages);
+		patronageStats.put("minProposed", minPriceOfProposedPatronages);
+		patronageStats.put("averageProposed", averagePriceOfProposedPatronages);
+		patronageStats.put("deviationProposed", deviationPriceOfProposedPatronages);
 
 		result = new PatronDashboard();
-//		result.setAvegageNumberOfApplicationsPerEmployer(averageNumberOfApplicationsPerEmployer);
-//		result.setAverageNumberOfApplicationsPerWorker(averageNumberOfApplicationsPerWorker);
-//		result.setAverageNumberOfJobsPerEmployer(averageNumberOfJobsPerEmployer);
-//		result.setRatioOfPendingApplications(ratioOfPendingApplications);
-//		result.setRatioOfAcceptedApplications(ratioOfAcceptedApplications);
-//		result.setRatioOfRejectedApplications(ratioOfRejectedApplications);
+		result.setNumberOfPatronages(numberOfPatronages);
+		result.setPatronagesStats(patronageStats);
 
 		return result;
 	}
@@ -64,9 +83,21 @@ public class PatronDashboardShowService implements AbstractShowService<Patron, P
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, //
-			"averageNumberOfJobsPerEmployer", "averageNumberOfApplicationsPerWorker", // 
-			"avegageNumberOfApplicationsPerEmployer", "ratioOfPendingApplications", //
-			"ratioOfRejectedApplications", "ratioOfAcceptedApplications");
+		
+		model.setAttribute("numberOfAcceptedPatronages", entity.getNumberOfPatronages().get("accepted"));
+		model.setAttribute("numberOfDeniedPatronages", entity.getNumberOfPatronages().get("denied"));
+		model.setAttribute("numberOfProposedPatronages", entity.getNumberOfPatronages().get("proposed"));
+		model.setAttribute("maxAcceptedPatronages", entity.getPatronagesStats().get("maxAccepted"));
+		model.setAttribute("minAcceptedPatronages", entity.getPatronagesStats().get("minAccepted"));
+		model.setAttribute("averageAcceptedPatronages", entity.getPatronagesStats().get("averageAccepted"));
+		model.setAttribute("deviationAcceptedPatronages", entity.getPatronagesStats().get("deviationAccepted"));
+		model.setAttribute("maxDeniedPatronages", entity.getPatronagesStats().get("maxDenied"));
+		model.setAttribute("minDeniedPatronages", entity.getPatronagesStats().get("minDenied"));
+		model.setAttribute("averageDeniedPatronages", entity.getPatronagesStats().get("averageDenied"));
+		model.setAttribute("deviationDeniedPatronages", entity.getPatronagesStats().get("deviationDenied"));
+		model.setAttribute("maxProposedPatronages", entity.getPatronagesStats().get("maxProposed"));
+		model.setAttribute("minProposedPatronages", entity.getPatronagesStats().get("minProposed"));
+		model.setAttribute("averageProposedPatronages", entity.getPatronagesStats().get("averageProposed"));
+		model.setAttribute("deviationProposedPatronages", entity.getPatronagesStats().get("deviationProposed"));	
 	}
 }

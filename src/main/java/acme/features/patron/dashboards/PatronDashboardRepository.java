@@ -1,5 +1,8 @@
 package acme.features.patron.dashboards;
 
+
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.framework.repositories.AbstractRepository;
@@ -7,7 +10,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface PatronDashboardRepository extends AbstractRepository{
 	
-	/*@Query("select count(p) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED ")
+	@Query("select count(p) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED ")
 	Double  numberOfProposedPatronages();
 	
 	@Query("select count(p) from Patronage p where p.status = acme.entities.PatronageStatus.ACCEPTED ")
@@ -19,26 +22,26 @@ public interface PatronDashboardRepository extends AbstractRepository{
 	
 	// AVERAGE
 	
-//	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED")
-//	Double averageBudgetProposedPatronages();
-//	
-//	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.ACCEPTED")
-//	Double averageBudgetAcceptedPatronages();
-//	
-//	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.DENIED")
-//	Double averageBudgetDeniedPatronages();
+	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED")
+	Double averageBudgetProposedPatronages();
+	
+	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.ACCEPTED")
+	Double averageBudgetAcceptedPatronages();
+	
+	@Query("select avg(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.DENIED")
+	Double averageBudgetDeniedPatronages();
 	
 	
 	// DEVIATION
 	
-//	@Query("select stdev(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED ")
-//	Double deviationBudgetProposedPatronages();
-//	
-//	@Query("select stdev(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.ACCEPTED ")
-//	Double deviationBudgetAcceptedPatronages();
-//	
-//	@Query("select stdev(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.DENIED ")
-//	Double deviationBudgetDeniedPatronages();
+	@Query("select stdev(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.PROPOSED ")
+	Double deviationBudgetProposedPatronages();
+	
+	@Query("select stdev(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.ACCEPTED ")
+	Double deviationBudgetAcceptedPatronages();
+	
+	@Query("select stdev(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.DENIED ")
+	Double deviationBudgetDeniedPatronages();
 	
 	
 	
@@ -63,5 +66,5 @@ public interface PatronDashboardRepository extends AbstractRepository{
 	
 	@Query("select max(p.budget) from Patronage p where p.status = acme.entities.PatronageStatus.DENIED ")
 	Double maxBudgetDeniedPatronages();
-*/
+
 }
