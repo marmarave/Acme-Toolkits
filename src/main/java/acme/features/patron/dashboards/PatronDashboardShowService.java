@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.features.patron.patronage.PatronPatronageRepository;
 import acme.forms.PatronDashboard;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
@@ -20,11 +21,14 @@ public class PatronDashboardShowService implements AbstractShowService<Patron, P
 
 	@Autowired
 	protected PatronDashboardRepository repository;
+	
+	protected PatronPatronageRepository repositoryP;
 
 
 	@Override
 	public boolean authorise(final Request<PatronDashboard> request) {
 		assert request != null;
+
 
 		return true;
 	}
@@ -32,24 +36,25 @@ public class PatronDashboardShowService implements AbstractShowService<Patron, P
 	@Override
 	public PatronDashboard findOne(final Request<PatronDashboard> request) {
 		assert request != null;
+		final Integer id = request.getPrincipal().getActiveRoleId();
 
 		final PatronDashboard result;
 
-		final int numberOfAcceptedPatronages = this.repository.numberOfAcceptedPatronages().intValue();
-		final int numberOfDeniedPatronages = this.repository.numberOfDeniedPatronages().intValue();
-		final int numberOfProposedPatronages = this.repository.numberOfProposedPatronages().intValue();
-		final Double minPriceOfAcceptedPatronages = this.repository.minBudgetAcceptedPatronages();
-		final Double maxPriceOfAcceptedPatronages = this.repository.maxBudgetAcceptedPatronages();
-		final Double averagePriceOfAcceptedPatronages = this.repository.averageBudgetAcceptedPatronages();
-		final Double deviationPriceOfAcceptedPatronages = this.repository.deviationBudgetAcceptedPatronages();
-		final Double minPriceOfDeniedPatronages = this.repository.minBudgetDeniedPatronages();
-		final Double maxPriceOfDeniedPatronages = this.repository.maxBudgetDeniedPatronages();
-		final Double averagePriceOfDeniedPatronages = this.repository.averageBudgetDeniedPatronages();
-		final Double deviationPriceOfDeniedPatronages = this.repository.deviationBudgetDeniedPatronages();
-		final Double minPriceOfProposedPatronages = this.repository.minBudgetProposedPatronages();
-		final Double maxPriceOfProposedPatronages = this.repository.maxBudgetProposedPatronages();
-		final Double averagePriceOfProposedPatronages = this.repository.averageBudgetProposedPatronages();
-		final Double deviationPriceOfProposedPatronages = this.repository.deviationBudgetProposedPatronages();
+		final int numberOfAcceptedPatronages = this.repository.numberOfAcceptedPatronages(id).intValue();
+		final int numberOfDeniedPatronages = this.repository.numberOfDeniedPatronages(id).intValue();
+		final int numberOfProposedPatronages = this.repository.numberOfProposedPatronages(id).intValue();
+		final Double minPriceOfAcceptedPatronages = this.repository.minBudgetAcceptedPatronages(id);
+		final Double maxPriceOfAcceptedPatronages = this.repository.maxBudgetAcceptedPatronages(id);
+		final Double averagePriceOfAcceptedPatronages = this.repository.averageBudgetAcceptedPatronages(id);
+		final Double deviationPriceOfAcceptedPatronages = this.repository.deviationBudgetAcceptedPatronages(id);
+		final Double minPriceOfDeniedPatronages = this.repository.minBudgetDeniedPatronages(id);
+		final Double maxPriceOfDeniedPatronages = this.repository.maxBudgetDeniedPatronages(id);
+		final Double averagePriceOfDeniedPatronages = this.repository.averageBudgetDeniedPatronages(id);
+		final Double deviationPriceOfDeniedPatronages = this.repository.deviationBudgetDeniedPatronages(id);
+		final Double minPriceOfProposedPatronages = this.repository.minBudgetProposedPatronages(id);
+		final Double maxPriceOfProposedPatronages = this.repository.maxBudgetProposedPatronages(id);
+		final Double averagePriceOfProposedPatronages = this.repository.averageBudgetProposedPatronages(id);
+		final Double deviationPriceOfProposedPatronages = this.repository.deviationBudgetProposedPatronages(id);
 		
 		final Map<String, Integer> numberOfPatronages = new HashMap<>();
 		numberOfPatronages.put("accepted", numberOfAcceptedPatronages);
