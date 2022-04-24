@@ -21,10 +21,7 @@ public class AnyChirpShowService implements AbstractShowService<Any,Chirp> {
 	public boolean authorise(final Request<Chirp> request) {
 		assert request != null;
 
-		final boolean result = true;
-
-
-		return result;
+		return true;
 	}
 
 	@Override

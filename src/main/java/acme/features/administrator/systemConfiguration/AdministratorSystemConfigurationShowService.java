@@ -7,7 +7,6 @@ import acme.entities.SystemConfiguration;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.roles.Administrator;
-
 import acme.framework.services.AbstractShowService;
 
 @Service
@@ -20,10 +19,7 @@ public class AdministratorSystemConfigurationShowService implements AbstractShow
 	public boolean authorise(final Request<SystemConfiguration> request) {
 		assert request != null;
 
-		boolean result = true;
-
-
-		return result;
+		return true;
 	}
 
 	@Override

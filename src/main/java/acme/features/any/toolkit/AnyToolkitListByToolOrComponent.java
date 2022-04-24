@@ -1,6 +1,7 @@
 
 package acme.features.any.toolkit;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,13 +41,13 @@ public class AnyToolkitListByToolOrComponent implements AbstractListService<Any,
 
 	@Override
 	public Collection<Toolkit> findMany(final Request<Toolkit> request) {
-		final Collection<Toolkit> result = null;
+//		final Collection<Toolkit> result = null;
 //		Item item;
 //
 //		item = (Item) request.getModel().getAttribute("item");
 //		result = this.repository.findManyToolkitsByItem()
 
-		return result;
+		return new ArrayList<Toolkit>();
 	}
 
 	@Override
