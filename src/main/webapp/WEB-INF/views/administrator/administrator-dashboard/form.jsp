@@ -20,13 +20,14 @@
  	<acme:input-textbox code="administrator.administratordashboard.form.label.totalNumComponents" path="totalNumComponents"/>
  	<br>
  	<acme:message code="administrator.administratordashboard.form.label.maxPriceOfComponents"/>
-	<table>	
+	<table class="table small-table">
+		<caption>Maximum Price of Components</caption>	
  		<jstl:forEach items="${maxPriceOfComponents}" var="i">
  		<jstl:set var = "split" value = "${fn:split(i,'->')}"/>
 		<jstl:set var = "value" value = "${split[0]}" />
 		<jstl:set var = "string" value = "${split[1]}" />   
  			<tr>	
-				<th>	
+				<th scope="row">	
 					<acme:print value="${string}"/>
 				</th>
 				<td>				
@@ -37,13 +38,14 @@
  	</table>
  	<br><br>
  	<acme:message code="administrator.administratordashboard.form.label.minPriceOfComponents"/>
-	<table>	
+	<table class="table small-table">
+		<caption>Minimun Price of Components</caption>	
  		<jstl:forEach items="${minPriceOfComponents}" var="i">
  		<jstl:set var = "split" value = "${fn:split(i,'->')}"/>
 		<jstl:set var = "value" value = "${split[0]}" />
 		<jstl:set var = "string" value = "${split[1]}" />   
  			<tr>	
-				<th>	
+				<th scope="row">	
 					<acme:print value="${string}"/>
 				</th>
 				<td>				
@@ -54,13 +56,14 @@
  	</table>
  	<br><br>
  	<acme:message code="administrator.administratordashboard.form.label.averagePriceOfComponents"/>
-	<table>	
+	<table class="table small-table">
+		<caption>Average Price of Components</caption>	
  		<jstl:forEach items="${averagePriceOfComponents}" var="i">
  		<jstl:set var = "split" value = "${fn:split(i,'->')}"/>
 		<jstl:set var = "value" value = "${split[0]}" />
 		<jstl:set var = "string" value = "${split[1]}" />   
  			<tr>	
-				<th>	
+				<th scope="row">	
 					<acme:print value="${string}"/>
 				</th>
 				<td>				
@@ -71,13 +74,14 @@
  	</table>
  	<br><br>
  	<acme:message code="administrator.administratordashboard.form.label.deviationPriceOfComponents"/>
-	<table>	
+	<table class="table small-table">
+		<caption>Deviation of the Price of Components</caption>
  		<jstl:forEach items="${deviationPriceOfComponents}" var="i">
  		<jstl:set var = "split" value = "${fn:split(i,'->')}"/>
 		<jstl:set var = "value" value = "${split[0]}" />
 		<jstl:set var = "string" value = "${split[1]}" />   
  			<tr>	
-				<th>	
+				<th scope="row">	
 					<acme:print value="${string}"/>
 				</th>
 				<td>				
@@ -90,10 +94,11 @@
  	<acme:input-textbox code="administrator.administratordashboard.form.label.totalNumTools" path="totalNumTools"/>
  	<br>
  	<acme:message code="administrator.administratordashboard.form.label.maxPriceOfTools"/>
-	<table>	
+	<table class="table small-table">
+		<caption>Maximum Price of Tools</caption>	
  		<jstl:forEach items="${maxPriceOfTools}" var="i"> 
  			<tr>	
-				<th>	
+				<th scope="row">	
 					<acme:print value="${i.currency}"/>
 				</th>
 				<td>				
@@ -104,10 +109,11 @@
  	</table>
  	<br><br>
  	<acme:message code="administrator.administratordashboard.form.label.minPriceOfTools"/>
- 	<table>	
+ 	<table class="table small-table">
+ 		<caption>Minimum Price of Tools</caption>	
  		<jstl:forEach items="${minPriceOfTools}" var="i"> 
  			<tr>	
-				<th>	
+				<th scope="row">	
 					<acme:print value="${i.currency}"/>
 				</th>
 				<td>				
@@ -118,10 +124,11 @@
  	</table>
  	<br><br>
  	<acme:message code="administrator.administratordashboard.form.label.averagePriceOfTools"/>
- 	<table>	
+ 	<table class="table small-table">
+ 		<caption>Average Price of Tools</caption>	
  		<jstl:forEach items="${averagePriceOfTools}" var="i"> 
  			<tr>	
-				<th>	
+				<th scope="row">	
 					<acme:print value="${i.currency}"/>
 				</th>
 				<td>				
@@ -132,10 +139,11 @@
  	</table>
  	<br><br>
  	<acme:message code="administrator.administratordashboard.form.label.deviationPriceOfTools"/>
- 	<table>	
+ 	<table class="table small-table">
+ 		<caption>Deviation of the Price of Tools</caption>	
  		<jstl:forEach items="${deviationPriceOfTools}" var="i"> 
  			<tr>	
-				<th>	
+				<th scope="row">	
 					<acme:print value="${i.currency}"/>
 				</th>
 				<td>				
