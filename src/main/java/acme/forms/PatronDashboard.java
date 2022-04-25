@@ -1,7 +1,6 @@
 package acme.forms;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Map;
 
 import lombok.Getter;
@@ -19,7 +18,7 @@ public class PatronDashboard implements Serializable {
 		// Attributes -------------------------------------------------------------
 
 		Map<String,Integer>						numberOfPatronages;
-		Map<String,List<Double>>				patronageStats;
+		Map<String,Double>				patronagesStats;
 
 
 		// Derived attributes -----------------------------------------------------
