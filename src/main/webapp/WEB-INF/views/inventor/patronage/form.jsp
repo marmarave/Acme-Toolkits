@@ -17,15 +17,29 @@
 
  <acme:form>
 
- 	<acme:input-textbox code="inventor.patronage.form.label.status" path="status"/>
- 	<acme:input-textbox code="inventor.patronage.form.label.code" path="code"/>
- 	<acme:input-textbox code="inventor.patronage.form.label.legalStuff" path="legalStuff"/>
- 	<acme:input-money code="inventor.patronage.form.label.budget" path="budget"/>
- 	<acme:input-moment code="inventor.patronage.form.label.creationMoment" path="creationMoment"/>
- 	<acme:input-moment code="inventor.patronage.form.label.startDate" path="startDate"/>
- 	<acme:input-moment code="inventor.patronage.form.label.endDate" path="endDate"/>
- 	<acme:input-moment code="inventor.patronage.form.label.period" path="period"/>
- 	<acme:input-url code="inventor.patronage.form.label.moreInfo" path="moreInfo"/><br>
+ 	<acme:input-textbox code="inventor.patronage.form.label.code" path="code" readonly="true"/>
+ 	<acme:input-textbox code="inventor.patronage.form.label.legalStuff" path="legalStuff" readonly="true"/>
+ 	<acme:input-money code="inventor.patronage.form.label.budget" path="budget" readonly="true"/>
+ 	<acme:input-moment code="inventor.patronage.form.label.creationMoment" path="creationMoment" readonly="true"/>
+ 	<acme:input-moment code="inventor.patronage.form.label.startDate" path="startDate" readonly="true"/>
+ 	<acme:input-moment code="inventor.patronage.form.label.endDate" path="endDate" readonly="true"/>
+ 	<acme:input-moment code="inventor.patronage.form.label.period" path="period" readonly="true"/>
+ 	<acme:input-url code="inventor.patronage.form.label.moreInfo" path="moreInfo" readonly="true"/>
+ 	
+ 	<jstl:if test="${status != 'PROPOSED'}">
+		<acme:input-textbox code="inventor.patronage.form.label.status" path="status" readonly="true"/><br>
+	</jstl:if>
+	
+	<jstl:if test="${status == 'PROPOSED'}">
+		<acme:input-select path="status" code="inventor.patronage.form.label.new-status">
+			<acme:input-option code="PROPOSED" value="PROPOSED" selected="true"/>
+			<acme:input-option code="ACCEPTED" value="ACCEPTED"/>
+			<acme:input-option code="DENIED" value="DENIED"/>
+		</acme:input-select><br>		
+	</jstl:if>
+			
+	<acme:submit test="${acme:anyOf(command, 'show, update') && status == 'PROPOSED'}" code="inventor.patronage.form.button.update" action="/inventor/patronage/update"/>
+	
  	<h2 class="text-center">-------------------------------------------------------------------------------------------------------</h2>
  	<acme:input-textbox code="inventor.patronage.form.label.patron.company" path="patron.company"/>
  	<acme:input-textbox code="inventor.patronage.form.label.patron.statement" path="patron.statement"/>
@@ -34,5 +48,5 @@
  	<acme:input-textbox code="inventor.patronage.form.label.patron.userAccount.identity.name" path="patron.userAccount.identity.name"/>
  	<acme:input-textbox code="inventor.patronage.form.label.patron.userAccount.identity.surname" path="patron.userAccount.identity.surname"/>
  	<acme:input-textbox code="inventor.patronage.form.label.patron.userAccount.identity.email" path="patron.userAccount.identity.email"/>
-
+ 	
  </acme:form>  
