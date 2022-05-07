@@ -51,7 +51,8 @@
 			<acme:menu-suboption code="master.menu.administrator.system-configuration" action="/administrator/system-configuration/list"/>
 			<acme:menu-separator/>
 			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.administrator.announcement" action="/administrator/announcement/create"/>
+			<acme:menu-suboption code="master.menu.administrator.announcement" action="/administrator/announcement/list"/>
+			<acme:menu-suboption code="master.menu.administrator.announcement-create" action="/administrator/announcement/create"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/populate-sample"/>			
