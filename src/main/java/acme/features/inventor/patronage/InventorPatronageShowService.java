@@ -1,8 +1,6 @@
 
 package acme.features.inventor.patronage;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,8 +50,6 @@ public class InventorPatronageShowService implements AbstractShowService<Invento
 
 		id = request.getModel().getInteger("id");
 		result = this.repository.findOnePatronageById(id);
-		result.setPeriod(new Date(result.getEndDate().getTime()-result.getStartDate().getTime()));
-		this.repository.save(result);
 		return result;
 	}
 

@@ -23,7 +23,7 @@
  	<acme:input-moment code="inventor.patronage.form.label.creationMoment" path="creationMoment" readonly="true"/>
  	<acme:input-moment code="inventor.patronage.form.label.startDate" path="startDate" readonly="true"/>
  	<acme:input-moment code="inventor.patronage.form.label.endDate" path="endDate" readonly="true"/>
- 	<acme:input-moment code="inventor.patronage.form.label.period" path="period" readonly="true"/>
+ 	<acme:input-textbox code="inventor.patronage.form.label.period" path="period" readonly="true"/>
  	<acme:input-url code="inventor.patronage.form.label.moreInfo" path="moreInfo" readonly="true"/>
  	
  	<jstl:if test="${status != 'PROPOSED'}">

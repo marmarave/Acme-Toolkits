@@ -262,7 +262,7 @@ Patronage
 + startDate: Date {NotNull, Temporal(TIMESTAMP)}
 + endDate: Date {NotNull, Temporal(TIMESTAMP)}
 + moreInfo: String {URL}
-+ / period: Integer
++ / period: Period
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
