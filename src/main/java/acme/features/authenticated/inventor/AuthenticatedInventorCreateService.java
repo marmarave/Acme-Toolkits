@@ -23,25 +23,18 @@ public class AuthenticatedInventorCreateService implements AbstractCreateService
 	@Autowired
 	protected AuthenticatedInventorRepository repository;
 
-	// AbstractCreateService<Authenticated, Inventor> ---------------------------
+	// AbstractCreateService<Authenticated, Inventor> interface ---------------
 
 
 	@Override
 	public boolean authorise(final Request<Inventor> request) {
 		assert request != null;
-		
+
 		boolean result;
-		
-		result = !request.getPrincipal().hasRole(Inventor.class); 
+
+		result = !request.getPrincipal().hasRole(Inventor.class);
 
 		return result;
-	}
-
-	@Override
-	public void validate(final Request<Inventor> request, final Inventor entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
 	}
 
 	@Override
@@ -79,6 +72,13 @@ public class AuthenticatedInventorCreateService implements AbstractCreateService
 		result.setUserAccount(userAccount);
 
 		return result;
+	}
+
+	@Override
+	public void validate(final Request<Inventor> request, final Inventor entity, final Errors errors) {
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
 	}
 
 	@Override
