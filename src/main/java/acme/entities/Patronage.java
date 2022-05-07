@@ -65,7 +65,8 @@ public class Patronage extends AbstractEntity{
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date 				endDate;
 	
-	protected long 				period;
+	@Temporal(TemporalType.TIMESTAMP)
+	protected Date 				period;
 	
 	@URL
 	protected String 			moreInfo;
@@ -74,7 +75,7 @@ public class Patronage extends AbstractEntity{
 	
 	@Transient
 	protected void getPeriod() {
-		this.period = this.endDate.getTime()-this.startDate.getTime();
+		this.period = new Date(this.endDate.getTime()-this.startDate.getTime());
 	}
 	
 	// Relationships ----------------------------------------------------------
