@@ -16,10 +16,10 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:form>
-	<acme:input-textbox code="authenticated.inventor.inventor.form.label.company" path="company"/>
-	<acme:input-textbox code="authenticated.inventor.inventor.form.label.statement" path="statement"/>
-		<acme:input-textbox code="authenticated.inventor.inventor.form.label.moreInfo" path="moreInfo"/>
+	<acme:input-textbox code="authenticated.patron.patron.form.label.company" path="company"/>
+	<acme:input-textbox code="authenticated.patron.patron.form.label.statement" path="statement"/>
+		<acme:input-textbox code="authenticated.patron.patron.form.label.moreInfo" path="moreInfo"/>
 	
-	<acme:submit test="${command == 'create'}" code="authenticated.inventor.inventor.form.button.create" action="/authenticated/inventor/create"/>
-	<acme:submit test="${command == 'update'}" code="authenticated.inventor.inventor.form.button.update" action="/authenticated/inventor/update"/>
+	<acme:submit test="${command == 'create'}" code="authenticated.patron.patron.form.button.create" action="/authenticated/patron/create"/>
+	<acme:submit test="${command == 'update'}" code="authenticated.patron.patron.form.button.update" action="/authenticated/patron/update"/>
 </acme:form>
