@@ -23,3 +23,5 @@
 	<acme:list-column code="inventor.component.list.label.description" path="description" width="40%"/>
 	
 </acme:list>
+
+<acme:button code="inventor.item.list.button.create" action="/inventor/item/create"/>
