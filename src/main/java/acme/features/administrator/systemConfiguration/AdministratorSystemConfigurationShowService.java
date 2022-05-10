@@ -12,6 +12,7 @@ import acme.framework.services.AbstractShowService;
 @Service
 public class AdministratorSystemConfigurationShowService implements AbstractShowService<Administrator,SystemConfiguration>{
 	
+	
 	@Autowired
 	protected AdministratorSystemConfigurationRepository repository;
 	
@@ -36,10 +37,8 @@ public class AdministratorSystemConfigurationShowService implements AbstractShow
 		assert request != null;
 
 		SystemConfiguration result;
-		int id;
 
-		id = request.getModel().getInteger("id");
-		result = this.repository.findOneSystemConfigurationById(id);
+		result = this.repository.findSystemConfigurationById();
 
 		return result;
 	}

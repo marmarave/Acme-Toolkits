@@ -16,13 +16,14 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:form>
+
 	<acme:input-textbox code="administrator.systemConfiguration.form.label.systemCurrency" path="systemCurrency"/>
 	<acme:input-textbox code="administrator.systemConfiguration.form.label.acceptedCurrencies" path="acceptedCurrencies"/>
 	<acme:input-textbox code="administrator.systemConfiguration.form.label.strongSpam" path="strongSpam"/>
 	<acme:input-double code="administrator.systemConfiguration.form.label.strongThreshold" path="strongThreshold"/>
 	<acme:input-textbox code="administrator.systemConfiguration.form.label.weakSpam" path="weakSpam"/>
 	<acme:input-double code="administrator.systemConfiguration.form.label.weakThreshold" path="weakThreshold"/>
-
-
+	
+	<acme:submit test="${acme:anyOf(command, 'show, update')}" code="administrator.systemConfiguration.form.button.update" action="/administrator/system-configuration/update"/>
 
 </acme:form>
