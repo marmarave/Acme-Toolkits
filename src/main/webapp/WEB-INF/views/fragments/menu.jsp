@@ -28,6 +28,8 @@
 			<acme:menu-suboption code="master.menu.anonymous.tool.list" action="/any/item/list?type=TOOL"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.toolkit.list" action="/any/toolkit/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.anonymous.chirp.create" action="/any/chirp/create"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">

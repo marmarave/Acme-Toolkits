@@ -23,6 +23,7 @@ master.menu.anonymous.chirp.list = List chirps
 master.menu.anonymous.toolkit.list = List toolkits
 master.menu.anonymous.component.list = List components
 master.menu.anonymous.tool.list = List tools
+master.menu.anonymous.chirp.create = Create a chirp
 
 # master.menu.authenticated #######################################################
 
