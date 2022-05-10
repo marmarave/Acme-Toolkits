@@ -34,5 +34,9 @@
  patron.patronage.form.label.patron.userAccount.identity.name = Patron Name
  patron.patronage.form.label.patron.userAccount.identity.surname = Patron Surname
  patron.patronage.form.label.patron.userAccount.identity.email = Patron Email
+ patron.patronage.form.error.too-close = Start date too close to creation moment (1 month between minimum)
+ patron.patronage.form.error.insufficient-duration = Duration must be at least one month
+ patron.patronage.form.error.minimum-budget = The budget must be equals or higher than 1
+ patron.patronage.form.button.create = Create
  
  

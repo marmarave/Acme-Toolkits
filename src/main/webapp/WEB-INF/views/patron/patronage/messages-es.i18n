@@ -32,3 +32,7 @@
  patron.patronage.form.label.patron.userAccount.identity.name = Nombre del Patrón
  patron.patronage.form.label.patron.userAccount.identity.surname = Apellidos del Patrón
  patron.patronage.form.label.patron.userAccount.identity.email = Correo del Patrón
+  patron.patronage.form.error.too-close = Fecha de inicio demasiado cercana a la de creación (mínimo 1 mes de separación)
+  patron.patronage.form.error.insufficient-duration = El patrocinio debe durar al menos un mes
+  patron.patronage.form.error.minimum-budget = El presupuesto debe ser mayor o igual a 1
+ patron.patronage.form.button.create = Crear
