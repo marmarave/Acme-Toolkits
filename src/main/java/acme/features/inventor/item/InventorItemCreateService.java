@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Item;
-import acme.entities.ItemType;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -42,9 +41,6 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		assert entity != null;
 		assert errors != null;
 		
-		ItemType type;
-		type = ItemType.COMPONENT;
-		entity.setType(type);
 		request.bind(entity, errors, "name", "type", "code","technology","description","retailPrice","moreInfo","published");
 		
 	}
