@@ -62,6 +62,8 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.patron.dashboard" action="/patron/patron-dashboard/show"/>
 			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.patron.patronage.create" action="/patron/patronage/create"/>
+			<acme:menu-separator/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.inventor" access="hasRole('Inventor')">	

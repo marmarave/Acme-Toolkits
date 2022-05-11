@@ -58,7 +58,8 @@ public class PatronPatronageShowService implements AbstractShowService<Patron, P
 		assert model != null;
 
 		request.unbind(entity, model,"status","code", "legalStuff", "budget", "creationMoment", 
-			"startDate", "endDate", "period", "moreInfo", "patron.company", "patron.statement",
+			"startDate", "endDate", "period", "moreInfo", "inventor.userAccount.username", "inventor.userAccount.identity.name",
+			 "inventor.userAccount.identity.surname",  "inventor.userAccount.identity.email","patron.company", "patron.statement",
 			"patron.moreInfo", "patron.userAccount.username", "patron.userAccount.identity.name",
 			"patron.userAccount.identity.surname", "patron.userAccount.identity.email");
 	}

@@ -52,6 +52,7 @@ master.menu.patron = Mecenas
 master.menu.patron.my-patronage-reports = Ver mis informes de patrocinio
 master.menu.patron.patronage.list = Ver mis patrocinios
 master.menu.patron.dashboard = Panel de indicadores
+master.menu.patron.patronage.create = Crear un patrocinio
 
 # master.menu.inventor ##########################################################
 

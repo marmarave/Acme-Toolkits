@@ -3,6 +3,7 @@ package acme.features.patron.patronage;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,6 @@ import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
 import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractCreateService;
-import acme.roles.Inventor;
 import acme.roles.Patron;
 
 @Service
@@ -38,7 +38,18 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert entity != null;
 		assert errors != null;
 
-		request.bind(entity, errors,"status" ,"code", "legalStuff", "budget", "creationMoment", "startDate","endDate","moreInfo");
+		Date currentMoment;
+		Integer inventorId;		
+		
+		currentMoment = new Date(System.currentTimeMillis() - 1);
+		entity.setCreationMoment(currentMoment);
+		entity.setStatus(PatronageStatus.PROPOSED);
+		entity.setPublished(false);
+		
+		inventorId = Integer.valueOf(request.getModel().getAttribute("inventorId").toString());
+		entity.setInventor(this.repository.findInventorById(inventorId));
+
+		request.bind(entity, errors, "code", "legalStuff", "budget", "startDate", "endDate","moreInfo");
 		
 	}
 
@@ -48,7 +59,8 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "status" ,"code", "legalStuff", "budget", "creationMoment", "startDate","endDate","moreInfo");
+		request.unbind(entity, model, "status" ,"code", "legalStuff", "budget", "creationMoment", "startDate","endDate","moreInfo","published");
+		model.setAttribute("inventors", this.repository.findInventors());
 		
 	}
 
@@ -71,10 +83,10 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		
 		final Calendar cal = Calendar.getInstance();
 		cal.setTime(moment);
-		cal.add(Calendar.MONTH, 1);
+		cal.add(Calendar.MONTH, 2);
 		startDate = cal.getTime();
 		
-		cal.add(Calendar.MONTH, 1);
+		cal.add(Calendar.MONTH, 2);
 		endDate = cal.getTime();
 		
 		budget = new Money();
@@ -82,12 +94,8 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		budget.setCurrency("EUR");
 		
 		
-		//ARREGLAR LA RELACION DE INVENTOR!!!!!
-		
-		final Inventor inventor = new Inventor();
 
 		result.setPatron(patron);
-		result.setInventor(inventor);
 		result.setCreationMoment(moment);
 		result.setStatus(PatronageStatus.PROPOSED);
 		result.setCode("");
@@ -106,19 +114,34 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert entity != null;
 		assert errors != null;
 
-		/*if (!errors.hasErrors("startDate")) {
-			final Long duration = Duration.between(entity.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), entity.getCreationMoment().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()).getSeconds();
-			errors.state(request, duration > 26280000L, "startDate", "patron.patronage.form.error.too-close");
-		}
+		if (!errors.hasErrors("code")) {
+			Patronage existing;
 
-		if (!errors.hasErrors("endDate")) {
-			final Long duration = Duration.between(entity.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), entity.getEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()).getSeconds();
-			errors.state(request, duration > 26280000L, "endDate", "patron.patronage.form.error.insufficient-duration");
+			existing = this.repository.findOnePatronageByCode(entity.getCode());
+			errors.state(request, existing == null, "code", "patron.patronage.form.error.duplicated");
+		}
+		
+		if (!errors.hasErrors("startDate")) {
+			
+			final Date oneMonthAfterStartDate = DateUtils.addMonths(entity.getCreationMoment(), 1);
+
+			errors.state(request,entity.getStartDate().after(oneMonthAfterStartDate), "startDate", "patron.patronage.form.error.too-close");
+			
+		}
+		if(!errors.hasErrors("endDate")) {
+			final Date oneMonthAfterStartDate=DateUtils.addMonths(entity.getStartDate(), 1);
+
+			errors.state(request,entity.getEndDate().after(oneMonthAfterStartDate), "endDate", "patron.patronage.form.error.insufficient-duration");
+			
 		}
 
 		if (!errors.hasErrors("budget")) {
 			errors.state(request, entity.getBudget().getAmount() >= 1, "budget", "patron.patronage.form.error.minimum-budget");
-		}*/
+		}
+		
+		if(!errors.hasErrors("legalStuff")) {
+			//Completar con el detector de spam
+		}
 		
 	}
 
@@ -127,11 +150,6 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		
 		assert request != null;
 		assert entity != null;
-
-		Date moment;
-
-		moment = new Date(System.currentTimeMillis() - 1);
-		entity.setCreationMoment(moment);
 
 		this.repository.save(entity);
 		

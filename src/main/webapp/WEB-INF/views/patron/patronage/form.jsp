@@ -16,8 +16,13 @@
  <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
  <acme:form>
-
- 	<acme:input-textbox code="patron.patronage.form.label.status" path="status"/>
+	<jstl:if test="${published==true}">
+		<acme:input-select code="patron.patronage.form.label.status" path="status">
+			<acme:input-option code="patron.patronage.form.label.proposed" value="PROPOSED" selected="${ status == 'PROPOSED' }"/>
+			<acme:input-option code="patron.patronage.form.label.accepted" value="ACCEPTED" selected="${ status == 'ACCEPTED' }"/>
+			<acme:input-option code="patron.patronage.form.label.denied" value="DENIED" selected="${ status == 'DENIED' }"/>
+		</acme:input-select>
+	</jstl:if>
  	<acme:input-textbox code="patron.patronage.form.label.code" path="code"/>
  	<acme:input-textbox code="patron.patronage.form.label.legalStuff" path="legalStuff"/>
  	<acme:input-money code="patron.patronage.form.label.budget" path="budget"/>
@@ -28,6 +33,29 @@
  		<acme:input-textbox code="patron.patronage.form.label.period" path="period"/>
  	</jstl:if>
  	<acme:input-url code="patron.patronage.form.label.moreInfo" path="moreInfo"/><br>
+ 	
+ 	<jstl:choose>
+    
+    	<jstl:when test="${acme:anyOf(command,'update, delete, create, publish') && published==false}">
+	   		<acme:input-select code="patron.patronage.form.label.inventor" path="inventorId">
+	   			<jstl:forEach items="${inventors}" var="inventor">
+					<acme:input-option code="${inventor.getUserAccount().getUsername()}" value="${inventor.getId()}"/>
+				</jstl:forEach>
+			</acme:input-select>
+   		</jstl:when>
+   		
+		<jstl:when test="${command=='show'}">
+    
+    		<h2 class="text-center">-------------------------------------------------------------------------------------------------------</h2>
+		    <acme:input-textbox code="patron.patronage.form.label.inventor.username" path="inventor.userAccount.username"/>
+		    <acme:input-textbox code="patron.patronage.form.label.inventor.name" path="inventor.userAccount.identity.name"/>
+		    <acme:input-textbox code="patron.patronage.form.label.inventor.surname" path="inventor.userAccount.identity.surname"/>
+		    <acme:input-email code="patron.patronage.form.label.inventor.email" path="inventor.userAccount.identity.email"/>
+    
+   		</jstl:when>
+   		
+	</jstl:choose>
+	
  	<jstl:if test="${command == 'show'}">
 	 	<h2 class="text-center">-------------------------------------------------------------------------------------------------------</h2>
 	 	<acme:input-textbox code="patron.patronage.form.label.patron.company" path="patron.company"/>
@@ -39,6 +67,16 @@
 	 	<acme:input-textbox code="patron.patronage.form.label.patron.userAccount.identity.email" path="patron.userAccount.identity.email"/>
 		<h2 class="text-center">-------------------------------------------------------------------------------------------------------</h2>
 	</jstl:if>
-	<acme:submit test="${command == 'create'}" code="patron.patronage.form.button.create" action="/patron/patronage/create"/>
+	
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(command,'show, update, delete, publish') && published == false}"> 
+			<acme:submit code="patron.patronage.form.button.update" action="/patron/patronage/update"/>
+			<acme:submit code="patron.patronage.form.button.delete" action="/patron/patronage/delete"/>
+			<acme:submit code="patron.patronage.form.button.publish" action="/patron/patronage/publish"/>
+		</jstl:when>
+		<jstl:when test="${command=='create'}">
+			<acme:submit code="patron.patronage.form.button.create" action="/patron/patronage/create"/>
+		</jstl:when>
+	</jstl:choose>
 
  </acme:form>  
