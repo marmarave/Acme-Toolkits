@@ -44,5 +44,8 @@
  patron.patronage.form.error.insufficient-duration = Duration must be at least one month
  patron.patronage.form.error.minimum-budget = The budget must be equals or higher than 1
  patron.patronage.form.button.create = Create
+ patron.patronage.form.button.update = Update
+ patron.patronage.form.button.delete = Delete
+ patron.patronage.form.button.publish = Publish
  
  

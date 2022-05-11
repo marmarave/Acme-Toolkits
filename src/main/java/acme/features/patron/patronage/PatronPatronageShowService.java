@@ -62,5 +62,6 @@ public class PatronPatronageShowService implements AbstractShowService<Patron, P
 			 "inventor.userAccount.identity.surname",  "inventor.userAccount.identity.email","patron.company", "patron.statement",
 			"patron.moreInfo", "patron.userAccount.username", "patron.userAccount.identity.name",
 			"patron.userAccount.identity.surname", "patron.userAccount.identity.email");
+		
 	}
 }

@@ -24,6 +24,7 @@
  patron.patronage.form.label.creationMoment = Momento de Creación
  patron.patronage.form.label.startDate = Fecha de Inicio
  patron.patronage.form.label.endDate = Fecha de Fin
+  patron.patronage.form.label.period = Periodo
  patron.patronage.form.label.moreInfo = Más Información
  patron.patronage.form.label.inventor = Inventor
  patron.patronage.form.label.inventor.username = Nombre de Usuario del Inventor
@@ -42,3 +43,6 @@
   patron.patronage.form.error.insufficient-duration = El patrocinio debe durar al menos un mes
   patron.patronage.form.error.minimum-budget = El presupuesto debe ser mayor o igual a 1
  patron.patronage.form.button.create = Crear
+  patron.patronage.form.button.update = Actualizar
+ patron.patronage.form.button.delete = Eliminar
+ patron.patronage.form.button.publish = Publicar
