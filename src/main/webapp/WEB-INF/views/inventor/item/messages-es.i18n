@@ -12,10 +12,16 @@ inventor.component.list.label.name = Nombre
 inventor.component.list.label.code = Código
 inventor.component.list.label.technology = Tecnología
 inventor.component.list.label.description = Descripción
+inventor.item.list.button.create = Crear nuevo Objeto
 
 inventor.item.form.label.name = Nombre
 inventor.item.form.label.code = Código
+inventor.item.form.label.type = Tipo
 inventor.item.form.label.technology = Tecnología
 inventor.item.form.label.description = Descripción
 inventor.item.form.label.retailPrice = Precio Unitario
+inventor.item.form.label.published = Publicar
 inventor.item.form.label.more-info = Más info
+inventor.item.form.button.create = Crear
+inventor.item.form.button.update = Actualizar
+inventor.item.form.button.delete = Eliminar

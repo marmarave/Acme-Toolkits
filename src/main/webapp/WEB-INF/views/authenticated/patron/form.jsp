@@ -1,5 +1,5 @@
 <%--
-- list.jsp
+- form.jsp
 -
 - Copyright (C) 2012-2022 Rafael Corchuelo.
 -
@@ -15,13 +15,11 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
-<acme:list>
-
-	<acme:list-column code="inventor.component.list.label.name" path="name" width="10%"/>
-	<acme:list-column code="inventor.component.list.label.code" path="code" width="10%"/>
-	<acme:list-column code="inventor.component.list.label.technology" path="technology" width="40%"/>
-	<acme:list-column code="inventor.component.list.label.description" path="description" width="40%"/>
+<acme:form>
+	<acme:input-textbox code="authenticated.patron.patron.form.label.company" path="company"/>
+	<acme:input-textbox code="authenticated.patron.patron.form.label.statement" path="statement"/>
+		<acme:input-textbox code="authenticated.patron.patron.form.label.moreInfo" path="moreInfo"/>
 	
-</acme:list>
-
-<acme:button code="inventor.item.list.button.create" action="/inventor/item/create"/>
+	<acme:submit test="${command == 'create'}" code="authenticated.patron.patron.form.button.create" action="/authenticated/patron/create"/>
+	<acme:submit test="${command == 'update'}" code="authenticated.patron.patron.form.button.update" action="/authenticated/patron/update"/>
+</acme:form>

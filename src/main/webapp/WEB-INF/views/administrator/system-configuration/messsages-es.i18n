@@ -25,3 +25,5 @@ administrator.systemConfiguration.form.label.weakSpam = Spam Débil
 
 administrator.systemConfiguration.list.label.weakThreshold = Umbral Débil
 administrator.systemConfiguration.form.label.weakThreshold = Umbral Débil 
+
+administrator.systemConfiguration.form.button.update = Actualizar
