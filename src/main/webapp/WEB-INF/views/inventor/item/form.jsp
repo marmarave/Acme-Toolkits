@@ -44,6 +44,7 @@
 	
 	<jstl:if test="${command == 'show' && published == 'false'}">
 		<acme:submit code="inventor.item.form.button.update" action="/inventor/item/update"/>
+		<acme:submit code="inventor.item.form.button.delete" action="/inventor/item/delete"/>
 	</jstl:if>
 	
 </acme:form> 

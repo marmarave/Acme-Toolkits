@@ -1,23 +1,17 @@
 package acme.features.inventor.item;
-import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
 
 import acme.entities.Item;
-
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
-
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorComponentUpdateService implements AbstractUpdateService<Inventor,Item> {
+public class InventorItemUpdateService implements AbstractUpdateService<Inventor,Item> {
 	
-
-	
-
 	
 
 		// Internal state ---------------------------------------------------------
