@@ -18,10 +18,10 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 
 	// Internal state ---------------------------------------------------------
 
-		@Autowired
-		protected PatronPatronageRepository repository;
+	@Autowired
+	protected PatronPatronageRepository repository;
 
-		// AbstractUpdateService<Patron, Patronage> -------------------------------------
+	// AbstractUpdateService<Patron, Patronage> -------------------------------------
 		
 	@Override
 	public boolean authorise(final Request<Patronage> request) {
@@ -51,6 +51,7 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		entity.setInventor(this.repository.findInventorById(inventorId));
 
 		request.bind(entity, errors, "code", "legalStuff", "budget", "startDate", "endDate","moreInfo");
+		
 	}
 
 	@Override
@@ -61,7 +62,7 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 
 		request.unbind(entity, model, "code", "legalStuff", "budget", "startDate", "endDate", "creationMoment", "moreInfo","published");
 		model.setAttribute("inventors", this.repository.findInventors());
-		model.setAttribute("inventorId", entity.getInventor().getId());		
+		model.setAttribute("inventorId", entity.getInventor().getId());			
 	}
 
 	@Override

@@ -26,11 +26,11 @@
  	<acme:input-textbox code="patron.patronage.form.label.code" path="code"/>
  	<acme:input-textbox code="patron.patronage.form.label.legalStuff" path="legalStuff"/>
  	<acme:input-money code="patron.patronage.form.label.budget" path="budget"/>
- 	<acme:input-moment code="patron.patronage.form.label.creationMoment" path="creationMoment"/>
+ 	<acme:input-moment code="patron.patronage.form.label.creationMoment" path="creationMoment" readonly="true"/>
  	<acme:input-moment code="patron.patronage.form.label.startDate" path="startDate"/>
  	<acme:input-moment code="patron.patronage.form.label.endDate" path="endDate"/>
  	<jstl:if test="${command == 'show'}">
- 		<acme:input-textbox code="patron.patronage.form.label.period" path="period"/>
+ 		<acme:input-textbox code="patron.patronage.form.label.period" path="period" readonly="true"/>
  	</jstl:if>
  	<acme:input-url code="patron.patronage.form.label.moreInfo" path="moreInfo"/><br>
  	
@@ -47,10 +47,10 @@
 		<jstl:when test="${command=='show'}">
     
     		<h2 class="text-center">-------------------------------------------------------------------------------------------------------</h2>
-		    <acme:input-textbox code="patron.patronage.form.label.inventor.username" path="inventor.userAccount.username"/>
-		    <acme:input-textbox code="patron.patronage.form.label.inventor.name" path="inventor.userAccount.identity.name"/>
-		    <acme:input-textbox code="patron.patronage.form.label.inventor.surname" path="inventor.userAccount.identity.surname"/>
-		    <acme:input-email code="patron.patronage.form.label.inventor.email" path="inventor.userAccount.identity.email"/>
+		    <acme:input-textbox code="patron.patronage.form.label.inventor.username" path="inventor.userAccount.username" readonly="true"/>
+		    <acme:input-textbox code="patron.patronage.form.label.inventor.name" path="inventor.userAccount.identity.name" readonly="true"/>
+		    <acme:input-textbox code="patron.patronage.form.label.inventor.surname" path="inventor.userAccount.identity.surname" readonly="true"/>
+		    <acme:input-email code="patron.patronage.form.label.inventor.email" path="inventor.userAccount.identity.email" readonly="true"/>
     
    		</jstl:when>
    		
@@ -58,25 +58,27 @@
 	
  	<jstl:if test="${command == 'show'}">
 	 	<h2 class="text-center">-------------------------------------------------------------------------------------------------------</h2>
-	 	<acme:input-textbox code="patron.patronage.form.label.patron.company" path="patron.company"/>
-	 	<acme:input-textbox code="patron.patronage.form.label.patron.statement" path="patron.statement"/>
-	 	<acme:input-url code="patron.patronage.form.label.patron.moreInfo" path="patron.moreInfo"/>
-	 	<acme:input-textbox code="patron.patronage.form.label.patron.userAccount.username" path="patron.userAccount.username"/>
-	 	<acme:input-textbox code="patron.patronage.form.label.patron.userAccount.identity.name" path="patron.userAccount.identity.name"/>
-	 	<acme:input-textbox code="patron.patronage.form.label.patron.userAccount.identity.surname" path="patron.userAccount.identity.surname"/>
-	 	<acme:input-textbox code="patron.patronage.form.label.patron.userAccount.identity.email" path="patron.userAccount.identity.email"/>
+	 	<acme:input-textbox code="patron.patronage.form.label.patron.company" path="patron.company" readonly="true"/>
+	 	<acme:input-textbox code="patron.patronage.form.label.patron.statement" path="patron.statement" readonly="true"/>
+	 	<acme:input-url code="patron.patronage.form.label.patron.moreInfo" path="patron.moreInfo" readonly="true"/>
+	 	<acme:input-textbox code="patron.patronage.form.label.patron.userAccount.username" path="patron.userAccount.username" readonly="true"/>
+	 	<acme:input-textbox code="patron.patronage.form.label.patron.userAccount.identity.name" path="patron.userAccount.identity.name" readonly="true"/>
+	 	<acme:input-textbox code="patron.patronage.form.label.patron.userAccount.identity.surname" path="patron.userAccount.identity.surname" readonly="true"/>
+	 	<acme:input-textbox code="patron.patronage.form.label.patron.userAccount.identity.email" path="patron.userAccount.identity.email" readonly="true"/>
 		<h2 class="text-center">-------------------------------------------------------------------------------------------------------</h2>
-		<acme:button code="patron.patronage.form.button.update" action="/patron/patronage/update?id=${id}"/>
+		
 	</jstl:if>
-
-	<jstl:if test="${command=='update' && published == false}"> 
-			<acme:submit code="patron.patronage.form.button.update" action="/patron/patronage/update"/>
-			<acme:submit code="patron.patronage.form.button.delete" action="/patron/patronage/delete"/>
-			<acme:submit code="patron.patronage.form.button.publish" action="/patron/patronage/publish"/>
-	</jstl:if>
-	
-	<jstl:if test="${command=='create'}">
-		<acme:submit code="patron.patronage.form.button.create" action="/patron/patronage/create"/>
-	</jstl:if>
+ 	
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') && published == false}"> 
+				<acme:submit code="patron.patronage.form.button.update" action="/patron/patronage/update"/>
+				<acme:submit code="patron.patronage.form.button.delete" action="/patron/patronage/delete"/>
+				<acme:submit code="patron.patronage.form.button.publish" action="/patron/patronage/publish"/>
+		</jstl:when>
+		
+		<jstl:when test="${command=='create'}">
+			<acme:submit code="patron.patronage.form.button.create" action="/patron/patronage/create"/>
+		</jstl:when>
+	</jstl:choose>    
 
  </acme:form>  

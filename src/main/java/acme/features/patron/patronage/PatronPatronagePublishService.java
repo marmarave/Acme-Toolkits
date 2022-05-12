@@ -1,6 +1,5 @@
 package acme.features.patron.patronage;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import org.apache.commons.lang3.time.DateUtils;
@@ -8,28 +7,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Patronage;
-import acme.entities.PatronageStatus;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
-import acme.framework.datatypes.Money;
-import acme.framework.services.AbstractCreateService;
+import acme.framework.services.AbstractUpdateService;
+import acme.roles.Inventor;
 import acme.roles.Patron;
 
 @Service
-public class PatronPatronageCreateService implements AbstractCreateService<Patron, Patronage>{
+public class PatronPatronagePublishService implements AbstractUpdateService<Patron, Patronage> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	protected PatronPatronageRepository repository;
 
-	// AbstractCreateService<Patron, Patronage> interface -------------------------
-			
+	// AbstractUpdateService<Patron, Patronage> -------------------------------------
+
 	@Override
 	public boolean authorise(final Request<Patronage> request) {
 		assert request != null;
-		return true;
+
+		boolean result;
+		int patronageId;
+		Patronage patronage;
+
+		patronageId = request.getModel().getInteger("id");
+		patronage = this.repository.findOnePatronageById(patronageId);
+		result = (patronage != null && request.isPrincipal(patronage.getPatron()) && !patronage.isPublished());
+
+		return result;
 	}
 
 	@Override
@@ -37,20 +44,17 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-
-		Date currentMoment;
-		Integer inventorId;		
 		
-		currentMoment = new Date(System.currentTimeMillis() - 1);
-		entity.setCreationMoment(currentMoment);
-		entity.setStatus(PatronageStatus.PROPOSED);
-		entity.setPublished(false);
+		Integer inventorId;
+		Inventor inventor;
 		
 		inventorId = Integer.valueOf(request.getModel().getAttribute("inventorId").toString());
-		entity.setInventor(this.repository.findInventorById(inventorId));
+		inventor = this.repository.findInventorById(inventorId);
+		
+		entity.setInventor(inventor);
+
 
 		request.bind(entity, errors, "code", "legalStuff", "budget", "startDate", "endDate","moreInfo");
-		
 	}
 
 	@Override
@@ -59,57 +63,26 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "status" ,"code", "legalStuff", "budget", "creationMoment", "startDate","endDate","moreInfo","published");
+		request.unbind(entity, model, "code", "legalStuff", "budget", "startDate", "endDate", "creationMoment", "moreInfo","published");
 		model.setAttribute("inventors", this.repository.findInventors());
-		
+		model.setAttribute("inventorId", entity.getInventor().getId());
 	}
 
 	@Override
-	public Patronage instantiate(final Request<Patronage> request) {
-		
+	public Patronage findOne(final Request<Patronage> request) {
 		assert request != null;
+		
+		Patronage result;
+		int id;
 
-		final Patronage result = new Patronage();
-		Date moment;
-		Date startDate;
-		Date endDate;
-		int principalId;
-		final Money budget;
-
-		principalId = request.getPrincipal().getActiveRoleId();
-		final Patron patron = this.repository.findOnePatronById(principalId);
-
-		moment = new Date(System.currentTimeMillis() - 1);
-		
-		final Calendar cal = Calendar.getInstance();
-		cal.setTime(moment);
-		cal.add(Calendar.MONTH, 2);
-		startDate = cal.getTime();
-		
-		cal.add(Calendar.MONTH, 2);
-		endDate = cal.getTime();
-		
-		budget = new Money();
-		budget.setAmount(1.0);
-		budget.setCurrency("EUR");
-		
-		
-
-		result.setPatron(patron);
-		result.setCreationMoment(moment);
-		result.setStatus(PatronageStatus.PROPOSED);
-		result.setCode("");
-		result.setLegalStuff("");
-		result.setBudget(budget);
-		result.setStartDate(startDate);
-		result.setEndDate(endDate);
-		result.setMoreInfo("");
+		id = request.getModel().getInteger("id");
+		result = this.repository.findOnePatronageById(id);
 
 		return result;
 	}
 
 	@Override
-	public void validate(final Request<Patronage> request, final Patronage entity, final Errors errors) {		
+	public void validate(final Request<Patronage> request, final Patronage entity, final Errors errors) {
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
@@ -118,7 +91,10 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 			Patronage existing;
 
 			existing = this.repository.findOnePatronageByCode(entity.getCode());
-			errors.state(request, existing == null, "code", "patron.patronage.form.error.duplicated");
+			
+			if(existing!=null) {
+				errors.state(request, existing.getId()==entity.getId() , "code", "patron.patronage.form.error.duplicated");
+			}
 		}
 		
 		if (!errors.hasErrors("startDate")) {
@@ -146,13 +122,12 @@ public class PatronPatronageCreateService implements AbstractCreateService<Patro
 	}
 
 	@Override
-	public void create(final Request<Patronage> request, final Patronage entity) {
-		
+	public void update(final Request<Patronage> request, final Patronage entity) {
 		assert request != null;
 		assert entity != null;
-
-		this.repository.save(entity);
 		
+		entity.setPublished(true);
+		this.repository.save(entity);
 	}
 
 }
