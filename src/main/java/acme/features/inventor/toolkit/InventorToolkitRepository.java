@@ -5,9 +5,11 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.Item;
 import acme.entities.ItemQuantity;
 import acme.entities.Toolkit;
 import acme.framework.repositories.AbstractRepository;
+import acme.roles.Inventor;
 
 @Repository
 public interface InventorToolkitRepository extends AbstractRepository {
@@ -20,4 +22,10 @@ public interface InventorToolkitRepository extends AbstractRepository {
 	
 	@Query("select iq from ItemQuantity iq where iq.toolkit.id = :masterId")
     Collection<ItemQuantity> findItemQuantitiesOfToolkit(int masterId);
+	
+	@Query("select i from Inventor i where i.inventorId = :inventorId")
+	Inventor findInventorById(int inventorId);
+	
+	@Query("select i from Item i where i.id = :itemId")
+	Item findItemById(int itemId);
 }

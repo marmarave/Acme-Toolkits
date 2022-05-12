@@ -27,4 +27,7 @@
 	
 	<acme:button code="any.toolkit.form.button.components" action="/any/item/list-master?type=TOOL&masterId=${id}"/>
 	<acme:button code="any.toolkit.form.button.tools" action="/any/item/list-master?type=COMPONENT&masterId=${id}"/>
+	<acme:button code="any.toolkit.form.button.update" action=""/>
+	<acme:button code="any.toolkit.form.button.delete" action=""/>
+	<acme:button code="any.toolkit.form.button.publish" action=""/>
 </acme:form> 
