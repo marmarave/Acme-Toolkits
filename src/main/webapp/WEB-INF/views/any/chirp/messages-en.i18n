@@ -19,4 +19,6 @@
  any.chirp.form.label.author = Author
  any.chirp.form.label.body = Body
  any.chirp.form.label.email = Email
+ any.chirp.form.label.confirmation = Confirmation
+ any.chirp.form.button.create = Create
  

@@ -23,6 +23,7 @@ master.menu.anonymous.chirp.list = Ver susurros
 master.menu.anonymous.toolkit.list = Ver cajas de herramientas
 master.menu.anonymous.component.list = Ver componentes
 master.menu.anonymous.tool.list = Ver herramientas
+master.menu.anonymous.chirp.create = Crear un susurro
 
 # master.menu.authenticated #######################################################
 
