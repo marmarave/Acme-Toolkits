@@ -3,8 +3,6 @@ package acme.features.inventor.toolkit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.Item;
-import acme.entities.ItemQuantity;
 import acme.entities.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -35,7 +33,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity, errors, "code", "title", "description", "assemblyNotes", "moreInfo", "totalPrice", "draftMode");
+		request.bind(entity, errors, "code", "title", "description", "assemblyNotes", "moreInfo", "totalPrice"); //No he incluido draftMode
 	}
 
 	@Override
@@ -45,7 +43,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "code", "title","description", "assemblyNotes", "moreInfo", "totalPrice", "draftMode");
+		request.unbind(entity, model, "code", "title","description", "assemblyNotes", "moreInfo", "totalPrice");
 		model.setAttribute("readonly", false);
 	}
 
@@ -57,15 +55,20 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		Toolkit toolkit;
 		toolkit = new Toolkit();
 		
-		Item item;
-		item = this.repository.findItemById(request.getModel().getAttribute("item")); //Aqui entiendo que se coge el item que se selecciona en la vista
+		toolkit.setCode("");
+		toolkit.setTitle("");
+		toolkit.setDescription("");
+		toolkit.setAssemblyNotes("");
+		toolkit.setMoreInfo("");
+		//final Item item;
+		//item = this.repository.findItemById(request.getModel().getAttribute("item")); //Aqui entiendo que se coge el item que se selecciona en la vista
 		
-		ItemQuantity itemQuantity;
-		itemQuantity = new ItemQuantity();
+		//ItemQuantity itemQuantity;
+		//itemQuantity = new ItemQuantity();
 		
-		itemQuantity.setItem(item);
-		itemQuantity.setToolkit(toolkit);
-		this.repository.save(itemQuantity);
+	//	itemQuantity.setItem(item);
+		//itemQuantity.setToolkit(toolkit);
+		//this.repository.save(itemQuantity);
 		
 		return toolkit;
 	}

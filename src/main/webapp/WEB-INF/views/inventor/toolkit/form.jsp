@@ -27,7 +27,15 @@
 	
 	<acme:button code="any.toolkit.form.button.components" action="/any/item/list-master?type=TOOL&masterId=${id}"/>
 	<acme:button code="any.toolkit.form.button.tools" action="/any/item/list-master?type=COMPONENT&masterId=${id}"/>
-	<acme:button code="any.toolkit.form.button.update" action=""/>
-	<acme:button code="any.toolkit.form.button.delete" action=""/>
-	<acme:button code="any.toolkit.form.button.publish" action=""/>
+
+	
+		<jstl:choose>
+		<jstl:when test="${acme:anyOf(command, 'show, update, delete') && draftMode == true}">
+			<acme:submit code="inventor.toolkit.form.button.update" action="/inventor/toolkit/update"/>
+			<acme:submit code="inventor.toolkit.form.button.delete" action="/inventor/toolkit/delete"/>
+		</jstl:when>
+		<jstl:when test="${command == 'create'}">
+			<acme:submit code="inventor.toolkit.form.button.create" action="/inventor/toolkit/create"/>
+		</jstl:when>		
+	</jstl:choose>		
 </acme:form> 
