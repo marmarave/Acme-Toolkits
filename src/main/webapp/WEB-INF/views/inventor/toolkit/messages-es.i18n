@@ -15,7 +15,6 @@ inventor.toolkit.list.button.create = Crear nuevo Toolkit
 
 
 
-
 inventor.toolkit.form.label.code = Códigode
 inventor.toolkit.form.label.title = Título
 inventor.toolkit.form.label.description = Descripción
@@ -24,3 +23,5 @@ inventor.toolkit.form.label.totalPrice = Precio Total
 inventor.toolkit.form.label.more-info = Más Info
 inventor.toolkit.form.button.create = Crear
 inventor.toolkit.form.button.update = Actualizar
+inventor.toolkit.form.label.items = Items
+inventor.toolkit.form.label.${item.name} = ${item.name}

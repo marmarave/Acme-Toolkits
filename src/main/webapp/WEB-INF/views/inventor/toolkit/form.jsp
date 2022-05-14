@@ -25,8 +25,7 @@
 	<acme:input-money code="inventor.toolkit.form.label.totalPrice" path="totalPrice"/>
 	<acme:input-url code="inventor.toolkit.form.label.more-info" path="moreInfo"/>
 	
-	<acme:button code="any.toolkit.form.button.components" action="/any/item/list-master?type=TOOL&masterId=${id}"/>
-	<acme:button code="any.toolkit.form.button.tools" action="/any/item/list-master?type=COMPONENT&masterId=${id}"/>
+
 
 	
 		<jstl:choose>
@@ -35,7 +34,17 @@
 			<acme:submit code="inventor.toolkit.form.button.delete" action="/inventor/toolkit/delete"/>
 		</jstl:when>
 		<jstl:when test="${command == 'create'}">
+			<acme:input-select path="items" code="inventor.toolkit.form.label.items" readonly="true">
+				<jstl:forEach items="${items}" var="item">
+					<acme:input-option code="inventor.toolkit.form.label.${item.code}" value="${item.code}"/>
+				</jstl:forEach>
+			</acme:input-select>
+			<acme:input-textbox code="inventor.toolkit.form.label.quantity" path="quantity"/>
 			<acme:submit code="inventor.toolkit.form.button.create" action="/inventor/toolkit/create"/>
-		</jstl:when>		
+		</jstl:when>
+		<jstl:when test="${command == 'show'}">
+			<acme:button code="any.toolkit.form.button.components" action="/any/item/list-master?type=TOOL&masterId=${id}"/>
+			<acme:button code="any.toolkit.form.button.tools" action="/any/item/list-master?type=COMPONENT&masterId=${id}"/>
+		</jstl:when>				
 	</jstl:choose>		
 </acme:form> 

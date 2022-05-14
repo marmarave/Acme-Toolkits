@@ -24,3 +24,5 @@ inventor.toolkit.form.label.totalPrice = Total Price
 inventor.toolkit.form.label.more-info = More Info
 inventor.toolkit.form.button.create = Create
 inventor.toolkit.form.button.update = Update
+inventor.toolkit.form.label.items = Items
+inventor.toolkit.form.label.${item.name} = ${item.name}

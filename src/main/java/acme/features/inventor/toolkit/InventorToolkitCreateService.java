@@ -1,8 +1,11 @@
 package acme.features.inventor.toolkit;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.Item;
 import acme.entities.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -60,6 +63,10 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		toolkit.setDescription("");
 		toolkit.setAssemblyNotes("");
 		toolkit.setMoreInfo("");
+		
+		Collection<Item> items;
+		items = this.repository.findItemsByInventor(request.getPrincipal().getActiveRoleId()); //Aquí me quedao
+		request.getModel().setAttribute("items", items);
 		//final Item item;
 		//item = this.repository.findItemById(request.getModel().getAttribute("item")); //Aqui entiendo que se coge el item que se selecciona en la vista
 		
