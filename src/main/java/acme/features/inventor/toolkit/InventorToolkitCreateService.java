@@ -1,11 +1,8 @@
 package acme.features.inventor.toolkit;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.Item;
 import acme.entities.Toolkit;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -36,7 +33,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity, errors, "code", "title", "description", "assemblyNotes", "moreInfo", "totalPrice"); //No he incluido draftMode
+		request.bind(entity, errors, "code", "title", "description", "assemblyNotes", "moreInfo", "totalPrice","draftMode"); //se incluye el draftMode en el unbind y bind?
 	}
 
 	@Override
@@ -46,7 +43,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "code", "title","description", "assemblyNotes", "moreInfo", "totalPrice");
+		request.unbind(entity, model, "code", "title","description", "assemblyNotes", "moreInfo", "totalPrice","draftMode");
 		model.setAttribute("readonly", false);
 	}
 
@@ -64,9 +61,14 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		toolkit.setAssemblyNotes("");
 		toolkit.setMoreInfo("");
 		
-		Collection<Item> items;
-		items = this.repository.findItemsByInventor(request.getPrincipal().getActiveRoleId()); //Aquí me quedao
-		request.getModel().setAttribute("items", items);
+		Inventor inventor;
+		inventor = this.repository.findInventorById(request.getPrincipal().getActiveRoleId());
+		toolkit.setInventor(inventor);
+		//Collection<Item> items;
+		//items = this.repository.findItemsByInventor(request.getPrincipal().getActiveRoleId()); //Aquí me quedao
+		//request.getModel().setAttribute("items", items);
+		
+		
 		//final Item item;
 		//item = this.repository.findItemById(request.getModel().getAttribute("item")); //Aqui entiendo que se coge el item que se selecciona en la vista
 		

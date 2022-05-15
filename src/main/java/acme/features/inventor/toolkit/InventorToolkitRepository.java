@@ -31,4 +31,7 @@ public interface InventorToolkitRepository extends AbstractRepository {
 	
 	@Query("select i from Item i where i.inventor = :inventorId")
 	Collection<Item> findItemsByInventor(int inventorId);
+	
+	@Query("select t from Toolkit t where t.inventor.id = :inventorId")
+	Collection<Toolkit> findToolkitsByInventorId(int inventorId);
 }

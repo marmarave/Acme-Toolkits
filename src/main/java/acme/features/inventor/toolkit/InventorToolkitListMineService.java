@@ -38,7 +38,7 @@ public class InventorToolkitListMineService implements AbstractListService<Inven
 			        Principal principal;
 
 			        principal = request.getPrincipal();
-			        result = this.repository.findManyToolkitsByInventorId(principal.getActiveRoleId());
+			        result = this.repository.findToolkitsByInventorId(principal.getActiveRoleId());
 
 					return result;
 				}
