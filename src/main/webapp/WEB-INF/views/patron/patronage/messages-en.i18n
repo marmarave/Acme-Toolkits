@@ -29,6 +29,9 @@
  patron.patronage.form.label.period = Period
  patron.patronage.form.label.moreInfo = More Info 
  patron.patronage.list.label.published = Published
+ patron.patronage.form.label.proposed = PROPOSED
+ patron.patronage.form.label.accepted = ACCEPTED
+ patron.patronage.form.label.denied = DENIED
  patron.patronage.form.label.inventor = Inventor
  patron.patronage.form.label.inventor.username = Inventor Username
  patron.patronage.form.label.inventor.name = Inventor Name
@@ -49,5 +52,6 @@
  patron.patronage.form.button.update = Update
  patron.patronage.form.button.delete = Delete
  patron.patronage.form.button.publish = Publish
+ 
  
  

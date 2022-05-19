@@ -63,9 +63,9 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "legalStuff", "budget", "startDate", "endDate", "creationMoment", "moreInfo","published");
+		request.unbind(entity, model, "code", "legalStuff", "budget", "startDate", "endDate", "moreInfo","published");
 		model.setAttribute("inventors", this.repository.findInventors());
-		model.setAttribute("inventorId", entity.getInventor().getId());
+		model.setAttribute("inventId", entity.getInventor().getId());
 	}
 
 	@Override

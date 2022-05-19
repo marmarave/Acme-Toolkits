@@ -28,6 +28,9 @@
   patron.patronage.form.label.period = Periodo
  patron.patronage.form.label.moreInfo = Más Información
  patron.patronage.list.label.published = Publicado
+  patron.patronage.form.label.proposed = PROPUESTO
+ patron.patronage.form.label.accepted = ACEPTADO
+ patron.patronage.form.label.denied = DENEGADO
  patron.patronage.form.label.inventor = Inventor
  patron.patronage.form.label.inventor.username = Nombre de Usuario del Inventor
  patron.patronage.form.label.inventor.name = Nombre del Inventor 
