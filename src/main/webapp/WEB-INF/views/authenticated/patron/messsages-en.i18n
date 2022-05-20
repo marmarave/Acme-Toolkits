@@ -8,12 +8,12 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-authenticated.inventor.inventor.form.title.create = Become an inventor
-authenticated.inventor.inventor.form.title.update = Update your inventor data
+authenticated.patron.patron.form.title.create = Become an patron
+authenticated.patron.patron.form.title.update = Update your patron data
 
-authenticated.inventor.inventor.form.label.company = Company
-authenticated.inventor.inventor.form.label.statement = State
-authenticated.inventor.inventor.form.label.moreInfo = More Info
+authenticated.patron.patron.form.label.company = Company
+authenticated.patron.patron.form.label.statement = State
+authenticated.patron.patron.form.label.moreInfo = More Info
 
-authenticated.inventor.inventor.form.button.create = Register
-authenticated.inventor.inventor.form.button.update = Update
+authenticated.patron.patron.form.button.create = Register
+authenticated.patron.patron.form.button.update = Update

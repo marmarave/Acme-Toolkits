@@ -16,12 +16,8 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:list>
-
-	<acme:list-column code="inventor.component.list.label.name" path="name" width="10%"/>
-	<acme:list-column code="inventor.component.list.label.code" path="code" width="10%"/>
-	<acme:list-column code="inventor.component.list.label.technology" path="technology" width="40%"/>
-	<acme:list-column code="inventor.component.list.label.description" path="description" width="40%"/>
-	
+	<acme:list-column code="authenticated.announcement.list.label.creationMoment" path="creationMoment" width="20%"/>
+	<acme:list-column code="authenticated.announcement.list.label.body" path="body" width="10%"/>
+	<acme:list-column code="authenticated.announcement.list.label.title" path="title" width="70%"/>
 </acme:list>
-
-<acme:button code="inventor.item.list.button.create" action="/inventor/item/create"/>
+<acme:button code="administrator.announcement.list.button.create" action="/administrator/announcement/create"/>

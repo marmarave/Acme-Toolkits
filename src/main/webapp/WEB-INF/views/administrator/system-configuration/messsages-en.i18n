@@ -25,3 +25,5 @@ administrator.systemConfiguration.form.label.weakSpam = Weak Spam
 
 administrator.systemConfiguration.list.label.weakThreshold = Weak Threshold
 administrator.systemConfiguration.form.label.weakThreshold = Weak Threshold 
+
+administrator.systemConfiguration.form.button.update = Update
