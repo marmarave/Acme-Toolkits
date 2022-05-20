@@ -33,7 +33,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity, errors, "code", "title", "description", "assemblyNotes", "moreInfo", "totalPrice","draftMode"); //se incluye el draftMode en el unbind y bind?
+		request.bind(entity, errors, "code", "title", "description", "assemblyNotes", "moreInfo", "totalPrice"); //se incluye el draftMode en el unbind y bind?
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "code", "title","description", "assemblyNotes", "moreInfo", "totalPrice","draftMode");
+		request.unbind(entity, model, "code", "title","description", "assemblyNotes", "moreInfo", "totalPrice");
 		model.setAttribute("readonly", false);
 	}
 
@@ -64,20 +64,6 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		Inventor inventor;
 		inventor = this.repository.findInventorById(request.getPrincipal().getActiveRoleId());
 		toolkit.setInventor(inventor);
-		//Collection<Item> items;
-		//items = this.repository.findItemsByInventor(request.getPrincipal().getActiveRoleId()); //Aquí me quedao
-		//request.getModel().setAttribute("items", items);
-		
-		
-		//final Item item;
-		//item = this.repository.findItemById(request.getModel().getAttribute("item")); //Aqui entiendo que se coge el item que se selecciona en la vista
-		
-		//ItemQuantity itemQuantity;
-		//itemQuantity = new ItemQuantity();
-		
-	//	itemQuantity.setItem(item);
-		//itemQuantity.setToolkit(toolkit);
-		//this.repository.save(itemQuantity);
 		
 		return toolkit;
 	}

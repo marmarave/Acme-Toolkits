@@ -20,7 +20,7 @@ public class InventorToolkitDeleteService implements AbstractDeleteService<Inven
 	@Override
 	public boolean authorise(final Request<Toolkit> request) {
 		assert request != null;
-		return false;
+		return true;
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class InventorToolkitDeleteService implements AbstractDeleteService<Inven
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity, errors, "code", "title", "description", "assemblyNotes", "moreInfo", "totalPrice", "draftMode");
+		request.bind(entity, errors, "code", "title", "description", "assemblyNotes", "moreInfo", "totalPrice");
 	}
 
 	@Override
@@ -39,7 +39,7 @@ public class InventorToolkitDeleteService implements AbstractDeleteService<Inven
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "code", "title","description", "assemblyNotes", "moreInfo", "totalPrice", "draftMode");
+		request.unbind(entity, model, "code", "title","description", "assemblyNotes", "moreInfo", "totalPrice");
 		model.setAttribute("readonly", false);
 	}
 	

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.entities.Item;
 import acme.entities.ItemQuantity;
+import acme.entities.ItemType;
 import acme.entities.Toolkit;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Inventor;
@@ -34,4 +35,11 @@ public interface InventorToolkitRepository extends AbstractRepository {
 	
 	@Query("select t from Toolkit t where t.inventor.id = :inventorId")
 	Collection<Toolkit> findToolkitsByInventorId(int inventorId);
+	
+	@Query("select i from Item i")
+	Collection<Item> findAllItems();
+	
+	@Query("select i from Item i where i.type = :type and published=true")
+	Collection<Item> findAllItemsByType(ItemType type);
+	
 }

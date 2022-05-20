@@ -32,13 +32,10 @@
 		<jstl:when test="${acme:anyOf(command, 'show, update, delete')}">
 			<acme:submit code="inventor.toolkit.form.button.update" action="/inventor/toolkit/update"/>
 			<acme:submit code="inventor.toolkit.form.button.delete" action="/inventor/toolkit/delete"/>
+			<acme:button code="inventor.toolkit.form.button.components" action="/inventor/item-quantity/list-components?type=COMPONENT&masterId=${id}"/>
+			<acme:button code="inventor.toolkit.form.button.tools" action="/inventor/item-quantity/list-tools?type=TOOL&masterId=${id}"/>
 		</jstl:when>
 		<jstl:when test="${command == 'create'}">
-			<acme:input-select path="items" code="inventor.toolkit.form.label.items" readonly="true">
-				<jstl:forEach items="${items}" var="item">
-					<acme:input-option code="inventor.toolkit.form.label.${item.code}" value="${item.code}"/>
-				</jstl:forEach>
-			</acme:input-select>
 			<acme:input-textbox code="inventor.toolkit.form.label.quantity" path="quantity"/>
 			<acme:submit code="inventor.toolkit.form.button.create" action="/inventor/toolkit/create"/>
 		</jstl:when>
