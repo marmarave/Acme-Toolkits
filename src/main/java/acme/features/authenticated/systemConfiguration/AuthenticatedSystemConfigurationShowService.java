@@ -26,10 +26,8 @@ public class AuthenticatedSystemConfigurationShowService implements AbstractShow
 		assert request != null;
 
 		SystemConfiguration result;
-		int id;
 
-		id = request.getModel().getInteger("id");
-		result = this.repository.findOneSystemConfigurationCurrencyInfoById(id);
+		result = this.repository.findOneSystemConfigurationCurrencyInfoById();
 
 		return result;
 	}

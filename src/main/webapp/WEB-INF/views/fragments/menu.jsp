@@ -28,6 +28,8 @@
 			<acme:menu-suboption code="master.menu.anonymous.tool.list" action="/any/item/list?type=TOOL"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.toolkit.list" action="/any/toolkit/list"/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.anonymous.chirp.create" action="/any/chirp/create"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
@@ -40,7 +42,7 @@
 			<acme:menu-suboption code="master.menu.authenticated.toolkit.list" action="/any/toolkit/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.authenticated.user-account.list" action="/any/user-account/list"/>
-			<acme:menu-suboption code="master.menu.authenticated.system-configuration.show" action="/authenticated/system-configuration/show?id=129"/>		
+			<acme:menu-suboption code="master.menu.authenticated.system-configuration.show" action="/authenticated/system-configuration/show"/>		
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -48,7 +50,11 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.administrator-dashboard" action="/administrator/administrator-dashboard/show"/>
 			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.administrator.system-configuration" action="/administrator/system-configuration/list"/>
+			<acme:menu-suboption code="master.menu.administrator.system-configuration" action="/administrator/system-configuration/show"/>
+			<acme:menu-separator/>
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.announcement" action="/administrator/announcement/list"/>
+			<acme:menu-suboption code="master.menu.administrator.announcement-create" action="/administrator/announcement/create"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/populate-sample"/>			
@@ -57,11 +63,10 @@
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.patron" access="hasRole('Patron')">
-			<acme:menu-suboption code="master.menu.patron.patronage.list" action="/patron/patronage/list"/>
+			<acme:menu-suboption code="master.menu.patron.patronage.list" action="/patron/patronage/list-mine"/>
 			<acme:menu-suboption code="master.menu.patron.my-patronage-reports" action="/patron/patronage-report/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.patron.dashboard" action="/patron/patron-dashboard/show"/>
-			<acme:menu-separator/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.inventor" access="hasRole('Inventor')">	

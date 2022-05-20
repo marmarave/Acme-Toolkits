@@ -12,7 +12,8 @@ authenticated.inventor.inventor.form.title.create = Become an inventor
 authenticated.inventor.inventor.form.title.update = Update your inventor data
 
 authenticated.inventor.inventor.form.label.company = Company
-authenticated.inventor.inventor.form.label.sector = Sector
+authenticated.inventor.inventor.form.label.statement = State
+authenticated.inventor.inventor.form.label.moreInfo = More Info
 
 authenticated.inventor.inventor.form.button.create = Register
 authenticated.inventor.inventor.form.button.update = Update
