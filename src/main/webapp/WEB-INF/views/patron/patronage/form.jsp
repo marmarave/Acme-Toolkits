@@ -25,15 +25,11 @@
 		</acme:input-select>
 	</jstl:if>
 	
- 	<acme:input-textbox code="patron.patronage.form.label.code" path="code"/>
+ 	<acme:input-textbox code="patron.patronage.form.label.code" path="code" placeholder="ABC-123-A"/>
  	<acme:input-textbox code="patron.patronage.form.label.legalStuff" path="legalStuff"/>
  	<acme:input-money code="patron.patronage.form.label.budget" path="budget"/>
  	<acme:input-moment code="patron.patronage.form.label.startDate" path="startDate"/>
  	<acme:input-moment code="patron.patronage.form.label.endDate" path="endDate"/>
- 	
- 	<jstl:if test="${command == 'show'}">
- 		<acme:input-textbox code="patron.patronage.form.label.period" path="period" readonly="true"/>
- 	</jstl:if>
  	<acme:input-url code="patron.patronage.form.label.moreInfo" path="moreInfo"/><br>
  	
     
@@ -60,7 +56,7 @@
 	 	<acme:input-textbox code="patron.patronage.form.label.patron.userAccount.identity.name" path="patron.userAccount.identity.name" readonly="true"/>
 	 	<acme:input-textbox code="patron.patronage.form.label.patron.userAccount.identity.surname" path="patron.userAccount.identity.surname" readonly="true"/>
 	 	<acme:input-textbox code="patron.patronage.form.label.patron.userAccount.identity.email" path="patron.userAccount.identity.email" readonly="true"/>
-		<h2 class="text-center">-------------------------------------------------------------------------------------------------------</h2>
+
 	</jstl:if>
  	
 	<jstl:choose>
