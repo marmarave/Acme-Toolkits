@@ -25,5 +25,10 @@
  	<acme:list-column code="patron.patronage.list.label.creationMoment" path="creationMoment" width="20%"/>
  	<acme:list-column code="patron.patronage.list.label.legalStuff" path="legalStuff" width="0%"/>
  	<acme:list-column code="patron.patronage.list.label.moreInfo" path="moreInfo" width="0%"/>
+ 	<acme:list-column code="patron.patronage.list.label.published" path="published" width="0%"/>
 
  </acme:list> 
+ 
+<jstl:if test="${command == 'list-mine'}">
+    <acme:button code="patron.patronage.list.button.create" action="/patron/patronage/create"/>
+</jstl:if>
