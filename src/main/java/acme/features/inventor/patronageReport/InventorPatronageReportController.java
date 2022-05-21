@@ -5,6 +5,7 @@ import javax.annotation.PostConstruct;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import acme.entities.PatronageReport;
@@ -21,6 +22,9 @@ public class InventorPatronageReportController extends AbstractController<Invent
 
 	@Autowired
 	protected InventorPatronageReportShowService	showService;
+	
+	@Autowired
+	protected InventorPatronageReportCreateService		createService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -29,6 +33,7 @@ public class InventorPatronageReportController extends AbstractController<Invent
 	protected void initialise() {
 		super.addCommand("list", "list", this.patronageReportListMineService);
 		super.addCommand("show", this.showService);
+		super.addCommand("create", this.createService);
 	}
 
 }
