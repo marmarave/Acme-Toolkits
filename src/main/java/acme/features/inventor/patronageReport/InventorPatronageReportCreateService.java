@@ -46,7 +46,7 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 
 			patronageId = request.getModel().getInteger("masterId");
 			patronage = this.repository.findOnePatronageById(patronageId);
-			result = (patronage != null && request.isPrincipal(patronage.getInventor()) && patronage.getStatus().equals(PatronageStatus.ACCEPTED));
+			result = (patronage != null && request.isPrincipal(patronage.getInventor()) && patronage.isPublished());
 
 			return result;
 			

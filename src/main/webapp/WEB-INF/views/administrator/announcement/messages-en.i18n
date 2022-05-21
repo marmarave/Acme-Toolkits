@@ -19,4 +19,4 @@ administrator.announcement.form.label.moreInfo = More Info:
 administrator.announcement.form.label.creationMoment = Creation Moment:
 administrator.announcement.form.label.confirmation = Confirmation
 administrator.announcement.form.button.create = Create
-administrator.announcement.list.button.create = Create new announcement
+administrator.announcement.list.button.create = Create 

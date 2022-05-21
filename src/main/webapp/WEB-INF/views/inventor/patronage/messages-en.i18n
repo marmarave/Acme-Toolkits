@@ -19,6 +19,7 @@
  inventor.patronage.list.label.moreInfo = More Info
  
  inventor.patronage.form.label.status = Status
+ inventor.patronage.form.label.new-status = Change status to:
  inventor.patronage.form.label.code = Code
  inventor.patronage.form.label.legalStuff = Legal Stuff
  inventor.patronage.form.label.budget = Budget
@@ -35,5 +36,7 @@
  inventor.patronage.form.label.patron.userAccount.identity.surname = Patron Surname
  inventor.patronage.form.label.patron.userAccount.identity.email = Patron Email
  inventor.patronage.form.button.create.patronage-report = Create report
+ 
+ inventor.patronage.form.button.update = Update
  
  

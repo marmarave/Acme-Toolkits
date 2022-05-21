@@ -23,6 +23,7 @@ master.menu.anonymous.chirp.list = List chirps
 master.menu.anonymous.toolkit.list = List toolkits
 master.menu.anonymous.component.list = List components
 master.menu.anonymous.tool.list = List tools
+master.menu.anonymous.chirp.create = Create a chirp
 
 # master.menu.authenticated #######################################################
 
@@ -52,7 +53,7 @@ master.menu.administrator.shut-down = Shut down
 
 master.menu.patron = Patron
 master.menu.patron.my-patronage-reports = List my patronage reports
-master.menu.patron.patronage.list = List my patronages 
+master.menu.patron.patronage.list = List my patronages
 
 # master.menu.inventor ##########################################################
 
@@ -68,7 +69,7 @@ master.menu.patron.dashboard = Dashboard
 
 master.menu.user-account = Account
 master.menu.user-account.general-data = General data
-master.menu.user-account.patron = Provider data
+master.menu.user-account.patron = Patron data
 master.menu.user-account.become-patron = Become a patron
-master.menu.user-account.inventor = inventor data
+master.menu.user-account.inventor = Inventor data
 master.menu.user-account.become-inventor = Become an inventor
