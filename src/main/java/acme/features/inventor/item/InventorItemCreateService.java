@@ -1,12 +1,17 @@
 package acme.features.inventor.item;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.Item;
+import acme.entities.ItemType;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
+import acme.framework.datatypes.Money;
 import acme.framework.services.AbstractCreateService;
 import acme.roles.Inventor;
 
@@ -31,8 +36,20 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		Inventor inventor;
 		inventor = this.repository.findInventorById(request.getPrincipal().getActiveRoleId());
 		item = new Item();
+		final ItemType type =ItemType.valueOf((String)request.getModel().getAttribute("type"));
+		item.setType(type);
 		item.setInventor(inventor);
 		return item;
+	}
+	
+	public boolean validateAvailableCurrencyRetailPrice(final Money retailPrice) {
+		
+		final String currencies = this.repository.findAvailableCurrencies();
+		final List<Object> listOfAvailableCurrencies = Arrays.asList(currencies.split(";"));
+		final boolean availableCurrencies = listOfAvailableCurrencies.contains(retailPrice.getCurrency());
+		
+		return availableCurrencies;
+		
 	}
 	
 	@Override
@@ -41,7 +58,7 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		assert entity != null;
 		assert errors != null;
 		
-		request.bind(entity, errors, "name", "type", "code","technology","description","retailPrice","moreInfo","published");
+		request.bind(entity, errors, "name", "type", "technology", "code","description","retailPrice","moreInfo");
 		
 	}
 	
@@ -50,7 +67,32 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
+		if (!errors.hasErrors("code")) {
+			
+			final Item existing = this.repository.findOneItemByCode(entity.getCode());
+			errors.state(request, existing == null, "code", "inventor.item.form.error.duplicated");
 
+		}
+		
+		if(!errors.hasErrors("retailPrice")){
+			
+					final Money retailPrice = entity.getRetailPrice();
+					final boolean availableCurrency = this.validateAvailableCurrencyRetailPrice(retailPrice);
+					errors.state(request, availableCurrency, "retailPrice", "inventor.item.form.error.retail-price-currency-not-available");
+					
+					if(entity.getType().equals(ItemType.COMPONENT)) {
+						final boolean retailPriceComponentPositive = retailPrice.getAmount() > 0.;
+						errors.state(request, retailPriceComponentPositive, "retailPrice", "inventor.item.form.error.retail-price-component-positive");
+						
+					} else if(entity.getType().equals(ItemType.TOOL)) {
+						final boolean retailPriceToolZeroOrPositive = retailPrice.getAmount() >= 0.;
+						errors.state(request, retailPriceToolZeroOrPositive, "retailPrice", "inventor.item.form.error.retail-price-tool-zero-or-positive");
+						
+					} 
+					
+		}
+		
 	}
 	
 	@Override
@@ -67,6 +109,10 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 	public void create(final Request<Item> request, final Item entity) {
 		assert request != null;
 		assert entity != null;
+		
+		final ItemType type =ItemType.valueOf((String)request.getModel().getAttribute("type")); 
+		entity.setType(type);
+		entity.setPublished(false);
 
 		this.repository.save(entity);
 	}

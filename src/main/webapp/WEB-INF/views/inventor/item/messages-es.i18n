@@ -12,7 +12,8 @@ inventor.component.list.label.name = Nombre
 inventor.component.list.label.code = Código
 inventor.component.list.label.technology = Tecnología
 inventor.component.list.label.description = Descripción
-inventor.item.list.button.create = Crear nuevo Objeto
+inventor.item.list.button.createComponent = Crear nuevo Componente
+inventor.item.list.button.createTool = Crear nueva Herramienta
 
 inventor.item.form.label.name = Nombre
 inventor.item.form.label.code = Código
@@ -22,6 +23,13 @@ inventor.item.form.label.description = Descripción
 inventor.item.form.label.retailPrice = Precio Unitario
 inventor.item.form.label.published = Publicar
 inventor.item.form.label.more-info = Más info
-inventor.item.form.button.create = Crear
+inventor.item.form.button.createTool = Crear Herramienta
+inventor.item.form.button.createComponent = Crear Componente
 inventor.item.form.button.update = Actualizar
+inventor.item.form.button.publish = Publicar
 inventor.item.form.button.delete = Eliminar
+
+inventor.item.form.error.duplicated  = Código existente
+inventor.item.form.error.retail-price-currency-not-available = Tipo de moneda no disponible en el sistema
+inventor.item.form.error.retail-price-component-positive = El precio al por menor debe ser mayor que 0
+inventor.item.form.error.retail-price-tool-zero-or-positive = El precio al por menor debe ser mayor o igual que 0
