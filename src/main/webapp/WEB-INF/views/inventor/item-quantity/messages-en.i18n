@@ -24,5 +24,7 @@ inventor.itemQuantity.button.create = Create
 
 inventor.item-quantity.button.addTool = Add Tool
 inventor.item-quantity.button.addComponent = Add Component
+inventor.item-quantity.component.button.create = Add Component
+inventor.item-quantity.tool.button.create = Add Tool
 
 inventor.item-quantity.form.error.negative-number = Quantity must be positive

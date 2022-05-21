@@ -16,8 +16,8 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:form>
-    <acme:input-integer code="inventor.itemQuantity.form.label.quantity" path="quantity"/>
 	<jstl:if test="${type == 'TOOL'}">
+	<acme:input-integer code="inventor.itemQuantity.form.label.quantity" path="quantity" placeholder="1" readonly="true"/>
     <acme:input-select code="inventor.itemQuantity.form.label.item" path="itemId">
         <jstl:forEach items="${tools}" var="item">
             <acme:input-option code="${item.getCode()}   ${item.getName()}" value="${item.getId()}" selected="${item.getId() == itemId}"/>
@@ -25,6 +25,7 @@
     </acme:input-select>
     </jstl:if>
 	<jstl:if test="${type == 'COMPONENT'}">
+	<acme:input-integer code="inventor.itemQuantity.form.label.quantity" path="quantity"/>
     <acme:input-select code="inventor.itemQuantity.form.label.item" path="itemId">
         <jstl:forEach items="${components}" var="item">
             <acme:input-option code="${item.getCode()}   ${item.getName()}" value="${item.getId()}" selected="${item.getId() == itemId}"/>
@@ -33,7 +34,12 @@
     </jstl:if>
     <jstl:choose>
     <jstl:when test="${command == 'create'}">
-        <acme:submit code="inventor.item-quantity.button.create" action="/inventor/item-quantity/create?masterId=${masterId}"/>
+    	<jstl:if test="${type == 'TOOL'}">
+        	<acme:submit code="inventor.item-quantity.tool.button.create" action="/inventor/item-quantity/create?masterId=${masterId}"/>
+    	</jstl:if>
+    	<jstl:if test="${type == 'COMPONENT'}">
+        	<acme:submit code="inventor.item-quantity.component.button.create" action="/inventor/item-quantity/create?masterId=${masterId}"/>
+    	</jstl:if>
     </jstl:when>
     </jstl:choose>
 </acme:form>

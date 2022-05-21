@@ -68,6 +68,7 @@ public class InventorItemQuantityCreateService implements AbstractCreateService<
 		final ItemQuantity iq = new ItemQuantity();
 		final int toolkitId = request.getModel().getInteger("masterId");
 		iq.setToolkit(this.repository.findOneToolkitById(toolkitId));
+		iq.setQuantity(1);
 		
 		return iq;
 	}
