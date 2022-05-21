@@ -88,13 +88,8 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 		assert errors != null;
 
 		if (!errors.hasErrors("code")) {
-			Patronage existing;
-
-			existing = this.repository.findOnePatronageByCode(entity.getCode());
-			
-			if(existing!=null) {
-				errors.state(request, existing.getId()==entity.getId() , "code", "patron.patronage.form.error.duplicated");
-			}
+			final String oldCode = this.repository.findOnePatronageById(entity.getId()).getCode();
+			errors.state(request, oldCode.equals(entity.getCode()) , "code", "patron.patronage.form.error.unmodifiable-code");
 		}
 		
 		if (!errors.hasErrors("startDate")) {
