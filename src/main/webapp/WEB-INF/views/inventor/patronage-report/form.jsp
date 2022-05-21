@@ -16,13 +16,20 @@
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
 <acme:form>
-
+	
+	<jstl:if test="${command == 'show'}">
 	<acme:input-textbox code="inventor.patronage-report.form.label.sequenceNumber" path="sequenceNumber"/>
 	<acme:input-textbox code="inventor.patronage-report.form.label.creationMoment" path="creationMoment"/>
-	<acme:input-textbox code="inventor.patronage-report.form.label.memorandum" path="memorandum"/>
-	<acme:input-textbox code="inventor.patronage-report.form.label.moreInfo" path="moreInfo"/>
 	<acme:input-textbox code="inventor.patronage-report.form.label.patronage.legalStuff" path="patronage.legalStuff"/>
 	<acme:input-textbox code="inventor.patronage-report.form.label.patronage.budget" path="patronage.budget"/>
+	</jstl:if>
 	
+	<acme:input-textbox code="inventor.patronage-report.form.label.memorandum" path="memorandum"/>
+	<acme:input-textbox code="inventor.patronage-report.form.label.moreInfo" path="moreInfo"/>
+
+	<jstl:if test="${command == 'create'}">
+		<acme:input-checkbox code="inventor.patronage-report.form.label.confirmation" path="confirmation"/>
+		<acme:submit code="inventor.patronage-report.form.button.create" action="/inventor/patronage-report/create?masterId=${masterId}"/>
+	</jstl:if>
 
 </acme:form> 

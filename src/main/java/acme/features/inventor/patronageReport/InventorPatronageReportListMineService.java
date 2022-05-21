@@ -50,6 +50,7 @@ public class InventorPatronageReportListMineService implements AbstractListServi
 		assert entity != null;
 		assert model != null;
 		
+		model.setAttribute("sequenceNumber", entity.getSequenceNumber());
 		request.unbind(entity, model,"sequenceNumber","patronage.code");
 		
 	}
