@@ -25,7 +25,14 @@
 		</acme:input-select>
 	</jstl:if>
 	
- 	<acme:input-textbox code="patron.patronage.form.label.code" path="code" placeholder="ABC-123-A"/>
+	<jstl:choose>
+		<jstl:when test="${command=='update' or command=='show' or command=='publish'}">
+	 		<acme:input-textbox code="patron.patronage.form.label.code" path="code" placeholder="ABC-123-A" readonly="true"/>
+	 	</jstl:when>
+	 	<jstl:otherwise>
+	 		<acme:input-textbox code="patron.patronage.form.label.code" path="code" placeholder="ABC-123-A"/>
+	 	</jstl:otherwise>
+ 	</jstl:choose>
  	<acme:input-textbox code="patron.patronage.form.label.legalStuff" path="legalStuff"/>
  	<acme:input-money code="patron.patronage.form.label.budget" path="budget"/>
  	<acme:input-moment code="patron.patronage.form.label.startDate" path="startDate"/>
@@ -33,13 +40,13 @@
  	<acme:input-url code="patron.patronage.form.label.moreInfo" path="moreInfo"/><br>
  	
     
-   	<jstl:if test="${command == 'create' or command == 'update' or command == 'show' and published==false}">
+   	<jstl:if test="${command == 'create' or command == 'update' or command == 'show' or command=='publish' and published==false}">
    		<acme:input-select code="patron.patronage.form.label.inventor" path="inventorId">
    			<jstl:forEach items="${inventors}" var="inventor">
 				<acme:input-option code="${inventor.getUserAccount().getUsername()}" value="${inventor.getId()}" selected="${ inventor.getId() == inventId }"/>
 			</jstl:forEach>
 		</acme:input-select>
-  		</jstl:if>
+  	</jstl:if>
   		
 	<jstl:if test="${command == 'show'}">
    		<h2 class="text-center">-------------------------------------------------------------------------------------------------------</h2>
