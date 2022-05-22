@@ -14,11 +14,18 @@ package acme.features.inventor.patronageReport;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import acme.entities.Patronage;
 import acme.entities.PatronageReport;
 import acme.entities.PatronageStatus;
+import acme.entities.SystemConfiguration;
+import acme.features.administrator.systemConfiguration.AdministratorSystemConfigurationRepository;
+import acme.features.spam.SpamDetector;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -32,6 +39,11 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 
 		@Autowired
 		protected InventorPatronageReportRepository repository;
+		
+		protected SpamDetector sp = new SpamDetector();
+		
+		@Autowired
+		protected AdministratorSystemConfigurationRepository scRepo;
 
 		// AbstractCreateService<Inventor, PatronageReport> interface --------------
 		
@@ -96,6 +108,24 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 			assert entity != null;
 			assert errors != null;
 			
+			
+			SystemConfiguration sc = scRepo.findSystemConfigurationById();
+			if(entity.getMemorandum() != null && entity.getMoreInfo() != null) {
+				String[] parts = sc.getStrongSpam().split(";");
+				String[] parts2 = sc.getWeakSpam().split(";");
+				List<String> strongSpam = new LinkedList<>();
+				List<String> weakSpam = new LinkedList<>();
+				for( int i = 0;i<parts.length-1;i++) {
+					strongSpam.add(parts[i]);
+					
+				}
+				for( int i = 0;i<parts.length-1;i++) {
+					weakSpam.add(parts2[i]);
+					
+				}
+				errors.state(request, sp.validateNoSpam(entity.getMemorandum(), strongSpam, weakSpam,sc.getStrongThreshold() , sc.getWeakThreshold()), "memorandum", "inventor.patronage-report.form.label.spam", "spam");
+				errors.state(request, sp.validateNoSpam(entity.getMoreInfo(), strongSpam, weakSpam,sc.getStrongThreshold() , sc.getWeakThreshold()), "moreInfo", "inventor.patronage-report.form.label.spam", "spam");
+			}
 			boolean confirmation;
 			
 			confirmation = request.getModel().getBoolean("confirmation");
