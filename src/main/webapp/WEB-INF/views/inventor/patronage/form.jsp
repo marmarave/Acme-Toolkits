@@ -41,13 +41,13 @@
 	<acme:submit test="${acme:anyOf(command, 'show, update') && status == 'PROPOSED'}" code="inventor.patronage.form.button.update" action="/inventor/patronage/update"/>
 	
  	<h2 class="text-center">-------------------------------------------------------------------------------------------------------</h2>
- 	<acme:input-textbox code="inventor.patronage.form.label.patron.company" path="patron.company"/>
- 	<acme:input-textbox code="inventor.patronage.form.label.patron.statement" path="patron.statement"/>
- 	<acme:input-url code="inventor.patronage.form.label.patron.moreInfo" path="patron.moreInfo"/>
- 	<acme:input-textbox code="inventor.patronage.form.label.patron.userAccount.username" path="patron.userAccount.username"/>
- 	<acme:input-textbox code="inventor.patronage.form.label.patron.userAccount.identity.name" path="patron.userAccount.identity.name"/>
- 	<acme:input-textbox code="inventor.patronage.form.label.patron.userAccount.identity.surname" path="patron.userAccount.identity.surname"/>
- 	<acme:input-textbox code="inventor.patronage.form.label.patron.userAccount.identity.email" path="patron.userAccount.identity.email"/>
+ 	<acme:input-textbox code="inventor.patronage.form.label.patron.company" path="patron.company" readonly="true"/>
+ 	<acme:input-textbox code="inventor.patronage.form.label.patron.statement" path="patron.statement" readonly="true"/>
+ 	<acme:input-url code="inventor.patronage.form.label.patron.moreInfo" path="patron.moreInfo" readonly="true"/>
+ 	<acme:input-textbox code="inventor.patronage.form.label.patron.userAccount.username" path="patron.userAccount.username" readonly="true"/>
+ 	<acme:input-textbox code="inventor.patronage.form.label.patron.userAccount.identity.name" path="patron.userAccount.identity.name" readonly="true"/>
+ 	<acme:input-textbox code="inventor.patronage.form.label.patron.userAccount.identity.surname" path="patron.userAccount.identity.surname" readonly="true"/>
+ 	<acme:input-textbox code="inventor.patronage.form.label.patron.userAccount.identity.email" path="patron.userAccount.identity.email" readonly="true"/>
 
  </acme:form>  
  
