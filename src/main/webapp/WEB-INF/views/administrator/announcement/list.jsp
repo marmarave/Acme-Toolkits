@@ -20,4 +20,4 @@
 	<acme:list-column code="authenticated.announcement.list.label.body" path="body" width="10%"/>
 	<acme:list-column code="authenticated.announcement.list.label.title" path="title" width="70%"/>
 </acme:list>
-<acme:button code="administrator.announcement.list.button.create" action="/administrator/announcement/create"/>
+<acme:button code="administrator.announcement.list.button.createAnnouncement" action="/administrator/announcement/create"/>
