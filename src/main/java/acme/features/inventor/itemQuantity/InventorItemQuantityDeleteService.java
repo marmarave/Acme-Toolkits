@@ -73,8 +73,10 @@ public class InventorItemQuantityDeleteService implements AbstractDeleteService<
 		assert request != null;
 		
 		final int masterId = Integer.parseInt(request.getModel().getAttribute("masterId").toString());
+		//Esto pilla el masterId del toolkit
+		final Collection<ItemQuantity> quantities = this.iqRepository.findManyItemQuantitiesByToolkitId(masterId);
 		
-		return this.iqRepository.findItemQuantityById(masterId);
+		return quantities.stream().findFirst().get();
 	}
 
 	@Override

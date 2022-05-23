@@ -31,5 +31,5 @@
 
 <jstl:if test="${type == 'COMPONENT' && draftMode == true}">
 	<acme:button test="${showCreate}" code="inventor.item-quantity.button.addComponent" action="/inventor/item-quantity/create?type=COMPONENT&masterId=${masterId}"/>
-	<acme:button test="${showCreate}" code="inventor.item-quantity.button.deleteComponent" action="/inventor/item-quantity/delete?type=COMPONENT&masterId=${masterId}"/>
+	<acme:button code="inventor.item-quantity.button.deleteComponent" action="/inventor/item-quantity/delete?type=COMPONENT&masterId=${masterId}"/>
 </jstl:if>
