@@ -8,15 +8,11 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-any.component.list.label.name = Name
-any.component.list.label.code = Code
-any.component.list.label.technology = Technology
-any.component.list.label.description = Description
+authenticated.money-exchange.form.label.source = Source money:
+authenticated.money-exchange.form.label.target-currency = Target currency:
+authenticated.money-exchange.form.label.date = Exchange date:
+authenticated.money-exchange.form.label.target = Target money:
+	
+authenticated.money-exchange.form.button.perform = Perform exchange
 
-any.item.form.label.name = Name
-any.item.form.label.code = Code
-any.item.form.label.technology = Technology
-any.item.form.label.description = Description
-any.item.form.label.retailPrice = Retail Price
-any.item.form.label.convertedPrice = Converted Price
-any.item.form.label.more-info = More Info
+authenticated.money-exchange.form.label.api-error = Sorry, couldn't perform the exchange
