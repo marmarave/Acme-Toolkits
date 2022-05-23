@@ -13,15 +13,13 @@
 package acme.features.inventor.patronageReport;
 
 import java.util.Collection;
-
-
-
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import acme.entities.Patronage;
 import acme.entities.PatronageReport;
 import acme.entities.SystemConfiguration;
@@ -110,11 +108,11 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 			assert errors != null;
 			
 			
-			SystemConfiguration sc = scRepo.findSystemConfigurationById();
-				String[] parts = sc.getStrongSpam().split(";");
-				String[] parts2 = sc.getWeakSpam().split(";");
-				List<String> strongSpam = new LinkedList<>();
-				List<String> weakSpam = new LinkedList<>();
+			final SystemConfiguration sc = this.scRepo.findSystemConfigurationById();
+				final String[] parts = sc.getStrongSpam().split(";");
+				final String[] parts2 = sc.getWeakSpam().split(";");
+				final List<String> strongSpam = new LinkedList<>();
+				final List<String> weakSpam = new LinkedList<>();
 				for( int i = 0;i<parts.length;i++) {
 					strongSpam.add(parts[i]);
 					
@@ -124,15 +122,15 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 					
 				}
 			if(entity.getMemorandum() != null  && !entity.getMemorandum().equals("")) {
-				boolean spam1 = sp.validateNoSpam(entity.getMemorandum(), weakSpam, sc.getWeakThreshold())&&
-						sp.validateNoSpam(entity.getMemorandum(), strongSpam, sc.getStrongThreshold());
+				final boolean spam1 = SpamDetector.validateNoSpam(entity.getMemorandum(), weakSpam, sc.getWeakThreshold())&&
+						SpamDetector.validateNoSpam(entity.getMemorandum(), strongSpam, sc.getStrongThreshold());
 				
 					
 				errors.state(request, spam1, "memorandum", "inventor.patronage-report.form.label.spam", "spam");
 				}
 			if(!entity.getMoreInfo().equals("") && entity.getMoreInfo() != null) {
-				boolean spam2 = sp.validateNoSpam(entity.getMoreInfo(), weakSpam, sc.getWeakThreshold())&&
-						sp.validateNoSpam(entity.getMoreInfo(), strongSpam, sc.getStrongThreshold());
+				final boolean spam2 = SpamDetector.validateNoSpam(entity.getMoreInfo(), weakSpam, sc.getWeakThreshold())&&
+						SpamDetector.validateNoSpam(entity.getMoreInfo(), strongSpam, sc.getStrongThreshold());
 				
 				errors.state(request, spam2, "moreInfo", "inventor.patronage-report.form.label.spam", "spam");
 			}
