@@ -25,5 +25,6 @@ inventor.item-quantity.button.addTool = Añadir Herramienta
 inventor.item-quantity.button.addComponent = Añadir Componente
 inventor.item-quantity.component.button.create = Añadir Componente
 inventor.item-quantity.tool.button.create = Añadir Herramienta
-
+inventor.itemQuantity.form.delete.component = Borrar Componente
+inventor.itemQuantity.form.delete.tool = Borrar Herramienta
 inventor.item-quantity.form.error.negative-number = La cantidad debe ser positiva

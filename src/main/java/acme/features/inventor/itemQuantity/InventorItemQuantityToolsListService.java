@@ -54,12 +54,13 @@ public class InventorItemQuantityToolsListService implements AbstractListService
 		int masterId;
 		Toolkit toolkit;
 		String type;
-		final boolean checkPublished = true;
+		boolean checkPublished = true;
 
 		masterId = request.getModel().getInteger("masterId");
 		toolkit = this.repository.findOneToolkitById(masterId);
-		//checkPublished = (!toolkit.isPublished() && request.isPrincipal(toolkit.getInventor()));
+		checkPublished = (toolkit.isDraftMode() && request.isPrincipal(toolkit.getInventor()));
 		type = request.getModel().getAttribute("type").toString();
+		model.setAttribute("draftMode", toolkit.isDraftMode());
 		model.setAttribute("type", type);
 		model.setAttribute("masterId", masterId);
 		model.setAttribute("showCreate", checkPublished);
@@ -71,7 +72,7 @@ public class InventorItemQuantityToolsListService implements AbstractListService
 		assert entity != null; 
 		assert model != null; 
 
-		request.unbind(entity, model,"quantity", "item.name", "item.type","item.code", "item.technology", "item.retailPrice"); 
+		request.unbind(entity, model,"quantity", "item.name", "item.type","item.code", "item.technology", "item.retailPrice","toolkit.draftMode"); 
 		
 	}
 

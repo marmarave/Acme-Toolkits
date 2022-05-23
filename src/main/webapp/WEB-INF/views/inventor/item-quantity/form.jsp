@@ -17,7 +17,7 @@
 
 <acme:form>
 	<jstl:if test="${type == 'TOOL'}">
-	<acme:input-integer code="inventor.itemQuantity.form.label.quantity" path="quantity" placeholder="1" readonly="true"/>
+	<acme:input-integer code="inventor.itemQuantity.form.label.quantity" path="quantity"  readonly="true"/>
     <acme:input-select code="inventor.itemQuantity.form.label.item" path="itemId">
         <jstl:forEach items="${tools}" var="item">
             <acme:input-option code="${item.getCode()}   ${item.getName()}" value="${item.getId()}" selected="${item.getId() == itemId}"/>
@@ -34,11 +34,27 @@
     </jstl:if>
     <jstl:choose>
     <jstl:when test="${command == 'create'}">
-    	<jstl:if test="${type == 'TOOL'}">
+    	<jstl:if test="${type == 'TOOL' && draftMode == true}">
         	<acme:submit code="inventor.item-quantity.tool.button.create" action="/inventor/item-quantity/create?masterId=${masterId}"/>
     	</jstl:if>
-    	<jstl:if test="${type == 'COMPONENT'}">
+    	<jstl:if test="${type == 'COMPONENT'  && draftMode == true}">
         	<acme:submit code="inventor.item-quantity.component.button.create" action="/inventor/item-quantity/create?masterId=${masterId}"/>
+    	</jstl:if>
+    </jstl:when>
+    <jstl:when test="${command == 'delete'}">
+    	<jstl:if test="${type == 'TOOL' && draftMode == true}">
+        	<acme:input-select code="inventor.itemQuantity.form.delete.tool" path="itemId">
+        		<jstl:forEach items="${toolkitTools}" var="tool">
+            		<acme:input-option code="${tool.getCode()}   ${tool.getName()}" value="${tool.getId()}" selected="${tool.getId() == itemId}"/>
+        		</jstl:forEach>
+    		</acme:input-select>
+    	</jstl:if>
+    	<jstl:if test="${type == 'COMPONENT'  && draftMode == true}">
+        	<acme:input-select code="inventor.itemQuantity.form.delete.component" path="itemId">
+        		<jstl:forEach items="${toolkitComponents}" var="component">
+            		<acme:input-option code="${component.getCode()}   ${component.getName()}" value="${component.getId()}" selected="${component.getId() == itemId}"/>
+        		</jstl:forEach>
+    		</acme:input-select>
     	</jstl:if>
     </jstl:when>
     </jstl:choose>

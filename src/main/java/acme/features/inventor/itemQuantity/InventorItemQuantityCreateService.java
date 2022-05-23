@@ -23,13 +23,13 @@ public class InventorItemQuantityCreateService implements AbstractCreateService<
 	public boolean authorise(final Request<ItemQuantity> request) {
 		assert request != null;
 
-		final boolean checkPublished = true;
+		boolean checkPublished = true;
 		int masterId;
 		Toolkit toolkit;
 
 		masterId = request.getModel().getInteger("masterId");
 		toolkit = this.repository.findOneToolkitById(masterId);
-		//checkPublished = (toolkit != null && !toolkit.isPublished() && request.isPrincipal(toolkit.getInventor()));
+		checkPublished = (toolkit != null && toolkit.isDraftMode()) && request.isPrincipal(toolkit.getInventor());
 		
 		return checkPublished;
 	}
@@ -51,7 +51,8 @@ public class InventorItemQuantityCreateService implements AbstractCreateService<
 		assert entity != null;
 		assert model != null;
 		
-		
+		final Toolkit t = this.repository.findOneToolkitById(Integer.valueOf(request.getModel().getAttribute("masterId").toString()));
+		model.setAttribute("draftMode", t.isDraftMode());
 		model.setAttribute("type",  request.getModel().getAttribute("type").toString());
 		model.setAttribute("masterId", request.getModel().getAttribute("masterId"));
 		model.setAttribute("tools", this.repository.findAllItemsByType(ItemType.TOOL));
@@ -82,7 +83,7 @@ public class InventorItemQuantityCreateService implements AbstractCreateService<
 		if(!errors.hasErrors("quantity")) {
 			errors.state(request, entity.getQuantity() > 0, "quantity", "inventor.item-quantity.form.error.negative-number");
 		}
-		
+					
 		if(!errors.hasErrors("quantity")) {
 			if(entity.getItem().getType().equals(ItemType.TOOL)) {
 				errors.state(request, entity.getQuantity() == 1, "quantity", "inventor.item-quantity.form.error.incorrect-tool-quantity");

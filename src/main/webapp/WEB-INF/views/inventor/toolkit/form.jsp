@@ -29,19 +29,19 @@
 
 	
 		<jstl:choose>
-		<jstl:when test="${acme:anyOf(command, 'show, update, delete')}">
+		<jstl:when test="${acme:anyOf(command, 'show, update, delete, publish') && draftMode == true}">
 			<acme:submit code="inventor.toolkit.form.button.update" action="/inventor/toolkit/update"/>
 			<acme:submit code="inventor.toolkit.form.button.delete" action="/inventor/toolkit/delete"/>
+			<acme:submit code="inventor.toolkit.form.button.publish" action="/inventor/toolkit/publish"/>
 			<acme:button code="inventor.toolkit.form.button.components" action="/inventor/item-quantity/list-components?type=COMPONENT&masterId=${id}"/>
 			<acme:button code="inventor.toolkit.form.button.tools" action="/inventor/item-quantity/list-tools?type=TOOL&masterId=${id}"/>
 		</jstl:when>
 		<jstl:when test="${command == 'create'}">
-			<acme:input-textbox code="inventor.toolkit.form.label.quantity" path="quantity"/>
 			<acme:submit code="inventor.toolkit.form.button.create" action="/inventor/toolkit/create"/>
 		</jstl:when>
 		<jstl:when test="${command == 'show'}">
-			<acme:button code="any.toolkit.form.button.components" action="/any/item/list-master?type=TOOL&masterId=${id}"/>
-			<acme:button code="any.toolkit.form.button.tools" action="/any/item/list-master?type=COMPONENT&masterId=${id}"/>
+			<acme:button code="any.toolkit.form.button.tools" action="/inventor/item-quantity/list-tools?type=TOOL&masterId=${id}"/>
+			<acme:button code="any.toolkit.form.button.components" action="/inventor/item-quantity/list-components?type=COMPONENT&masterId=${id}"/>
 		</jstl:when>				
 	</jstl:choose>		
 </acme:form> 

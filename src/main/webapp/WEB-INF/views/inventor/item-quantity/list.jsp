@@ -24,10 +24,12 @@
     <acme:list-column code="inventor.itemQuantity.list.label.item-retailPrice" path="item.retailPrice" width="15%"/>
 </acme:list>
 
-<jstl:if test="${type == 'TOOL'}">
+<jstl:if test="${type == 'TOOL' && draftMode == true}">
 	<acme:button test="${showCreate}" code="inventor.item-quantity.button.addTool" action="/inventor/item-quantity/create?type=TOOL&masterId=${masterId}"/>
+	<acme:button test="${showCreate}" code="inventor.item-quantity.button.deleteTool" action="/inventor/item-quantity/delete?type=TOOL&masterId=${masterId}"/>
 </jstl:if>
 
-<jstl:if test="${type == 'COMPONENT'}">
+<jstl:if test="${type == 'COMPONENT' && draftMode == true}">
 	<acme:button test="${showCreate}" code="inventor.item-quantity.button.addComponent" action="/inventor/item-quantity/create?type=COMPONENT&masterId=${masterId}"/>
+	<acme:button test="${showCreate}" code="inventor.item-quantity.button.deleteComponent" action="/inventor/item-quantity/delete?type=COMPONENT&masterId=${masterId}"/>
 </jstl:if>

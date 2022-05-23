@@ -68,7 +68,7 @@ public class InventorToolkitShowMineService implements AbstractShowService<Inven
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title", "description", "assemblyNotes", "totalPrice", "moreInfo");
+		request.unbind(entity, model, "code", "title", "description", "assemblyNotes", "totalPrice", "moreInfo", "draftMode");
 	}
 	
 	private Money calculateTotalPrice(final Toolkit t) {

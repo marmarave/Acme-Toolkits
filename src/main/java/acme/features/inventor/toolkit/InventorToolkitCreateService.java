@@ -43,7 +43,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "code", "title","description", "assemblyNotes", "moreInfo", "totalPrice");
+		request.unbind(entity, model, "code", "title","description", "assemblyNotes", "moreInfo", "totalPrice", "draftMode");
 		model.setAttribute("readonly", false);
 	}
 
@@ -82,7 +82,7 @@ public class InventorToolkitCreateService implements AbstractCreateService<Inven
 		assert request != null;
 		assert entity != null;
 
-		entity.setDraftMode(false);
+		entity.setDraftMode(true);
 		this.repository.save(entity);
 	}
 

@@ -20,12 +20,20 @@ public class InventorItemQuantityController extends AbstractController<Inventor,
     
     @Autowired
     protected InventorItemQuantityCreateService createService;
+    
+    @Autowired
+    protected InventorItemQuantityShowService showService;
+    
+    @Autowired
+    protected InventorItemQuantityDeleteService deleteService;
 
     @PostConstruct
     protected void initialise() {
         super.addCommand("list-components","list", this.componentsListService);
         super.addCommand("list-tools","list", this.toolsListService);
         super.addCommand("create", this.createService);
+        super.addCommand("item-quantity/show","show", this.showService);
+        super.addCommand("delete", this.deleteService);
     }
 
 }
