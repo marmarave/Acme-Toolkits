@@ -1,17 +1,26 @@
 
 package acme.features.inventor.item;
 
+import java.util.Arrays;
+import java.util.List;
+
+
 import java.util.Calendar;
 import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.components.CalculateMoneyExchange;
 import acme.entities.Item;
+
+import acme.entities.ItemType;
+
 import acme.entities.MoneyExchangeCache;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.forms.MoneyExchange;
+
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -20,15 +29,67 @@ import acme.framework.services.AbstractUpdateService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorItemUpdateService implements AbstractUpdateService<Inventor, Item> {
 
-	// Internal state ---------------------------------------------------------
+public class InventorItemUpdateService implements AbstractUpdateService<Inventor,Item> {
+	
+	
 
-	@Autowired
-	protected InventorItemRepository					repository;
+		// Internal state ---------------------------------------------------------
+
+		@Autowired
+		protected InventorItemRepository repository;
+
+		// AbstractUpdateService<Inventor,Item> interface -----------------
+		
+		public boolean validateAvailableCurrencyRetailPrice(final Money retailPrice) {
+			
+			final String currencies = this.repository.findAvailableCurrencies();
+			final List<Object> listOfAvailableCurrencies = Arrays.asList(currencies.split(";"));
+			final boolean availableCurrencies = listOfAvailableCurrencies.contains(retailPrice.getCurrency());
+			
+			return availableCurrencies;
+			
+			
+			
+		}
+
+		@Override
+		public void validate(final Request<Item> request, final Item entity, final Errors errors) {
+			assert request != null;
+			assert entity != null;
+			assert errors != null;
+			
+			if (!errors.hasErrors("code")) {
+				
+				final Item existing = this.repository.findOneItemByCode(entity.getCode());
+				errors.state(request, existing.getId()==entity.getId(), "code", "inventor.item.form.error.duplicated");
+
+			}
+			
+			if(!errors.hasErrors("retailPrice")){
+				
+						final Money retailPrice = entity.getRetailPrice();
+						final boolean availableCurrency = this.validateAvailableCurrencyRetailPrice(retailPrice);
+						errors.state(request, availableCurrency, "retailPrice", "inventor.item.form.error.retail-price-currency-not-available");
+						
+						if(entity.getType().equals(ItemType.COMPONENT)) {
+							final boolean retailPriceComponentPositive = retailPrice.getAmount() > 0.;
+							errors.state(request, retailPriceComponentPositive, "retailPrice", "inventor.item.form.error.retail-price-component-positive");
+							
+						} else if(entity.getType().equals(ItemType.TOOL)) {
+							final boolean retailPriceToolZeroOrPositive = retailPrice.getAmount() >= 0.;
+							errors.state(request, retailPriceToolZeroOrPositive, "retailPrice", "inventor.item.form.error.retail-price-tool-zero-or-positive");
+							
+						} 
+						
+			}
+			
+		}
+
 
 	@Autowired
 	protected AuthenticatedMoneyExchangePerformService	exchangeService;
+
 
 	// AbstractUpdateService<Authenticated, Worker> interface -----------------
 
@@ -47,12 +108,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		return !result;
 	}
 
-	@Override
-	public void validate(final Request<Item> request, final Item entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
-	}
+
 
 	@Override
 	public void bind(final Request<Item> request, final Item entity, final Errors errors) {
@@ -60,8 +116,14 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		assert entity != null;
 		assert errors != null;
 
+
+			entity.setPublished(false);
+			this.repository.save(entity);
+		
+
 		request.bind(entity, errors, "name", "type", "code", "technology", "description", "retailPrice", "convertedPrice", "moreInfo", "published");
 	}
+
 
 	@Override
 	public void unbind(final Request<Item> request, final Item entity, final Model model) {
