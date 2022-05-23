@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 
 import acme.testing.TestHarness;
 
-public class AnyToolListMineTest extends TestHarness {
+public class InventorToolListMineTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/inventor/tool/tool.csv", encoding = "utf-8", numLinesToSkip = 1)
