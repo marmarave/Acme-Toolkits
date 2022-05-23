@@ -19,32 +19,25 @@
 
 	<acme:input-textbox code="inventor.item.form.label.name" path="name"/>
 	<acme:input-textbox code="inventor.item.form.label.code" path="code"/>
-	
-	<jstl:if test="${command == 'show'}">
-		<acme:input-textbox code="inventor.item.form.label.type" path="type" readonly="true"/>
-	</jstl:if>
-	
-	<jstl:if test="${command != 'show'}">
-		<acme:input-select code="inventor.item.form.label.type" path="type">
-			<acme:input-option code="COMPONENT" value="COMPONENT" selected="${type == 'COMPONENT'}"/>
-			<acme:input-option code="TOOL" value="TOOL" selected="${type == 'TOOL'}"/>
-		</acme:input-select>
-	</jstl:if>
-		
+	<acme:input-textbox code="inventor.item.form.label.type" path="type" readonly="true"/>
 	<acme:input-textbox code="inventor.item.form.label.technology" path="technology"/>
 	<acme:input-textbox code="inventor.item.form.label.description" path="description"/>
 	<acme:input-money code="inventor.item.form.label.retailPrice" path="retailPrice"/>
+
 	<acme:input-money code="inventor.item.form.label.convertedPrice" path="convertedPrice" readonly="true"/>
 	<acme:input-checkbox code="inventor.item.form.label.published" path="published"/>
 	<acme:input-url code="inventor.item.form.label.more-info" path="moreInfo"/>
+
 	
+	<acme:input-url code="inventor.item.form.label.more-info" path="moreInfo"/>
 	
 	<jstl:if test="${command == 'create'}">
 		<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create"/>
 	</jstl:if>
 	
-	<jstl:if test="${command == 'show' && published == 'false'}">
+	<jstl:if test="${acme:anyOf(command, 'show, update, delete, publish') && published == 'false'}">
 		<acme:submit code="inventor.item.form.button.update" action="/inventor/item/update"/>
+		<acme:submit code="inventor.item.form.button.publish" action="/inventor/item/publish"/>
 		<acme:submit code="inventor.item.form.button.delete" action="/inventor/item/delete"/>
 	</jstl:if>
 	
