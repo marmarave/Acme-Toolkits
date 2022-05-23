@@ -13,11 +13,13 @@
 package acme.features.any.toolkit;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.ItemQuantity;
+import acme.entities.MoneyExchangeCache;
 import acme.entities.Toolkit;
 import acme.framework.repositories.AbstractRepository;
 
@@ -35,5 +37,8 @@ public interface AnyToolkitRepository extends AbstractRepository {
 	
 //	@Query("select t from Toolkit t where t.draftMode = false")
 //	Collection<Toolkit> findManyToolkitsByItem();
+	
+	@Query("select c from MoneyExchangeCache c where c.source = :sourceCurrency and c.target=:targetCurrency")
+	Optional<MoneyExchangeCache> findCacheBySourceAndTarget(String sourceCurrency, String targetCurrency);
 
 }

@@ -18,4 +18,5 @@ any.item.form.label.code = Code
 any.item.form.label.technology = Technology
 any.item.form.label.description = Description
 any.item.form.label.retailPrice = Retail Price
+any.item.form.label.convertedPrice = Converted Price
 any.item.form.label.more-info = More Info

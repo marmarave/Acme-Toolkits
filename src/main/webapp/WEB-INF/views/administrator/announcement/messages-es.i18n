@@ -9,14 +9,14 @@
 # they accept any liabilities with respect to them.
 
 
-administrator.announcement.form.label.body = Cuerpo:
-
-
 administrator.announcement.form.label.title = Título:
+administrator.announcement.form.label.body = Cuerpo:
 administrator.announcement.form.label.email = Email:
-administrator.announcement.form.label.critical = Crítico:
+administrator.announcement.form.label.critical = Crítico
 administrator.announcement.form.label.moreInfo = Más información:
 administrator.announcement.form.label.creationMoment = Fecha de creación:
 administrator.announcement.form.label.confirmation = Confirmación
 administrator.announcement.form.button.create = Crear
-administrator.announcement.list.button.create = Crear
+administrator.announcement.form.button.create = Crear
+
+administrator.announcement.list.button.createAnnouncement = Crear

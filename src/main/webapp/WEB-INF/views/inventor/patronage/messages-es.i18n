@@ -33,5 +33,7 @@
  inventor.patronage.form.label.patron.userAccount.identity.name = Nombre del Patrón
  inventor.patronage.form.label.patron.userAccount.identity.surname = Apellidos del Patrón
  inventor.patronage.form.label.patron.userAccount.identity.email = Correo del Patrón
- 
+
+ inventor.patronage.form.button.create.patronage-report = Crear reporte
  inventor.patronage.form.button.update = Actualizar
+>

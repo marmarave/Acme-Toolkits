@@ -12,13 +12,19 @@
 
 package acme.features.any.toolkit;
 
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.components.CalculateMoneyExchange;
+import acme.entities.Item;
 import acme.entities.ItemQuantity;
+import acme.entities.MoneyExchangeCache;
 import acme.entities.Toolkit;
+import acme.forms.MoneyExchange;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.datatypes.Money;
@@ -76,15 +82,75 @@ public class AnyToolkitShowService implements AbstractShowService<Any, Toolkit> 
 	}
 	
 	private Money calculateTotalPrice(final Toolkit t) {
-		final Money money = new Money();
-		money.setCurrency("EUR"); //Default Currency
-		Double sum=0.;
+		final Calendar exchangeDate = Calendar.getInstance();
+		final Calendar today = Calendar.getInstance();
+		MoneyExchange exchange;
+		Money converted;
+		final Money result = new Money();
+		result.setCurrency("EUR"); //Default Currency
+		Double sum = 0.;
+
 		final Collection<ItemQuantity> quantities = this.repository.findItemQuantitiesOfToolkit(t.getId());
-		for(final ItemQuantity quantity: quantities) {
-			sum+=quantity.getItem().getRetailPrice().getAmount()*quantity.getQuantity();
+		for (final ItemQuantity quantity : quantities) {
+			final Item item = quantity.getItem();
+			final Money money = item.getRetailPrice();
+			if ("EUR".equals(money.getCurrency()))
+				sum += money.getAmount() * quantity.getQuantity();
+			else {
+				exchangeDate.setTime(item.getExchangeDate());
+				if (exchangeDate.get(Calendar.DATE) == today.get(Calendar.DATE) && exchangeDate.get(Calendar.MONTH) == today.get(Calendar.MONTH) && exchangeDate.get(Calendar.YEAR) == today.get(Calendar.YEAR)) {
+					converted = item.getConvertedPrice();
+					sum += converted.getAmount() * quantity.getQuantity();
+				} else {
+					exchange = this.getConversion(money, "EUR");
+					converted = this.getConversion(money, "EUR").getTarget();
+					item.setConvertedPrice(converted);
+					item.setExchangeDate(exchange.getDate());
+					this.repository.save(item);
+					sum += converted.getAmount() * quantity.getQuantity();
+				}
+			}
 		}
-		money.setAmount(sum);
-		return money;
+		result.setAmount(sum);
+		return result;
+	}
+
+	public MoneyExchange getConversion(final Money source, final String targetCurrency) {
+		MoneyExchangeCache cache;
+		MoneyExchange exchange;
+		final Calendar date;
+
+		date = Calendar.getInstance();
+
+		final Optional<MoneyExchangeCache> opt = this.repository.findCacheBySourceAndTarget(source.getCurrency(), targetCurrency);
+		if (opt.isPresent()) {
+			cache = opt.get();
+			if (Boolean.TRUE.equals(CalculateMoneyExchange.checkCache(cache)))
+				exchange = CalculateMoneyExchange.calculateMoneyExchangeFromCache(source, targetCurrency, cache);
+			else {
+				exchange = CalculateMoneyExchange.computeMoneyExchange(source, targetCurrency);
+
+				date.setTime(exchange.getDate());
+				cache.setDate(date);
+				cache.setRate(exchange.getRate());
+
+				this.repository.save(cache);
+			}
+			return exchange;
+		} else {
+			exchange = CalculateMoneyExchange.computeMoneyExchange(source, targetCurrency);
+
+			date.setTime(exchange.getDate());
+			cache = new MoneyExchangeCache();
+			cache.setDate(date);
+			cache.setRate(exchange.getRate());
+			cache.setSource(source.getCurrency());
+			cache.setTarget(targetCurrency);
+
+			this.repository.save(cache);
+
+			return exchange;
+		}
 	}
 
 }

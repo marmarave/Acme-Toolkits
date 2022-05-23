@@ -34,6 +34,7 @@
 	<acme:input-textbox code="inventor.item.form.label.technology" path="technology"/>
 	<acme:input-textbox code="inventor.item.form.label.description" path="description"/>
 	<acme:input-money code="inventor.item.form.label.retailPrice" path="retailPrice"/>
+	<acme:input-money code="inventor.item.form.label.convertedPrice" path="convertedPrice" readonly="true"/>
 	<acme:input-checkbox code="inventor.item.form.label.published" path="published"/>
 	<acme:input-url code="inventor.item.form.label.more-info" path="moreInfo"/>
 	
