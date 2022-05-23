@@ -25,7 +25,15 @@ public interface InventorItemRepository extends AbstractRepository {
 	@Query("select i.inventor from Item i where i.inventor.id = :inventorId")
 	Inventor findInventorById(int inventorId);
 	
+
+	@Query("select i from Item i WHERE i.code = :code")
+    Item findOneItemByCode(String code);
+	
+	@Query("select s.acceptedCurrencies from SystemConfiguration s")
+	String findAvailableCurrencies();
+
 	@Query("select c from MoneyExchangeCache c where c.source = :sourceCurrency and c.target=:targetCurrency")
 	Optional<MoneyExchangeCache> findCacheBySourceAndTarget(String sourceCurrency, String targetCurrency);
+
 
 }
