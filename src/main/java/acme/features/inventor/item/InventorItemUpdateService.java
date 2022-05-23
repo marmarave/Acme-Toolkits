@@ -40,24 +40,6 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		protected InventorItemRepository repository;
 
 		// AbstractUpdateService<Inventor,Item> interface -----------------
-
-
-		@Override
-		public boolean authorise(final Request<Item> request) {
-			assert request != null;
-			boolean result;
-			
-			Item item;
-			Inventor inventor;
-			int id;
-			
-			id = request.getModel().getInteger("id");
-			item = this.repository.findOneItemById(id);
-			inventor = item.getInventor();
-			result = item.isPublished();
-			
-			return !result && request.isPrincipal(inventor);
-		}
 		
 		public boolean validateAvailableCurrencyRetailPrice(final Money retailPrice) {
 			
@@ -104,17 +86,6 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 			
 		}
 
-public class InventorItemUpdateService implements AbstractUpdateService<Inventor, Item> {
-
-	// Internal state ---------------------------------------------------------
-
-
-	@Autowired
-	protected InventorItemRepository					repository;
-
-
-			request.bind(entity, errors, "name", "type", "code","technology","description","retailPrice","moreInfo");
-		}
 
 	@Autowired
 	protected AuthenticatedMoneyExchangePerformService	exchangeService;
@@ -137,12 +108,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		return !result;
 	}
 
-	@Override
-	public void validate(final Request<Item> request, final Item entity, final Errors errors) {
-		assert request != null;
-		assert entity != null;
-		assert errors != null;
-	}
+
 
 	@Override
 	public void bind(final Request<Item> request, final Item entity, final Errors errors) {
@@ -153,7 +119,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 
 			entity.setPublished(false);
 			this.repository.save(entity);
-		}
+		
 
 		request.bind(entity, errors, "name", "type", "code", "technology", "description", "retailPrice", "convertedPrice", "moreInfo", "published");
 	}

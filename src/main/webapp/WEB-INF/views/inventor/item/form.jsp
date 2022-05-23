@@ -25,11 +25,8 @@
 	<acme:input-money code="inventor.item.form.label.retailPrice" path="retailPrice"/>
 
 	<acme:input-money code="inventor.item.form.label.convertedPrice" path="convertedPrice" readonly="true"/>
-	<acme:input-checkbox code="inventor.item.form.label.published" path="published"/>
 	<acme:input-url code="inventor.item.form.label.more-info" path="moreInfo"/>
 
-	
-	<acme:input-url code="inventor.item.form.label.more-info" path="moreInfo"/>
 	
 	<jstl:if test="${command == 'create'}">
 		<acme:submit code="inventor.item.form.button.create" action="/inventor/item/create"/>
