@@ -25,7 +25,7 @@
 	</jstl:if>
 	
 	<acme:input-textbox code="inventor.patronage-report.form.label.memorandum" path="memorandum"/>
-	<acme:input-textbox code="inventor.patronage-report.form.label.moreInfo" path="moreInfo"/>
+	<acme:input-url code="inventor.patronage-report.form.label.moreInfo" path="moreInfo"/>
 
 	<jstl:if test="${command == 'create'}">
 		<acme:input-checkbox code="inventor.patronage-report.form.label.confirmation" path="confirmation"/>
