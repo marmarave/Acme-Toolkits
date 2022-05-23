@@ -3,4 +3,3 @@ recordIndex,name,code,technology,description,retail-price,more-info
 1,Component-2,,java,moneda con muchos decimales,EUR 0.11312,http://www.google.com
 2,Component3,AXZ-999-Z,,tecnologia vacía,EUR 4.00,http://www.rc.com
 3,Component4,USD-999-Z,java2.5,moneda no nula,TTT 5.00,http://www.ddggsg.com
-4,Component4,GBP-999-Z,java2.5,description-3,GBP 5.99,http://www.dc.com

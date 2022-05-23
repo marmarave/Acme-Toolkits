@@ -53,7 +53,7 @@ public class InventorComponentCreateTest extends TestHarness {
 		}
 
 		@ParameterizedTest
-		@CsvFileSource(resources = "/administrator/announcement/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
+		@CsvFileSource(resources = "/inventor/component/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 		@Order(20)
 		public void negativeTest(final int recordIndex, final String name, final String code, final String technology, final String description, final String retailPrice, final String moreInfo) {
 
