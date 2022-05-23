@@ -1,6 +1,7 @@
 
 package acme.testing.inventor.patronageReport;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.springframework.core.annotation.Order;
@@ -23,15 +24,17 @@ public class InventorPatronageReportCreateTest extends TestHarness {
 		super.fillInputBoxIn("moreInfo", moreInfo);
 		super.fillInputBoxIn("confirmation", confirmation);
 		super.clickOnSubmit("Create");
-		
+
 		super.clickOnMenu("Inventor", "List my patronage reports");
 		super.checkListingExists();
 		super.sortListing(0, "asc");
 		super.clickOnListingRecord(recordIndex);
-		
+
 		super.checkFormExists();
 		super.checkInputBoxHasValue("moreInfo", moreInfo);
 		super.checkInputBoxHasValue("memorandum", memorandum);
+		
+		super.signOut();
 
 	}
 
@@ -54,6 +57,30 @@ public class InventorPatronageReportCreateTest extends TestHarness {
 
 		super.checkErrorsExist();
 
+		super.signOut();
+	}
+
+	@Test
+	@Order(30)
+	public void hackingTest() {
+		super.checkNotLinkExists("Account");
+		super.navigate("/inventor/patronage-report/create", "masterId=35");
+		super.checkPanicExists();
+
+		super.signIn("patron1", "patron1");
+		super.navigate("/inventor/patronage-report/create", "masterId=35");
+		super.checkPanicExists();
+		super.signOut();
+
+		super.signIn("administrator", "administrator");
+		super.navigate("/inventor/patronage-report/create", "masterId=35");
+		super.checkPanicExists();
+		super.signOut();
+		
+		super.signIn("inventor1", "inventor1");
+		super.navigate("/inventor/patronage-report/create", "masterId=35");
+		super.checkPanicExists();
+		super.signOut();
 	}
 
 }
