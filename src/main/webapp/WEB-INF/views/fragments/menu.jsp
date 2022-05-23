@@ -28,8 +28,6 @@
 			<acme:menu-suboption code="master.menu.anonymous.tool.list" action="/any/item/list?type=TOOL"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.anonymous.toolkit.list" action="/any/toolkit/list"/>
-			<acme:menu-separator/>
-			<acme:menu-suboption code="master.menu.anonymous.chirp.create" action="/any/chirp/create"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
@@ -42,7 +40,9 @@
 			<acme:menu-suboption code="master.menu.authenticated.toolkit.list" action="/any/toolkit/list"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.authenticated.user-account.list" action="/any/user-account/list"/>
-			<acme:menu-suboption code="master.menu.authenticated.system-configuration.show" action="/authenticated/system-configuration/show"/>		
+			<acme:menu-suboption code="master.menu.authenticated.system-configuration.show" action="/authenticated/system-configuration/show"/>	
+			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.authenticated.money-exchange" action="/authenticated/money-exchange/perform"/>	
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
@@ -52,9 +52,7 @@
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.system-configuration" action="/administrator/system-configuration/show"/>
 			<acme:menu-separator/>
-			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.announcement" action="/administrator/announcement/list"/>
-			<acme:menu-suboption code="master.menu.administrator.announcement-create" action="/administrator/announcement/create"/>
 			<acme:menu-separator/>
 			<acme:menu-suboption code="master.menu.administrator.populate-initial" action="/administrator/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-sample" action="/administrator/populate-sample"/>			

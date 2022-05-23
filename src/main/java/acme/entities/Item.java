@@ -1,5 +1,7 @@
 package acme.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -49,6 +51,12 @@ public class Item extends AbstractEntity{
 	@NotNull
 	@Valid
 	protected Money retailPrice;
+	
+	
+	//@Valid
+	protected Money convertedPrice;
+	
+	protected Date exchangeDate;
 	
 	@URL
 	private String moreInfo;

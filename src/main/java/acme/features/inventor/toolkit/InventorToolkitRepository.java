@@ -1,6 +1,7 @@
 package acme.features.inventor.toolkit;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import acme.entities.Item;
 import acme.entities.ItemQuantity;
 import acme.entities.ItemType;
+import acme.entities.MoneyExchangeCache;
 import acme.entities.Toolkit;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Inventor;
@@ -45,4 +47,8 @@ public interface InventorToolkitRepository extends AbstractRepository {
 	@Query("select t from Toolkit t where t.code = :code")
 	Toolkit findOneToolkitByCode(String code);
 	
+
+	@Query("select c from MoneyExchangeCache c where c.source = :sourceCurrency and c.target=:targetCurrency")
+	Optional<MoneyExchangeCache> findCacheBySourceAndTarget(String sourceCurrency, String targetCurrency);
+
 }
