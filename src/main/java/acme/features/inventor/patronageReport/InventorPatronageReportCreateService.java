@@ -1,5 +1,5 @@
 /*
- * InventorPatronageReportCreateService.java
+ *InventorPatronageReportCreateService.java
  *
  * Copyright (C) 2012-2022 Rafael Corchuelo.
  *
@@ -13,8 +13,10 @@
 package acme.features.inventor.patronageReport;
 
 import java.util.Collection;
+
+
+
 import java.util.Date;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,7 +24,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import acme.entities.Patronage;
 import acme.entities.PatronageReport;
-import acme.entities.PatronageStatus;
 import acme.entities.SystemConfiguration;
 import acme.features.administrator.systemConfiguration.AdministratorSystemConfigurationRepository;
 import acme.features.spam.SpamDetector;
@@ -110,24 +111,33 @@ public class InventorPatronageReportCreateService implements AbstractCreateServi
 			
 			
 			SystemConfiguration sc = scRepo.findSystemConfigurationById();
-			if(entity.getMemorandum() != null && entity.getMoreInfo() != null) {
 				String[] parts = sc.getStrongSpam().split(";");
 				String[] parts2 = sc.getWeakSpam().split(";");
 				List<String> strongSpam = new LinkedList<>();
 				List<String> weakSpam = new LinkedList<>();
-				for( int i = 0;i<parts.length-1;i++) {
+				for( int i = 0;i<parts.length;i++) {
 					strongSpam.add(parts[i]);
 					
 				}
-				for( int i = 0;i<parts.length-1;i++) {
+				for( int i = 0;i<parts.length;i++) {
 					weakSpam.add(parts2[i]);
 					
 				}
-				errors.state(request, sp.validateNoSpam(entity.getMemorandum(), strongSpam, weakSpam,sc.getStrongThreshold() , sc.getWeakThreshold()), "memorandum", "inventor.patronage-report.form.label.spam", "spam");
-				errors.state(request, sp.validateNoSpam(entity.getMoreInfo(), strongSpam, weakSpam,sc.getStrongThreshold() , sc.getWeakThreshold()), "moreInfo", "inventor.patronage-report.form.label.spam", "spam");
+			if(entity.getMemorandum() != null  && !entity.getMemorandum().equals("")) {
+				boolean spam1 = sp.validateNoSpam(entity.getMemorandum(), weakSpam, sc.getWeakThreshold())&&
+						sp.validateNoSpam(entity.getMemorandum(), strongSpam, sc.getStrongThreshold());
+				
+					
+				errors.state(request, spam1, "memorandum", "inventor.patronage-report.form.label.spam", "spam");
+				}
+			if(!entity.getMoreInfo().equals("") && entity.getMoreInfo() != null) {
+				boolean spam2 = sp.validateNoSpam(entity.getMoreInfo(), weakSpam, sc.getWeakThreshold())&&
+						sp.validateNoSpam(entity.getMoreInfo(), strongSpam, sc.getStrongThreshold());
+				
+				errors.state(request, spam2, "moreInfo", "inventor.patronage-report.form.label.spam", "spam");
 			}
+				
 			boolean confirmation;
-			
 			confirmation = request.getModel().getBoolean("confirmation");
 			errors.state(request, confirmation, "confirmation", "inventor.patronage-report.form.label.confirmation");
 			
