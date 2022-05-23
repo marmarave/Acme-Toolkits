@@ -23,6 +23,7 @@ master.menu.anonymous.chirp.list = Ver susurros
 master.menu.anonymous.toolkit.list = Ver cajas de herramientas
 master.menu.anonymous.component.list = Ver componentes
 master.menu.anonymous.tool.list = Ver herramientas
+master.menu.anonymous.chirp.create = Crear un susurro
 
 # master.menu.authenticated #######################################################
 
@@ -35,6 +36,7 @@ master.menu.authenticated.component.list = Ver componentes
 master.menu.authenticated.tool.list = Ver herramientas
 master.menu.authenticated.system-configuration.show = Mostrar la configuración del sistema
 master.menu.authenticated.user-account.list = Ver cuentas de usuario
+master.menu.authenticated.money-exchange = Cambio de dinero
 
 # master.menu.administrator ###################################################
 
