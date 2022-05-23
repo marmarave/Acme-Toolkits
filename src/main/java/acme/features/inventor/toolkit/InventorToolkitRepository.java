@@ -23,6 +23,9 @@ public interface InventorToolkitRepository extends AbstractRepository {
 	@Query("select iq from ItemQuantity iq where iq.toolkit.id = :masterId")
     Collection<ItemQuantity> findItemQuantitiesOfToolkit(int masterId);
 	
+	@Query("select s.systemCurrency from SystemConfiguration s")
+	String findBaseCurrency();
+	
 	@Query("select c from MoneyExchangeCache c where c.source = :sourceCurrency and c.target=:targetCurrency")
 	Optional<MoneyExchangeCache> findCacheBySourceAndTarget(String sourceCurrency, String targetCurrency);
 }

@@ -65,7 +65,7 @@ public class InventorItemShowMineService implements AbstractShowService<Inventor
 		result = this.repository.findOneItemById(id);
 
 		source = result.getRetailPrice();
-		targetCurrency = "EUR";
+		targetCurrency = this.repository.findBaseCurrency();
 		today = Calendar.getInstance();
 		exchangeDate.setTime(result.getExchangeDate());
 

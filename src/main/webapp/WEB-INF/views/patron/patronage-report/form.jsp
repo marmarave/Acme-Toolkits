@@ -20,10 +20,10 @@
 
 	<acme:input-textbox code="patron.patronage-report.form.label.sequenceNumber" path="sequenceNumber"/>
 	<acme:input-textbox code="patron.patronage-report.form.label.creationMoment" path="creationMoment"/>
-	<acme:input-textbox code="patron.patronage-report.form.label.memorandum" path="memorandum"/>
+	<acme:input-textarea code="patron.patronage-report.form.label.memorandum" path="memorandum"/>
 	<acme:input-textbox code="patron.patronage-report.form.label.moreInfo" path="moreInfo"/>
-	<acme:input-textbox code="patron.patronage-report.form.label.patronage.legalStuff" path="patronage.legalStuff"/>
-	<acme:input-textbox code="patron.patronage-report.form.label.patronage.budget" path="patronage.budget"/>
+	<acme:input-textarea code="patron.patronage-report.form.label.patronage.legalStuff" path="patronage.legalStuff"/>
+	<acme:input-money code="patron.patronage-report.form.label.patronage.budget" path="patronage.budget"/>
 	
 
 </acme:form> 

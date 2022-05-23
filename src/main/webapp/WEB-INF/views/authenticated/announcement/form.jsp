@@ -21,9 +21,8 @@
 		<acme:input-option code="NOT CRITICAL" value="NOT CRITICAL" selected="${critical == false}"/>
 		<acme:input-option code="CRITICAL" value="CRITICAL" selected="${critical == true}"/>
 	</acme:input-select>
-	<acme:input-textarea code="authenticated.announcement.list.label.creationMoment" path="creationMoment"/>
 	<acme:input-textarea code="authenticated.announcement.form.label.body" path="body"/>
-	<acme:input-textarea code="authenticated.announcement.form.label.email" path="email"/>
-	<acme:input-textbox code="authenticated.announcement.form.label.moreInfo" path="moreInfo"/>
+	<acme:input-email code="authenticated.announcement.form.label.email" path="email"/>
+	<acme:input-url code="authenticated.announcement.form.label.moreInfo" path="moreInfo"/>
 
 </acme:form>

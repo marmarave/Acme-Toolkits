@@ -30,7 +30,7 @@ public class Toolkit extends AbstractEntity{
 	protected String code;
 	
 	@NotBlank
-	@Length(min = 1, max = 255)
+	@Length(min = 1, max = 100)
 	protected String title;
 	
 	@NotBlank

@@ -54,7 +54,7 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 		entity.setInventor(inventor);
 
 
-		request.bind(entity, errors, "code", "legalStuff", "budget", "startDate", "endDate","moreInfo");
+		request.bind(entity, errors, "legalStuff", "budget", "startDate", "endDate","moreInfo");
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "legalStuff", "budget", "startDate", "endDate", "moreInfo","published");
+		request.unbind(entity, model, "code", "legalStuff", "budget","creationMoment", "startDate", "endDate", "moreInfo","published");
 		model.setAttribute("inventors", this.repository.findInventors());
 		model.setAttribute("inventId", entity.getInventor().getId());
 	}
