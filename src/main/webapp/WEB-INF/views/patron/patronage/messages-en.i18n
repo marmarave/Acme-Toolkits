@@ -45,8 +45,12 @@
  patron.patronage.form.label.patron.userAccount.identity.surname = Patron Surname
  patron.patronage.form.label.patron.userAccount.identity.email = Patron Email
  patron.patronage.form.error.duplicated = Duplicated code of patronage 
- patron.patronage.form.error.too-close = Start date too close to creation moment (1 month between minimum)
- patron.patronage.form.error.insufficient-duration = Duration must be at least one month
+ patron.patronage.form.error.unmodifiable-code = The code cannot be modified
+ patron.patronage.form.error.past-start-date = The start date cannot be previous to the creation moment
+ patron.patronage.form.error.past-end-date = The end date cannot be previous to the creation moment
+ patron.patronage.form.error.end-date-previous-to-start-date = The end date must be after the start date
+ patron.patronage.form.error.too-close = The start date is too close to creation moment (1 month between minimum)
+ patron.patronage.form.error.insufficient-duration = The duration must be at least one month
  patron.patronage.form.error.minimum-budget = The budget must be equals or higher than 1
  patron.patronage.form.button.create = Create
  patron.patronage.form.button.update = Update

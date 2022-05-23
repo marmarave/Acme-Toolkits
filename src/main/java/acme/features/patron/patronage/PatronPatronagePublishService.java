@@ -88,27 +88,28 @@ public class PatronPatronagePublishService implements AbstractUpdateService<Patr
 		assert errors != null;
 
 		if (!errors.hasErrors("code")) {
-			Patronage existing;
-
-			existing = this.repository.findOnePatronageByCode(entity.getCode());
-			
-			if(existing!=null) {
-				errors.state(request, existing.getId()==entity.getId() , "code", "patron.patronage.form.error.duplicated");
-			}
+			final String oldCode = this.repository.findOnePatronageById(entity.getId()).getCode();
+			errors.state(request, oldCode.equals(entity.getCode()) , "code", "patron.patronage.form.error.unmodifiable-code");
 		}
 		
 		if (!errors.hasErrors("startDate")) {
-			
+			errors.state(request, entity.getStartDate().after(entity.getCreationMoment()), "startDate", "patron.patronage.form.error.past-start-date");
+		}
+		if(!errors.hasErrors("startDate")) {
 			final Date oneMonthAfterCreationDate = DateUtils.addMonths(entity.getCreationMoment(), 1);
-
 			errors.state(request,entity.getStartDate().after(oneMonthAfterCreationDate), "startDate", "patron.patronage.form.error.too-close");
-			
+		}
+		
+		
+		if(!errors.hasErrors("endDate")) {
+			errors.state(request, entity.getEndDate().after(entity.getCreationMoment()), "endDate", "patron.patronage.form.error.past-end-date");
+		}
+		if(!errors.hasErrors("endDate")) {	
+			errors.state(request, entity.getEndDate().after(entity.getStartDate()), "endDate", "patron.patronage.form.error.end-date-previous-to-start-date");
 		}
 		if(!errors.hasErrors("endDate")) {
 			final Date oneMonthAfterStartDate=DateUtils.addMonths(entity.getStartDate(), 1);
-
 			errors.state(request,entity.getEndDate().after(oneMonthAfterStartDate), "endDate", "patron.patronage.form.error.insufficient-duration");
-			
 		}
 
 		if (!errors.hasErrors("budget")) {
