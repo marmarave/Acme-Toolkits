@@ -1,4 +1,4 @@
-package acme.testing.patron.patronageReport;
+package acme.testing.patron.patronagereport;
 
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -14,7 +14,7 @@ public class PatronPatronageReportListMineTest extends TestHarness{
 	@Order(10)
 	public void positive(final int recordIndex, final String sequenceNumber, final String code, final String creationMoment, final String memorandum, final String moreInfo, final String legalStuff, final String budget) {
 		
-		super.signIn("Patron1", "patron1");
+		super.signIn("patron1", "patron1");
 		super.clickOnMenu("Patron", "List my patronage reports");
 
 		super.checkListingExists();

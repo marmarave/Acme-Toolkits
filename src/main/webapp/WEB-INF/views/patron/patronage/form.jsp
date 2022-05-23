@@ -33,8 +33,9 @@
 	 		<acme:input-textbox code="patron.patronage.form.label.code" path="code" placeholder="ABC-123-A"/>
 	 	</jstl:otherwise>
  	</jstl:choose>
- 	<acme:input-textbox code="patron.patronage.form.label.legalStuff" path="legalStuff"/>
+ 	<acme:input-textarea code="patron.patronage.form.label.legalStuff" path="legalStuff"/>
  	<acme:input-money code="patron.patronage.form.label.budget" path="budget"/>
+ 	<acme:input-moment code="patron.patronage.form.label.creationMoment" path="creationMoment" readonly="true"/>
  	<acme:input-moment code="patron.patronage.form.label.startDate" path="startDate"/>
  	<acme:input-moment code="patron.patronage.form.label.endDate" path="endDate"/>
  	<acme:input-url code="patron.patronage.form.label.moreInfo" path="moreInfo"/><br>

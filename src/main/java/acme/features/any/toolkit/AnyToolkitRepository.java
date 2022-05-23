@@ -40,5 +40,8 @@ public interface AnyToolkitRepository extends AbstractRepository {
 	
 	@Query("select c from MoneyExchangeCache c where c.source = :sourceCurrency and c.target=:targetCurrency")
 	Optional<MoneyExchangeCache> findCacheBySourceAndTarget(String sourceCurrency, String targetCurrency);
+	
+	@Query("select s.systemCurrency from SystemConfiguration s")
+	String findBaseCurrency();
 
 }

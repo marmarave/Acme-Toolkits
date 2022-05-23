@@ -6,8 +6,8 @@
 <acme:form>
 	<acme:input-textbox code="any.toolkit.form.label.code" path="code"/>
 	<acme:input-textbox code="any.toolkit.form.label.title" path="title"/>
-	<acme:input-textbox code="any.toolkit.form.label.description" path="description"/>
-	<acme:input-textbox code="any.toolkit.form.label.assembly-notes" path="assemblyNotes"/>
+	<acme:input-textarea code="any.toolkit.form.label.description" path="description"/>
+	<acme:input-textarea code="any.toolkit.form.label.assembly-notes" path="assemblyNotes"/>
 	<acme:input-money code="any.toolkit.form.label.total-price" path="totalPrice"/>
 	<acme:input-url code="any.toolkit.form.label.more-info" path="moreInfo"/>
 	
