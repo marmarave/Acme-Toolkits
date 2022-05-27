@@ -27,7 +27,6 @@ public class AnyChirpListAllTest extends TestHarness{
 		
 		super.clickOnListingRecord(recordIndex);
 		super.checkFormExists();
-		super.checkInputBoxHasValue("creationMoment", creationMoment);
 		super.checkInputBoxHasValue("title", title);
 		super.checkInputBoxHasValue("author", author);
 		super.checkInputBoxHasValue("body", body);
