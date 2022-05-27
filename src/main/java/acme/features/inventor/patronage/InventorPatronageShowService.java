@@ -36,7 +36,7 @@ public class InventorPatronageShowService implements AbstractShowService<Invento
 		patronage = this.repository.findOnePatronageById(id);
 		inventor = patronage.getInventor();
 		principal = request.getPrincipal();
-		result = inventor.getUserAccount().getId() == principal.getAccountId();
+		result = inventor.getUserAccount().getId() == principal.getAccountId() && patronage.isPublished();
 
 		return result;
 	}
@@ -59,7 +59,7 @@ public class InventorPatronageShowService implements AbstractShowService<Invento
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "status", "code", "legalStuff", "budget", "creationMoment", "startDate", "endDate", "period", "moreInfo", "patron.company", "patron.statement", "patron.moreInfo", "patron.userAccount.username",
+		request.unbind(entity, model, "status", "code", "legalStuff", "budget", "creationMoment", "startDate", "endDate", "moreInfo", "patron.company", "patron.statement", "patron.moreInfo", "patron.userAccount.username",
 			"patron.userAccount.identity.name", "patron.userAccount.identity.surname", "patron.userAccount.identity.email");
 	}
 

@@ -20,8 +20,8 @@
 	
 	<acme:input-textbox code="inventor.toolkit.form.label.code" path="code"/>
 	<acme:input-textbox code="inventor.toolkit.form.label.title" path="title"/>
-	<acme:input-textbox code="inventor.toolkit.form.label.description" path="description"/>
-	<acme:input-textbox code="inventor.toolkit.form.label.assemblyNotes" path="assemblyNotes"/>
+	<acme:input-textarea code="inventor.toolkit.form.label.description" path="description"/>
+	<acme:input-textarea code="inventor.toolkit.form.label.assemblyNotes" path="assemblyNotes"/>
 	<acme:input-money code="inventor.toolkit.form.label.totalPrice" path="totalPrice" readonly="true"/>
 	<acme:input-url code="inventor.toolkit.form.label.more-info" path="moreInfo"/>
 	

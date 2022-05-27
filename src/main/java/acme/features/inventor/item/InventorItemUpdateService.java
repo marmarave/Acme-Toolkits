@@ -2,25 +2,19 @@
 package acme.features.inventor.item;
 
 import java.util.Arrays;
-import java.util.List;
-
-
 import java.util.Calendar;
+import java.util.List;
 import java.util.Optional;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.components.CalculateMoneyExchange;
 import acme.entities.Item;
-
 import acme.entities.ItemType;
-
 import acme.entities.MoneyExchangeCache;
 import acme.features.authenticated.moneyExchange.AuthenticatedMoneyExchangePerformService;
 import acme.forms.MoneyExchange;
-
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -44,13 +38,8 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		public boolean validateAvailableCurrencyRetailPrice(final Money retailPrice) {
 			
 			final String currencies = this.repository.findAvailableCurrencies();
-			final List<Object> listOfAvailableCurrencies = Arrays.asList(currencies.split(";"));
-			final boolean availableCurrencies = listOfAvailableCurrencies.contains(retailPrice.getCurrency());
-			
-			return availableCurrencies;
-			
-			
-			
+			final List<Object> listOfAvailableCurrencies = Arrays.asList((Object[])currencies.split(";"));
+			return listOfAvailableCurrencies.contains(retailPrice.getCurrency());
 		}
 
 		@Override
@@ -121,7 +110,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 			this.repository.save(entity);
 		
 
-		request.bind(entity, errors, "name", "type", "code", "technology", "description", "retailPrice", "convertedPrice", "moreInfo", "published");
+		request.bind(entity, errors, "name", "code", "technology", "description", "retailPrice", "convertedPrice", "moreInfo");
 	}
 
 
@@ -160,7 +149,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		final Calendar exchangeDate = Calendar.getInstance();
 
 		source = entity.getRetailPrice();
-		targetCurrency = "EUR";
+		targetCurrency = this.repository.findBaseCurrency();
 		today = Calendar.getInstance();
 		exchangeDate.setTime(entity.getExchangeDate());
 

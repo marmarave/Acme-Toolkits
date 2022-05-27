@@ -3,24 +3,19 @@ package acme.features.inventor.item;
 
 
 import java.util.Arrays;
-import java.util.List;
-
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.components.CalculateMoneyExchange;
 import acme.entities.Item;
-
 import acme.entities.ItemType;
-
 import acme.entities.MoneyExchangeCache;
 import acme.forms.MoneyExchange;
-
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -58,11 +53,10 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 	public boolean validateAvailableCurrencyRetailPrice(final Money retailPrice) {
 		
 		final String currencies = this.repository.findAvailableCurrencies();
-		final List<Object> listOfAvailableCurrencies = Arrays.asList(currencies.split(";"));
-		final boolean availableCurrencies = listOfAvailableCurrencies.contains(retailPrice.getCurrency());
+		final List<Object> listOfAvailableCurrencies = Arrays.asList((Object[])currencies.split(";"));
+
 		
-		return availableCurrencies;
-		
+		return listOfAvailableCurrencies.contains(retailPrice.getCurrency());		
 	}
 	
 
@@ -73,7 +67,7 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 		assert errors != null;
 
 		
-		request.bind(entity, errors, "name", "type", "technology", "code","description","retailPrice","moreInfo");
+		request.bind(entity, errors, "name", "technology", "code","description","retailPrice","moreInfo");
 		
 
 	}
@@ -139,7 +133,7 @@ public class InventorItemCreateService implements AbstractCreateService<Inventor
 
 
 		source = entity.getRetailPrice();
-		targetCurrency = "EUR";
+		targetCurrency = this.repository.findBaseCurrency();
 
 		
 		if (!(entity.getRetailPrice().getCurrency().equals(targetCurrency))) {

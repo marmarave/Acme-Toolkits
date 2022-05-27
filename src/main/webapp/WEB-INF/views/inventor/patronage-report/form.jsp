@@ -20,11 +20,11 @@
 	<jstl:if test="${command == 'show'}">
 	<acme:input-textbox code="inventor.patronage-report.form.label.sequenceNumber" path="sequenceNumber"/>
 	<acme:input-textbox code="inventor.patronage-report.form.label.creationMoment" path="creationMoment"/>
-	<acme:input-textbox code="inventor.patronage-report.form.label.patronage.legalStuff" path="patronage.legalStuff"/>
-	<acme:input-textbox code="inventor.patronage-report.form.label.patronage.budget" path="patronage.budget"/>
+	<acme:input-textarea code="inventor.patronage-report.form.label.patronage.legalStuff" path="patronage.legalStuff"/>
+	<acme:input-money code="inventor.patronage-report.form.label.patronage.budget" path="patronage.budget"/>
 	</jstl:if>
 	
-	<acme:input-textbox code="inventor.patronage-report.form.label.memorandum" path="memorandum"/>
+	<acme:input-textarea code="inventor.patronage-report.form.label.memorandum" path="memorandum"/>
 	<acme:input-url code="inventor.patronage-report.form.label.moreInfo" path="moreInfo"/>
 
 	<jstl:if test="${command == 'create'}">

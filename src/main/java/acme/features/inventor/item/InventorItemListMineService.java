@@ -53,6 +53,8 @@ public class InventorItemListMineService implements AbstractListService<Inventor
 		assert model != null;
 
 		request.unbind(entity, model, "name", "code", "technology", "description");
+		final String type = (String)request.getModel().getAttribute("type");
+		model.setAttribute("typeButton", type);
 	}
 
 }

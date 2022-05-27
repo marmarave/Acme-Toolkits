@@ -50,7 +50,7 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		
 		entity.setInventor(this.repository.findInventorById(inventorId));
 
-		request.bind(entity, errors, "code", "legalStuff", "budget", "startDate", "endDate","moreInfo");
+		request.bind(entity, errors, "legalStuff", "budget", "startDate", "endDate","moreInfo");
 		
 	}
 
@@ -60,7 +60,7 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "legalStuff", "budget", "startDate", "endDate", "moreInfo","published");
+		request.unbind(entity, model, "legalStuff", "budget","creationMoment", "startDate", "endDate", "moreInfo");
 		model.setAttribute("inventors", this.repository.findInventors());
 		model.setAttribute("inventId", entity.getInventor().getId());			
 	}
@@ -84,10 +84,10 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert entity != null;
 		assert errors != null;
 
-		if (!errors.hasErrors("code")) {
-			final String oldCode = this.repository.findOnePatronageById(entity.getId()).getCode();
-			errors.state(request, oldCode.equals(entity.getCode()) , "code", "patron.patronage.form.error.unmodifiable-code");
-		}
+//		if (!errors.hasErrors("code")) {
+//			final String oldCode = this.repository.findOnePatronageById(entity.getId()).getCode();
+//			errors.state(request, oldCode.equals(entity.getCode()) , "code", "patron.patronage.form.error.unmodifiable-code");
+//		}
 		
 		if (!errors.hasErrors("startDate")) {
 			errors.state(request, entity.getStartDate().after(entity.getCreationMoment()), "startDate", "patron.patronage.form.error.past-start-date");

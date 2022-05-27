@@ -88,15 +88,16 @@ public class InventorToolkitShowMineService implements AbstractShowService<Inven
 		final Calendar today = Calendar.getInstance();
 		MoneyExchange exchange;
 		Money converted;
+		final String systemCurrency = this.repository.findBaseCurrency();
 		final Money result = new Money();
-		result.setCurrency("EUR"); //Default Currency
+		result.setCurrency(systemCurrency); //Default Currency
 		Double sum = 0.;
 
 		final Collection<ItemQuantity> quantities = this.repository.findItemQuantitiesOfToolkit(t.getId());
 		for (final ItemQuantity quantity : quantities) {
 			final Item item = quantity.getItem();
 			final Money money = item.getRetailPrice();
-			if ("EUR".equals(money.getCurrency()))
+			if (systemCurrency.equals(money.getCurrency()))
 				sum += money.getAmount() * quantity.getQuantity();
 			else {
 				exchangeDate.setTime(item.getExchangeDate());
@@ -104,7 +105,7 @@ public class InventorToolkitShowMineService implements AbstractShowService<Inven
 					converted = item.getConvertedPrice();
 					sum += converted.getAmount() * quantity.getQuantity();
 				} else {
-					exchange = this.getConversion(money, "EUR");
+					exchange = this.getConversion(money, systemCurrency);
 					converted = exchange.getTarget();
 					item.setConvertedPrice(converted);
 					item.setExchangeDate(exchange.getDate());

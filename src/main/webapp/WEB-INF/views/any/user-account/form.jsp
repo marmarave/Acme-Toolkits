@@ -19,5 +19,5 @@
 	<acme:input-textbox code="any.userAccount.form.label.username" path="username"/>
 	<acme:input-textbox code="any.userAccount.form.label.name" path="identity.name"/>	
 	<acme:input-textbox code="any.userAccount.form.label.surname" path="identity.surname"/>	
-	<acme:input-textbox code="any.userAccount.form.label.email" path="identity.email"/>	
+	<acme:input-email code="any.userAccount.form.label.email" path="identity.email"/>	
 </acme:form>

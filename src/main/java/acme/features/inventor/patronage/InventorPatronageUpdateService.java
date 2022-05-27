@@ -46,8 +46,6 @@ public class InventorPatronageUpdateService implements AbstractUpdateService<Inv
 		assert entity != null;
 		assert errors != null;
 
-//		request.bind(entity, errors, "status", "code", "legalStuff", "budget", "creationMoment", "startDate", "endDate", "period", "moreInfo", "patron.company", "patron.statement", "patron.moreInfo", "patron.userAccount.username",
-//			"patron.userAccount.identity.name", "patron.userAccount.identity.surname", "patron.userAccount.identity.email");
 		request.bind(entity, errors, "status");
 	}
 
@@ -57,9 +55,8 @@ public class InventorPatronageUpdateService implements AbstractUpdateService<Inv
 		assert entity != null;
 		assert model != null;
 
-//		request.unbind(entity, model, "status", "code", "legalStuff", "budget", "creationMoment", "startDate", "endDate", "period", "moreInfo", "patron.company", "patron.statement", "patron.moreInfo", "patron.userAccount.username",
-//			"patron.userAccount.identity.name", "patron.userAccount.identity.surname", "patron.userAccount.identity.email");
-		request.unbind(entity, model, "status");
+		request.unbind(entity, model, "status", "code", "legalStuff", "budget", "creationMoment", "startDate", "endDate", "moreInfo", "patron.company", "patron.statement", "patron.moreInfo", "patron.userAccount.username",
+			"patron.userAccount.identity.name", "patron.userAccount.identity.surname", "patron.userAccount.identity.email");
 	}
 
 	@Override

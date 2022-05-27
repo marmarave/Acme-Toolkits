@@ -18,13 +18,14 @@
 <acme:form>
 
 	<acme:input-textbox code="inventor.item.form.label.name" path="name"/>
-	<acme:input-textbox code="inventor.item.form.label.code" path="code"/>
+	<acme:input-textbox code="inventor.item.form.label.code" placeholder="ABC-123-A" path="code"/>
 	<acme:input-textbox code="inventor.item.form.label.type" path="type" readonly="true"/>
 	<acme:input-textbox code="inventor.item.form.label.technology" path="technology"/>
-	<acme:input-textbox code="inventor.item.form.label.description" path="description"/>
+	<acme:input-textarea code="inventor.item.form.label.description" path="description"/>
 	<acme:input-money code="inventor.item.form.label.retailPrice" path="retailPrice"/>
-
+	<jstl:if test="${command == 'show'}">
 	<acme:input-money code="inventor.item.form.label.convertedPrice" path="convertedPrice" readonly="true"/>
+	</jstl:if>
 	<acme:input-url code="inventor.item.form.label.more-info" path="moreInfo"/>
 
 	

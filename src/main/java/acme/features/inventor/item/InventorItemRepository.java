@@ -31,6 +31,9 @@ public interface InventorItemRepository extends AbstractRepository {
 	
 	@Query("select s.acceptedCurrencies from SystemConfiguration s")
 	String findAvailableCurrencies();
+	
+	@Query("select s.systemCurrency from SystemConfiguration s")
+	String findBaseCurrency();
 
 	@Query("select c from MoneyExchangeCache c where c.source = :sourceCurrency and c.target=:targetCurrency")
 	Optional<MoneyExchangeCache> findCacheBySourceAndTarget(String sourceCurrency, String targetCurrency);
