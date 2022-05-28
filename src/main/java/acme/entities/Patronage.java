@@ -48,10 +48,10 @@ public class Patronage extends AbstractEntity{
 	
 	@NotNull
 	@Valid
-	//@Min(value = 1) Habrá que hacer custom constraint para ponerle un mínimo a la cantidad
+	
 	protected Money 			budget;
 	
-	//La validación de las fechas se hará más adelante, cuando se vean en clase las custom constraints
+	
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	protected Date 				creationMoment;

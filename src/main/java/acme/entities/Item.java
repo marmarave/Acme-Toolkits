@@ -52,8 +52,6 @@ public class Item extends AbstractEntity{
 	@Valid
 	protected Money retailPrice;
 	
-	
-	//@Valid
 	protected Money convertedPrice;
 	
 	protected Date exchangeDate;
