@@ -12,7 +12,6 @@ import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
 import acme.framework.services.AbstractUpdateService;
-import acme.helpers.ToolkitHelper;
 import acme.roles.Inventor;
 
 @Service	
@@ -49,11 +48,7 @@ public class InventorToolkitPublishService implements AbstractUpdateService<Inve
 		assert entity != null;
 		assert model != null;
 		
-		request.unbind(entity, model, "code", "title", "description", "assemblyNotes", "moreInfo", "draftMode");
-		final Collection<ItemQuantity> prices = this.repository.findItemQuantitiesOfToolkit(entity.getId());
-		
-		model.setAttribute("retailPrice", ToolkitHelper.calculateTotalPrice(prices));
-		
+		request.unbind(entity, model, "code", "title", "description", "assemblyNotes", "moreInfo", "draftMode","totalPrice");
 	}
 
 	@Override
