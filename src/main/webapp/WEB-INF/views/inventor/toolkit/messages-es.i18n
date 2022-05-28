@@ -11,7 +11,7 @@
 inventor.toolkit.list.label.code = Código
 inventor.toolkit.list.label.title = Título
 inventor.toolkit.list.label.description = Descripción
-inventor.toolkit.list.button.create = Crear nuevo Toolkit
+inventor.toolkit.list.button.create = Crear
 
 
 
@@ -29,3 +29,5 @@ inventor.toolkit.form.button.delete = Borrar
 inventor.toolkit.form.button.tools = Herramientas
 inventor.toolkit.form.button.components = Componentes
 inventor.toolkit.form.button.publish = Publicar
+
+inventor.toolkit.form.error.invalid-items = Debe haber al menos una herramienta y un componente

@@ -1,17 +1,10 @@
 package acme.features.inventor.itemQuantity;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.Item;
 import acme.entities.ItemQuantity;
-import acme.entities.ItemType;
 import acme.entities.Toolkit;
-import acme.features.inventor.toolkit.InventorToolkitRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -22,10 +15,7 @@ import acme.roles.Inventor;
 public class InventorItemQuantityDeleteService implements AbstractDeleteService<Inventor, ItemQuantity>{
 
 	@Autowired
-	InventorItemQuantityRepository iqRepository;
-	
-	@Autowired
-	InventorToolkitRepository repository;
+	InventorItemQuantityRepository repository;
 	
 	
 	@Override
@@ -33,11 +23,11 @@ public class InventorItemQuantityDeleteService implements AbstractDeleteService<
 		assert request != null;
 
 		boolean checkPublished = true;
-		int masterId;
+		final int id;
 		Toolkit toolkit;
-
-		masterId = request.getModel().getInteger("masterId");
-		toolkit = this.repository.findOneToolkitById(masterId);
+		
+		id = request.getModel().getInteger("id");
+		toolkit = this.repository.findItemQuantityById(id).getToolkit();
 		checkPublished = (toolkit != null && toolkit.isDraftMode()) && request.isPrincipal(toolkit.getInventor());
 		
 		return checkPublished;
@@ -49,6 +39,7 @@ public class InventorItemQuantityDeleteService implements AbstractDeleteService<
 		assert entity != null;
 		assert errors != null;
 		
+		request.bind(entity, errors, "quantity");
 	}
 
 	@Override
@@ -61,22 +52,16 @@ public class InventorItemQuantityDeleteService implements AbstractDeleteService<
 		model.setAttribute("draftMode", entity.getToolkit().isDraftMode());
 		model.setAttribute("itemId", entity.getItem().getId());
 		
-		final Collection<ItemQuantity> quantities = this.repository.findItemQuantitiesOfToolkit(Integer.valueOf(request.getModel().getAttribute("masterId").toString()));
-		final List<Item> toolkitTools = quantities.stream().filter(x->x.getItem().getType().equals(ItemType.TOOL)).map(x->x.getItem()).collect(Collectors.toList());
-		final List<Item> toolkitComponents = quantities.stream().filter(x->x.getItem().getType().equals(ItemType.COMPONENT)).map(x->x.getItem()).collect(Collectors.toList());
-		model.setAttribute("toolkitComponents", toolkitComponents);
-		model.setAttribute("toolkitTools", toolkitTools);
 	}
 
 	@Override
 	public ItemQuantity findOne(final Request<ItemQuantity> request) {
 		assert request != null;
 		
-		final int masterId = Integer.parseInt(request.getModel().getAttribute("masterId").toString());
-		//Esto pilla el masterId del toolkit
-		final Collection<ItemQuantity> quantities = this.iqRepository.findManyItemQuantitiesByToolkitId(masterId);
-		
-		return quantities.stream().findFirst().get();
+		final int id = request.getModel().getInteger("id");
+
+		return this.repository.findItemQuantityById(id);
+
 	}
 
 	@Override
@@ -84,6 +69,7 @@ public class InventorItemQuantityDeleteService implements AbstractDeleteService<
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
+		
 	}
 
 	@Override

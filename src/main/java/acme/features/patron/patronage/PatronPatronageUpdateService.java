@@ -83,11 +83,6 @@ public class PatronPatronageUpdateService implements AbstractUpdateService<Patro
 		assert request != null;
 		assert entity != null;
 		assert errors != null;
-
-//		if (!errors.hasErrors("code")) {
-//			final String oldCode = this.repository.findOnePatronageById(entity.getId()).getCode();
-//			errors.state(request, oldCode.equals(entity.getCode()) , "code", "patron.patronage.form.error.unmodifiable-code");
-//		}
 		
 		if (!errors.hasErrors("startDate")) {
 			errors.state(request, entity.getStartDate().after(entity.getCreationMoment()), "startDate", "patron.patronage.form.error.past-start-date");

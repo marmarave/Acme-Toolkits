@@ -12,8 +12,7 @@ inventor.component.list.label.name = Nombre
 inventor.component.list.label.code = Código
 inventor.component.list.label.technology = Tecnología
 inventor.component.list.label.description = Descripción
-inventor.item.list.button.createComponent = Crear nuevo Componente
-inventor.item.list.button.createTool = Crear nueva Herramienta
+inventor.item.list.button.create = Crear
 
 inventor.item.form.label.name = Nombre
 inventor.item.form.label.code = Código

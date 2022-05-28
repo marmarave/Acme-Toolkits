@@ -13,10 +13,7 @@ import acme.roles.Inventor;
 public class InventorItemQuantityController extends AbstractController<Inventor,ItemQuantity>{
 
     @Autowired
-    protected InventorItemQuantityComponentsListService componentsListService;
-    
-    @Autowired
-    protected InventorItemQuantityToolsListService toolsListService;
+    protected InventorItemQuantityListService listService;
     
     @Autowired
     protected InventorItemQuantityCreateService createService;
@@ -25,14 +22,17 @@ public class InventorItemQuantityController extends AbstractController<Inventor,
     protected InventorItemQuantityShowService showService;
     
     @Autowired
+    protected InventorItemQuantityUpdateService updateService;
+    
+    @Autowired
     protected InventorItemQuantityDeleteService deleteService;
 
     @PostConstruct
     protected void initialise() {
-        super.addCommand("list-components","list", this.componentsListService);
-        super.addCommand("list-tools","list", this.toolsListService);
+        super.addCommand("list","list", this.listService);
         super.addCommand("create", this.createService);
-        super.addCommand("item-quantity/show","show", this.showService);
+        super.addCommand("update", this.updateService);
+        super.addCommand("show", this.showService);
         super.addCommand("delete", this.deleteService);
     }
 

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import acme.entities.ItemQuantity;
 import acme.entities.ItemType;
 import acme.entities.Toolkit;
-import acme.features.inventor.toolkit.InventorToolkitRepository;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
@@ -17,7 +16,7 @@ import acme.roles.Inventor;
 public class InventorItemQuantityCreateService implements AbstractCreateService<Inventor, ItemQuantity> {
 
 	@Autowired
-	InventorToolkitRepository repository;
+	InventorItemQuantityRepository repository;
 	
 	@Override
 	public boolean authorise(final Request<ItemQuantity> request) {
@@ -40,7 +39,7 @@ public class InventorItemQuantityCreateService implements AbstractCreateService<
 		assert entity != null;
 		assert errors != null;
 		
-		entity.setItem(this.repository.findItemById(Integer.valueOf(request.getModel().getAttribute("itemId").toString())));
+		entity.setItem(this.repository.findOneItemById(Integer.valueOf(request.getModel().getAttribute("itemId").toString())));
 		request.bind(entity, errors, "quantity", "itemId");
 		
 	}
@@ -50,14 +49,14 @@ public class InventorItemQuantityCreateService implements AbstractCreateService<
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		final int masterId = request.getModel().getInteger("masterId");
+		final ItemType type = ItemType.valueOf((String)request.getModel().getAttribute("type"));
 		
 		final Toolkit t = this.repository.findOneToolkitById(Integer.valueOf(request.getModel().getAttribute("masterId").toString()));
 		model.setAttribute("draftMode", t.isDraftMode());
-		model.setAttribute("type",  request.getModel().getAttribute("type").toString());
+		model.setAttribute("type",  type.toString());
 		model.setAttribute("masterId", request.getModel().getAttribute("masterId"));
-		model.setAttribute("tools", this.repository.findAllItemsByType(ItemType.TOOL));
-		model.setAttribute("components", this.repository.findAllItemsByType(ItemType.COMPONENT));
-		model.setAttribute("items", this.repository.findAllItems());
+		model.setAttribute("items", this.repository.findManyItemsNotInToolkit(masterId,type));
 		request.unbind(entity, model, "quantity");
 		
 	}
@@ -84,10 +83,8 @@ public class InventorItemQuantityCreateService implements AbstractCreateService<
 			errors.state(request, entity.getQuantity() > 0, "quantity", "inventor.item-quantity.form.error.negative-number");
 		}
 					
-		if(!errors.hasErrors("quantity")) {
-			if(entity.getItem().getType().equals(ItemType.TOOL)) {
-				errors.state(request, entity.getQuantity() == 1, "quantity", "inventor.item-quantity.form.error.incorrect-tool-quantity");
-			}
+		if(!errors.hasErrors("quantity") && entity.getItem().getType().equals(ItemType.TOOL)) {
+			errors.state(request, entity.getQuantity() == 1, "quantity", "inventor.item-quantity.form.error.incorrect-tool-quantity");
 		}	
 		
 	}

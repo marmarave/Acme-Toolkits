@@ -210,7 +210,7 @@ bg=green</panel_attributes>
       <x>245</x>
       <y>490</y>
       <w>195</w>
-      <h>80</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Toolkit
@@ -437,7 +437,7 @@ bg=green</panel_attributes>
     <coordinates>
       <x>545</x>
       <y>445</y>
-      <w>230</w>
+      <w>215</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
@@ -446,7 +446,7 @@ AdministratorDashboard
 + totalNumComponents: Integer
 + totalNumTools: Integer
 + numberOfPatronages: Map&lt;String,Integer&gt;
-+ priceOfComponentsStats: Map&lt;String,List&lt;Pair&lt;Double,String&gt;&gt;
++ priceOfComponentsStats: Map&lt;String,List&lt;Money&gt;&gt;
 + priceOfToolsStats: Map&lt;String,List&lt;Money&gt;&gt;
 + patronagesStats: Map&lt;String,Double&gt;
 bg=green</panel_attributes>
@@ -481,7 +481,7 @@ bg=green</panel_attributes>
     <coordinates>
       <x>545</x>
       <y>520</y>
-      <w>230</w>
+      <w>155</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
@@ -550,7 +550,7 @@ m2=1..*
     <coordinates>
       <x>780</x>
       <y>530</y>
-      <w>230</w>
+      <w>120</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;

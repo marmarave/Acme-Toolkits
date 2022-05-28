@@ -110,7 +110,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 			this.repository.save(entity);
 		
 
-		request.bind(entity, errors, "name", "code", "technology", "description", "retailPrice", "convertedPrice", "moreInfo");
+		request.bind(entity, errors, "name", "code", "technology", "description", "retailPrice", "moreInfo");
 	}
 
 
@@ -120,7 +120,7 @@ public class InventorItemUpdateService implements AbstractUpdateService<Inventor
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "name", "type", "code", "technology", "description", "retailPrice", "moreInfo", "published");
+		request.unbind(entity, model, "name", "type", "code", "technology", "description", "retailPrice","convertedPrice", "moreInfo", "published");
 	}
 
 	@Override

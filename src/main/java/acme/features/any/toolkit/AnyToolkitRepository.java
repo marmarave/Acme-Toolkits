@@ -35,8 +35,8 @@ public interface AnyToolkitRepository extends AbstractRepository {
 	@Query("select iq from ItemQuantity iq where iq.toolkit.id = :masterId")
     Collection<ItemQuantity> findItemQuantitiesOfToolkit(int masterId);
 	
-//	@Query("select t from Toolkit t where t.draftMode = false")
-//	Collection<Toolkit> findManyToolkitsByItem();
+	@Query("select iq from ItemQuantity iq where iq.toolkit.id = :masterId")
+    Collection<ItemQuantity> findToolkitByItemName(int masterId);
 	
 	@Query("select c from MoneyExchangeCache c where c.source = :sourceCurrency and c.target=:targetCurrency")
 	Optional<MoneyExchangeCache> findCacheBySourceAndTarget(String sourceCurrency, String targetCurrency);

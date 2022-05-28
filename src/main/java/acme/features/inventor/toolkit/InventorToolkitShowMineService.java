@@ -40,21 +40,16 @@ public class InventorToolkitShowMineService implements AbstractShowService<Inven
 		int id;
 		int inventorId;
 		Toolkit toolkit;
-		Principal principal;
-		Collection<Toolkit> ownedToolkits;
+		final Principal principal;
 
 		id = request.getModel().getInteger("id");
 		toolkit = this.repository.findOneToolkitById(id);
 		principal = request.getPrincipal();
-
 		inventorId=principal.getActiveRoleId();
-		ownedToolkits = this.repository.findToolkitsByInventorId(inventorId);
+		
 
-		/*
-		inventorId = principal.getActiveRoleId();
-		ownedToolkits = this.repository.findManyToolkitsByInventorId(inventorId);
-*/
-		result = ownedToolkits.contains(toolkit);
+
+		result = toolkit.getInventor().getId()==inventorId;
 		return result;
 	}
 

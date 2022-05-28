@@ -11,6 +11,7 @@ import acme.entities.ItemType;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Request;
 import acme.framework.entities.Principal;
+import acme.framework.helpers.CollectionHelper;
 import acme.framework.services.AbstractListService;
 import acme.roles.Inventor;
 
@@ -53,8 +54,18 @@ public class InventorItemListMineService implements AbstractListService<Inventor
 		assert model != null;
 
 		request.unbind(entity, model, "name", "code", "technology", "description");
-		final String type = (String)request.getModel().getAttribute("type");
-		model.setAttribute("typeButton", type);
+	}
+	
+	@Override
+	public void unbind(final Request<Item> request, final Collection<Item> entities, final Model model) {
+		assert request != null;
+		assert !CollectionHelper.someNull(entities);
+		assert model != null;
+
+		String type;
+
+		type = request.getModel().getAttribute("type").toString();
+		model.setAttribute("type", type);
 	}
 
 }

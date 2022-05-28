@@ -12,6 +12,7 @@ any.component.list.label.name = Nombre
 any.component.list.label.code = Código
 any.component.list.label.technology = Tecnología
 any.component.list.label.description = Descripción
+any.item.list.label.quantity = Cantidad
 
 any.item.form.label.name = Nombre
 any.item.form.label.code = Código

@@ -28,14 +28,11 @@
 
 </acme:list>
 
-	<acme:button code="inventor.item.list.button.createTool" action="/inventor/item/create?type=TOOL"/>
-	<acme:button code="inventor.item.list.button.createComponent" action="/inventor/item/create?type=COMPONENT"/>
-
-<%-- <jstl:if test="${typeButton=='TOOL'}">
+<jstl:if test="${type=='TOOL'}">
 	<acme:button code="inventor.item.list.button.create"
 		action="/inventor/item/create?type=TOOL" />
 </jstl:if>
-<jstl:if test="${typeButton == 'COMPONENT'}">
+<jstl:if test="${type == 'COMPONENT'}">
 	<acme:button code="inventor.item.list.button.create"
 		action="/inventor/item/create?type=COMPONENT" />
-</jstl:if>--%>
+</jstl:if>

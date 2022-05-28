@@ -15,21 +15,19 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
-<acme:list readonly="true">
-    <acme:list-column code="inventor.itemQuantity.list.label.quantity" path="quantity" width="15%"/>
-    <acme:list-column code="inventor.itemQuantity.list.label.item-name" path="item.name" width="20%"/>
-    <acme:list-column code="inventor.itemQuantity.list.label.item-code" path="item.code" width="20%"/>
-    <acme:list-column code="inventor.itemQuantity.list.label.item-type" path="item.type" width="15%"/>
-    <acme:list-column code="inventor.itemQuantity.list.label.item-technology" path="item.technology" width="15%"/>
-    <acme:list-column code="inventor.itemQuantity.list.label.item-retailPrice" path="item.retailPrice" width="15%"/>
+<acme:list>
+    <acme:list-column code="inventor.item-quantity.list.label.quantity" path="quantity" width="15%"/>
+    <acme:list-column code="inventor.item-quantity.list.label.item-name" path="item.name" width="20%"/>
+    <acme:list-column code="inventor.item-quantity.list.label.item-code" path="item.code" width="20%"/>
+    <acme:list-column code="inventor.item-quantity.list.label.item-type" path="item.type" width="15%"/>
+    <acme:list-column code="inventor.item-quantity.list.label.item-technology" path="item.technology" width="15%"/>
+    <acme:list-column code="inventor.item-quantity.list.label.item-retailPrice" path="item.retailPrice" width="15%"/>
 </acme:list>
 
 <jstl:if test="${type == 'TOOL' && draftMode == true}">
-	<acme:button test="${showCreate}" code="inventor.item-quantity.button.addTool" action="/inventor/item-quantity/create?type=TOOL&masterId=${masterId}"/>
-	<acme:button test="${showCreate}" code="inventor.item-quantity.button.deleteTool" action="/inventor/item-quantity/delete?type=TOOL&masterId=${masterId}"/>
+	<acme:button code="inventor.item-quantity.button.addTool" action="/inventor/item-quantity/create?type=TOOL&masterId=${masterId}"/>
 </jstl:if>
 
 <jstl:if test="${type == 'COMPONENT' && draftMode == true}">
-	<acme:button test="${showCreate}" code="inventor.item-quantity.button.addComponent" action="/inventor/item-quantity/create?type=COMPONENT&masterId=${masterId}"/>
-	<acme:button code="inventor.item-quantity.button.deleteComponent" action="/inventor/item-quantity/delete?type=COMPONENT&masterId=${masterId}"/>
+	<acme:button code="inventor.item-quantity.button.addComponent" action="/inventor/item-quantity/create?type=COMPONENT&masterId=${masterId}"/>
 </jstl:if>

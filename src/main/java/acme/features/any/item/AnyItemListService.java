@@ -35,6 +35,11 @@ public class AnyItemListService implements AbstractListService<Any, Item> {
 		type =ItemType.valueOf((String)request.getModel().getAttribute("type"));
 
 		result = this.repository.findManyItemsByAvailability(type);
+		
+		if(request.getModel().hasAttribute("masterId")) {
+			final int masterId = request.getModel().getInteger("masterId");
+			result = this.repository.findManyItemsByMasterId(type, masterId);
+		}
 
 		return result;
 	}

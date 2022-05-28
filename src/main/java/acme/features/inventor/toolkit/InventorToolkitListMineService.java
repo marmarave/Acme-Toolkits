@@ -1,3 +1,4 @@
+
 package acme.features.inventor.toolkit;
 
 import java.util.Collection;
@@ -14,41 +15,41 @@ import acme.roles.Inventor;
 
 @Service
 public class InventorToolkitListMineService implements AbstractListService<Inventor, Toolkit> {
-	
+
 	// Internal state ---------------------------------------------------------
 
-				@Autowired
-				protected InventorToolkitRepository repository;
+	@Autowired
+	protected InventorToolkitRepository repository;
 
-				// AbstractListService<Inventor, Item> interface -----------------------------
+	// AbstractListService<Inventor, Item> interface -----------------------------
 
 
-				@Override
-				public boolean authorise(final Request<Toolkit> request) {
-					assert request != null;
+	@Override
+	public boolean authorise(final Request<Toolkit> request) {
+		assert request != null;
 
-					return true;
-				}
+		return true;
+	}
 
-				@Override
-				public Collection<Toolkit> findMany(final Request<Toolkit> request) {
-					assert request != null;
+	@Override
+	public Collection<Toolkit> findMany(final Request<Toolkit> request) {
+		assert request != null;
 
-					Collection<Toolkit> result;
-			        Principal principal;
+		Collection<Toolkit> result;
+		Principal principal;
 
-			        principal = request.getPrincipal();
-			        result = this.repository.findToolkitsByInventorId(principal.getActiveRoleId());
+		principal = request.getPrincipal();
+		result = this.repository.findToolkitsByInventorId(principal.getActiveRoleId());
 
-					return result;
-				}
-				
-				@Override
-				public void unbind(final Request<Toolkit> request, final Toolkit entity, final Model model) {
-					assert request != null;
-					assert entity != null;
-					assert model != null;
+		return result;
+	}
 
-					request.unbind(entity, model,"code","title", "description");
-				}
+	@Override
+	public void unbind(final Request<Toolkit> request, final Toolkit entity, final Model model) {
+		assert request != null;
+		assert entity != null;
+		assert model != null;
+
+		request.unbind(entity, model, "code", "title", "description");
+	}
 }
