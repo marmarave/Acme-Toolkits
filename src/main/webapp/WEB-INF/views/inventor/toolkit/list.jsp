@@ -23,3 +23,5 @@
 	
 	
 </acme:list>
+
+<acme:button code="inventor.toolkit.list.button.create" action="/inventor/toolkit/create"/>

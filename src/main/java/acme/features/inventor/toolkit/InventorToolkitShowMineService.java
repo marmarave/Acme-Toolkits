@@ -46,8 +46,14 @@ public class InventorToolkitShowMineService implements AbstractShowService<Inven
 		id = request.getModel().getInteger("id");
 		toolkit = this.repository.findOneToolkitById(id);
 		principal = request.getPrincipal();
+
+		inventorId=principal.getActiveRoleId();
+		ownedToolkits = this.repository.findToolkitsByInventorId(inventorId);
+
+		/*
 		inventorId = principal.getActiveRoleId();
 		ownedToolkits = this.repository.findManyToolkitsByInventorId(inventorId);
+*/
 		result = ownedToolkits.contains(toolkit);
 		return result;
 	}
@@ -74,7 +80,7 @@ public class InventorToolkitShowMineService implements AbstractShowService<Inven
 		assert entity != null;
 		assert model != null;
 
-		request.unbind(entity, model, "code", "title", "description", "assemblyNotes", "totalPrice", "moreInfo");
+		request.unbind(entity, model, "code", "title", "description", "assemblyNotes", "totalPrice", "moreInfo", "draftMode");
 	}
 
 	private Money calculateTotalPrice(final Toolkit t) {
