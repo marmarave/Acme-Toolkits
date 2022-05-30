@@ -33,3 +33,11 @@
   administrator.administratordashboard.form.label.minProposedPatronages = Mínimo Presupuesto de Patrocinios Propuestos
   administrator.administratordashboard.form.label.averageProposedPatronages = Media del Presupuesto de Patrocinios Propuestos
   administrator.administratordashboard.form.label.deviationProposedPatronages = Desviación del Presupuesto de Patrocinios Propuestos
+  
+  ####Chimpum:
+  administrator.administratordashboard.form.label.totalNumChimpum = Número total de Chimpum(con items)
+  administrator.administratordashboard.form.label.desviationChimpum =  Desviación del presupuesto de Chimpum
+  administrator.administratordashboard.form.label.averageChimpum = Media del presupuesto Chimpum
+  administrator.administratordashboard.form.label.minChimpum = Valor mínimo del presupuesto de Chimpum
+  administrator.administratordashboard.form.label.maxChimpum = Valor máximo del presupuesto de Chimpum
+  

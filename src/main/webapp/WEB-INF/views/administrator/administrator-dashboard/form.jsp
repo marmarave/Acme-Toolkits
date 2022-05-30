@@ -168,4 +168,87 @@
  	<acme:input-money code="administrator.administratordashboard.form.label.minProposedPatronages" path="minProposedPatronages"/>
  	<acme:input-money code="administrator.administratordashboard.form.label.averageProposedPatronages" path="averageProposedPatronages"/>
  	<acme:input-money code="administrator.administratordashboard.form.label.deviationProposedPatronages" path="deviationProposedPatronages"/>
+ 	
+<!--  	CHIMPUM -->
+ 	<br><br>
+----CHIMPUM-----
+ 	<br><br>
+	<acme:input-textbox code="administrator.administratordashboard.form.label.totalNumChimpum" path="totalNumChimpum"/>
+	 <br><br>
+	<acme:message code="administrator.administratordashboard.form.label.desviationChimpum"/>
+	<table class="table small-table">
+		<caption>Desviation of Chimpum</caption>	
+ 		<jstl:forEach items="${desviationChimpum}" var="i">
+ 		<jstl:set var = "split" value = "${fn:split(i,'->')}"/>
+		<jstl:set var = "value" value = "${split[0]}" />
+		<jstl:set var = "string" value = "${split[1]}" />   
+ 			<tr>	
+				<th scope="row">	
+					<acme:print value="${string}"/>
+				</th>
+				<td>				
+					<acme:print value="${value}"/>				
+				</td>		
+			</tr>
+ 		</jstl:forEach>
+ 	</table>
+ 	<br><br>
+ 	
+ 	<acme:message code="administrator.administratordashboard.form.label.averageChimpum"/>
+	<table class="table small-table">
+		<caption>Average of Chimpum</caption>	
+ 		<jstl:forEach items="${averageChimpum}" var="i">
+ 		<jstl:set var = "split" value = "${fn:split(i,'->')}"/>
+		<jstl:set var = "value" value = "${split[0]}" />
+		<jstl:set var = "string" value = "${split[1]}" />   
+ 			<tr>	
+				<th scope="row">	
+					<acme:print value="${string}"/>
+				</th>
+				<td>				
+					<acme:print value="${value}"/>				
+				</td>		
+			</tr>
+ 		</jstl:forEach>
+ 	</table>
+ 	<br><br>
+ 	
+ 	 	<acme:message code="administrator.administratordashboard.form.label.minChimpum"/>
+	<table class="table small-table">
+		<caption>Minimum of Chimpum</caption>	
+ 		<jstl:forEach items="${minChimpum}" var="i">
+ 		<jstl:set var = "split" value = "${fn:split(i,'->')}"/>
+		<jstl:set var = "value" value = "${split[0]}" />
+		<jstl:set var = "string" value = "${split[1]}" />   
+ 			<tr>	
+				<th scope="row">	
+					<acme:print value="${string}"/>
+				</th>
+				<td>				
+					<acme:print value="${value}"/>				
+				</td>		
+			</tr>
+ 		</jstl:forEach>
+ 	</table>
+ 	<br><br>
+ 	
+ 	 	 	<acme:message code="administrator.administratordashboard.form.label.maxChimpum"/>
+	<table class="table small-table">
+		<caption>Maximum of Chimpum</caption>	
+ 		<jstl:forEach items="${maxChimpum}" var="i">
+ 		<jstl:set var = "split" value = "${fn:split(i,'->')}"/>
+		<jstl:set var = "value" value = "${split[0]}" />
+		<jstl:set var = "string" value = "${split[1]}" />   
+ 			<tr>	
+				<th scope="row">	
+					<acme:print value="${string}"/>
+				</th>
+				<td>				
+					<acme:print value="${value}"/>				
+				</td>		
+			</tr>
+ 		</jstl:forEach>
+ 	</table>
+ 	<br><br>
+ 	
  </acme:form> 

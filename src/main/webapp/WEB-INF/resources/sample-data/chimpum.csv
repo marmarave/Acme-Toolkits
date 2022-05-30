@@ -1,0 +1,5 @@
+key,key:item,code,creation-moment,title,description,startDate,endDate,budget,moreInfo
+chimpum-01,item-01,AAA,2022/03/15 19:35,Titulo 1,Descripcion 1,2022/05/15 19:35,2022/05/16 19:35,EUR 0.55,http://www.gatos.com
+chimpum-02,item-02,BBB,2022/03/15 12:00,Titulo 2,Descripcion 2,2022/05/17 19:35,2022/05/18 19:35,USD 50.1,http://www.gatos.com
+chimpum-03,item-03,CCC,2022/03/15 23:59,Titulo 3,Descripcion 3,2022/05/19 19:35,2022/05/20 19:35,GBP 5.0,http://www.gatos.com
+chimpum-04,item-04,DDD,2022/03/15 23:59,Titulo 4,Descripcion 4,2022/05/20 19:35,2022/05/21 19:35,EUR 25.0,http://www.gatos.com

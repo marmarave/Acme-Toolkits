@@ -41,7 +41,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Rafa/OneDrive/Escritorio/DP2/Workspace-22.0/Projects/Acme-Toolkits/libs/Spam.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Mariano/Desktop/Universidad 2021-22/2Cuatrimestre/DP2/Workspace-22.0/Workspace-22.0/Projects/ControlCheck22/libs/Spam.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Acme-Framework-22.7"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

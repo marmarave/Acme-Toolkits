@@ -102,4 +102,20 @@ public interface AdministratorDashboardRepository extends AbstractRepository{
 	@Query("select max(p.budget.amount) from Patronage p where p.status = acme.entities.PatronageStatus.DENIED ")
 	Double maxBudgetDeniedPatronages();
 	
+	//Chimpum
+	@Query("select count(c) from Chimpum c where c.item is not null ")
+	Integer  numberOfChimpumWhithItem();
+	
+	@Query("select avg(c.budget.amount),c.budget.currency from Chimpum c  GROUP BY c.budget.currency")
+	List<Object[]> averageChimpum();
+	
+	@Query("select stddev(c.budget.amount),c.budget.currency from Chimpum c  GROUP BY c.budget.currency")
+	List<Object[]> deviationChimpum();
+	
+	@Query("select min(c.budget.amount),c.budget.currency from Chimpum c  GROUP BY c.budget.currency")
+	List<Object[]> minChimpum();
+	
+	@Query("select max(c.budget.amount),c.budget.currency from Chimpum c  GROUP BY c.budget.currency")
+	List<Object[]> maxChimpum();
+	
 }
