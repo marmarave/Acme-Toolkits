@@ -36,3 +36,7 @@
 	<acme:button code="inventor.item.list.button.create"
 		action="/inventor/item/create?type=COMPONENT" />
 </jstl:if>
+
+<!-- CHIMPUM -->
+<acme:button code="inventor.item.list.button.list.chimpum"
+		action="/inventor/chimpum/list" />

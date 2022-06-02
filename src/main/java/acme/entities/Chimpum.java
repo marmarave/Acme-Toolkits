@@ -4,6 +4,7 @@ package acme.entities;
 import java.util.Date;
 
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -33,8 +34,10 @@ public class Chimpum extends AbstractEntity{
 	protected static final long    serialVersionUID    = 1L;
 		
 	// Attributes -------------------------------------------------------------
-	@Column(unique = true)
-	@Pattern(regexp = "^[A-Z]{3}")
+
+	//^[A-Z]{5}(-[0-9]{2}[/][0][1-9]|[1][12][/][1-9]|[12][0-9]|3[01])$
+	//@Column(unique = true)
+	//@Pattern(regexp = "^[A-Z]{5}(-[0-9]{2}[/][0][1-9]|[1][12][/][1-9]|[12][0-9]|3[01])$")
 	private String code;
 	
 	@NotNull
@@ -65,10 +68,6 @@ public class Chimpum extends AbstractEntity{
 	@URL
 	protected String 			moreInfo;
 	
-	@NotNull
-	@Valid
-	@ManyToOne(optional=true)
-	protected Item item;
 	
 	
 	public static Boolean verifyPeriod(Date startDate,Date endDate) {

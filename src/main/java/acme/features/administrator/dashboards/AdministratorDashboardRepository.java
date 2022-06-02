@@ -103,7 +103,7 @@ public interface AdministratorDashboardRepository extends AbstractRepository{
 	Double maxBudgetDeniedPatronages();
 	
 	//Chimpum
-	@Query("select count(c) from Chimpum c where c.item is not null ")
+	@Query("select count(i) from Item i where i.chimpum is not null")
 	Integer  numberOfChimpumWhithItem();
 	
 	@Query("select avg(c.budget.amount),c.budget.currency from Chimpum c  GROUP BY c.budget.currency")
